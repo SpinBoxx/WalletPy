@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-k0ju6qo#0ow_y6@vd8km#n_l#(+hduoqiikm@r805pw=u4=^7l
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+TAILWIND_APP_NAME = 'dashboard'
 
 # Application definition
 
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tailwind',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -76,7 +78,7 @@ WSGI_APPLICATION = 'WalletPy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR / "db.sqlite3"),
     }
 }
 
