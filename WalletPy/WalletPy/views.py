@@ -17,4 +17,4 @@ def register_request(request):
 	return render (request=request, template_name="registration/register.html", context={"register_form":form})
 
 def homepage(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return render (request=request, template_name="homepage.html")
