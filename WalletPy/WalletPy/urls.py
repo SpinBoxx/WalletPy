@@ -16,11 +16,12 @@ Including another URLconf
 from . import views
 from django.contrib import admin
 from django.urls import path, include
+import custom_auth.views
 
 urlpatterns = [
     path('', views.homepage,name='homepage'),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('register', views.register_request, name="register"),
-    path('dashboard', views.dashboard, name="dashboard")
+    path('dashboard', views.dashboard, name="dashboard"),
+    path('register', custom_auth.views.register_request, name="register")
 ]
