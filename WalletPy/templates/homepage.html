@@ -1,8 +1,51 @@
-{% extends "base.html" %} {% block content %}
-<h1 class="text-center">Homepage</h1>
-{% if user.is_authenticated %}
-<p>Welcome, {{ user.username }}. Thanks for logging in.</p>
-<a href="{% url 'logout'%}">logout</a>
-{% else %}
-<p>Welcome, new user. Please <a href="{% url 'login'%}">login</a></p>
-{% endif %} {% endblock %}
+{% extends "base.html" %} {% block content %} {% load static %}
+
+<div class="leading-normal tracking-normal text-neutral-400 bg-cover bg-fixed" style="background-image:url('/static/graphFinal.jpg')">
+	
+	<div class="h-screen">
+		<!--Nav-->
+		<div class="w-full container ml-8">
+			<div class="w-full flex items-center justify-between">
+				<img class="w-80 mt-5" src="{% static 'allLogo.png' %}"/>
+			</div>
+		</div>
+		
+		<!--Main-->
+		<div class="mb-auto container pt-24 mt-32 md:pt-24 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+			<!--Left Col-->
+			<div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start">
+				<h1 class="my-4 text-3xl md:text-6xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
+					<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">
+              Prêt à faire travailler votre argent ?
+            </span>
+				</h1>
+				<p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left">
+					Investir c'est pensé à son futur !
+				</p>
+				<div class="flex items-center justify-between space-x-12 pt-4">
+					<a
+							href="/accounts/login/"
+							type="button"
+							class="shadow-xl uppercase bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+					>
+						Se connecter
+					</a>
+					<a
+							href="/register"
+							class="text-black uppercase font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+							type="button"
+					>
+						Créer un compte
+					</a>
+				</div>
+			</div>
+		</div>
+		<!--Footer-->
+	</div>
+	<footer class="footer relative text-sm text-center md:text-left fade-in">
+		<a class="text-gray-500 no-underline hover:no-underline" href="#">&copy; WalletPY App 2022</a>
+		- Made by students
+		<a class="text-gray-500 no-underline hover:no-underline">for fullstack class</a>
+	</footer>
+</div>
+{% endblock content %}

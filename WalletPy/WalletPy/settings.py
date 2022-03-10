@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tailwind',
     'dashboard',
-    'widget_tweaks'
+    'widget_tweaks',
+    'custom_auth'
 ]
 
 MIDDLEWARE = [
@@ -118,7 +120,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    '/var/www/static/',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -131,3 +138,13 @@ LOGIN_REDIRECT_URL = '/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
     ]
+
+MESSAGE_TAGS = {
+        messages.DEBUG: 'alert-secondary',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'bg-green-100 border-green-400 text-green-700',
+        messages.WARNING: 'bg-yellow-100 border-yellow-400 text-yellow-700',
+        messages.ERROR: 'bg-red-100 border-red-400 text-red-700',
+ }
+
+AUTH_USER_MODEL = 'custom_auth.User'
