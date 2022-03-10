@@ -18,6 +18,8 @@ class NewUserForm(UserCreationForm):
 			user.save()
 		return user
 
-	def clean(self):
-		cd = self.cleaned_data
-		return cd
+	def clean_email(self):
+		email = self.cleaned_data.get("email")
+		if User.objects.filter(email=email).exclude(pk=self.instance.pk).exists():
+			raise forms.ValidationError("Email Already Exists")
+		return email
