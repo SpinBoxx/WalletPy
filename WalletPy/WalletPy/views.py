@@ -18,3 +18,6 @@ def register_request(request):
 
 def homepage(request):
     return render (request=request, template_name="homepage.html")
+
+def error_404(request, exception):
+    return render(request,'error_404.html')

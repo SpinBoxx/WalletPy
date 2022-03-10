@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-k0ju6qo#0ow_y6@vd8km#n_l#(+hduoqiikm@r805pw=u4=^7l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 TAILWIND_APP_NAME = 'dashboard'
 
 # Application definition
