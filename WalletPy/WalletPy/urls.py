@@ -17,6 +17,7 @@ from . import views
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import handler404
+from django.contrib.auth import views as auth_views
 
 import custom_auth.views
 
@@ -24,10 +25,16 @@ import custom_auth.views
 urlpatterns = [
     path('', views.homepage,name='homepage'),
     path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('dashboard', views.dashboard, name="dashboard"),
-    path('register', custom_auth.views.register_request, name="register"),
-    path('test', views.test, name="test")
+    # path('', include('django.contrib.auth.urls')),
+    path('dashboard/', views.dashboard, name="dashboard"),
+    path('register/', custom_auth.views.register_request, name="register"),
+    path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True),name="login"),
+    path('password_reset/', auth_views.PasswordResetView.as_view(),name="password_reset"),
+    path('logout/', auth_views.LogoutView.as_view(),name="logout"),
+    path('password_change/', auth_views.PasswordChangeView.as_view(),name="password_change"),
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(),name="password_reset_done"),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(),name="password_reset_comfirm"),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(),name="password_reset_complete")
 ]
 
 handler404 = 'WalletPy.views.error_404'
