@@ -5,6 +5,8 @@ from django.contrib import messages
 # Create your views here.
 
 def register_request(request):
+    if request.user.is_authenticated:
+        return redirect("homepage")
     if request.method == "POST":
         form = NewUserForm(request.POST)
         if form.is_valid():
