@@ -64,3 +64,6 @@ def dashboard(request):
   
 def error_404(request, exception):
     return render(request,'error_404.html')
+
+def test(request):
+    return render(request,template_name="dashboard/basedashbord.html")

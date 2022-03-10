@@ -26,7 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('dashboard', views.dashboard, name="dashboard"),
-    path('register', custom_auth.views.register_request, name="register")
+    path('register', custom_auth.views.register_request, name="register"),
+    path('test', views.test, name="test")
 ]
 
 handler404 = 'WalletPy.views.error_404'
