@@ -6,30 +6,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<<<<<<< HEAD
 	  <link rel="shortcut icon" type="image/png" href="{% static 'logo.ico' %}"/>
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	  {% block script %}
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 	  {% endblock script %}
-=======
-    <link rel="shortcut icon" type="image/png" href="{% static 'logo.ico' %}" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
-      integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    {% tailwind_css %}
->>>>>>> add sidebar + adjust url path
   </head>
   <body>
-    <!-- component -->
-    <!-- This is an example component -->
     {% if not request.resolver_match.url_name == 'homepage' and user.is_authenticated %}
     <div class="flex flex-row h-full">
-      <!-- Sidebar --> 
       <nav class=" w-20 justify-between flex flex-col">
         <div class="mt-10 mb-10">
           <svg class="rounded-full w-10 h-10 mb-3 mx-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
