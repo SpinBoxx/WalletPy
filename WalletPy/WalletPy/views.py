@@ -8,3 +8,6 @@ def homepage(request):
 
 def dashboard(request):
     return render (request=request, template_name="dashboard/dashboard.html")
+  
+def error_404(request, exception):
+    return render(request,'error_404.html')

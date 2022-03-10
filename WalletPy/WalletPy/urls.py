@@ -16,7 +16,10 @@ Including another URLconf
 from . import views
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import handler404
+
 import custom_auth.views
+
 
 urlpatterns = [
     path('', views.homepage,name='homepage'),
@@ -25,3 +28,5 @@ urlpatterns = [
     path('dashboard', views.dashboard, name="dashboard"),
     path('register', custom_auth.views.register_request, name="register")
 ]
+
+handler404 = 'WalletPy.views.error_404'
