@@ -61,3 +61,6 @@ def dashboard(request):
          'wrong_input' : wrong_input
      }
      return render(request, 'dashboard/dashboard.html', context)
+  
+def error_404(request, exception):
+    return render(request,'error_404.html')
