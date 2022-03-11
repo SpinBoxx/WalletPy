@@ -1,9 +1,9 @@
 {% extends "base.html" %} {% load static %}
 {% block content %}
 <div class="grid grid-cols-3 divide-x">
-	<div>01</div>
-	<div>02</div>
-	<div>03</div>
+	<div>{% include "dashboard/informModule.html" %}</div>
+	<div>{% include "dashboard/dashboard.html" %}</div>
+	<div>{% include "dashboard/transaction.html" %}</div>
 </div>
 {% endblock content %}
 
