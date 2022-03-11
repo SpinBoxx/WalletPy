@@ -1,10 +1,7 @@
 from django.shortcuts import  render, redirect
-import pandas_datareader as data
-import pandas as pd
 import requests
 from datetime import date, timedelta
 from .forms import PriceSearchForm
-from .services import getDateService,getDefaultData,getUserInputDateRange,outOfRange
 
 def homepage(request):
     """ test = requests.get("https://api.coingecko.com/api/v3/coins/bitcoin")
@@ -60,7 +57,7 @@ def dashboard(request):
          'search_form':search_form,
          'wrong_input' : wrong_input
      }
-     return render(request, 'dashboard/dashboard.html', context)
+     return render(request, 'dashboard/basedashbord.html', context)
   
 def error_404(request, exception):
     return render(request,'error_404.html')

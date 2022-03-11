@@ -12,13 +12,9 @@
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 	  {% endblock script %}
   </head>
-
   <body>
-    <!-- component -->
-    <!-- This is an example component -->
     {% if not request.resolver_match.url_name == 'homepage' and user.is_authenticated %}
     <div class="flex flex-row h-full">
-      <!-- Sidebar --> 
       <nav class=" w-20 justify-between flex flex-col">
         <div class="mt-10 mb-10">
           <svg class="rounded-full w-10 h-10 mb-3 mx-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
