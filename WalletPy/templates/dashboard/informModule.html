@@ -14,7 +14,7 @@
   <div class="mb-2 bg-white px-6 py-4 rounded overflow-hidden shadow-lg">
     {% for name, coin in coin_data.items %}
 
-    <div class="flex justify-between items-center mb-4">
+    <div class="flex justify-between items-center">
       <img src="{{ coin.thumb }}" alt="btc icon" />
       <div>
         {% if coin.price_change_percentage_24h < 0 %}
@@ -31,7 +31,7 @@
         >
       </div>
     </div>
-    <div>
+    <div class="mb-4">
       <h3 class="font-semibold text-sm text-gray-400">
         {{ coin.symbol|upper }}
       </h3>
