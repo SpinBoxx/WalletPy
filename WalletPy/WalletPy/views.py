@@ -11,8 +11,21 @@ def homepage(request):
 
 def dashboard(request):
     cg = CoinGeckoAPI()
-    bitcoin_data = cg.get_price(ids='bitcoin', vs_currencies='usd', include_24hr_change='true')
-
+    cg_bitcoin_data = cg.get_coin_by_id(id='bitcoin',localization=False,tickers=False,community_data=False,developer_data=False,sparkline=False)
+    cg_ethereum_data = cg.get_coin_by_id(id='ethereum',localization=False,tickers=False,community_data=False,developer_data=False,sparkline=False)    
+    bitcoin_data = {
+        "price_change_percentage_24h": cg_bitcoin_data["market_data"]["price_change_percentage_24h"],
+        "current_price": cg_bitcoin_data["market_data"]["current_price"]["usd"],
+        "thumb": cg_bitcoin_data["image"]["thumb"],
+        "symbol" :cg_bitcoin_data["symbol"]
+    }
+    ethereum_data = {
+        "price_change_percentage_24h": cg_ethereum_data["market_data"]["price_change_percentage_24h"],
+        "current_price": cg_ethereum_data["market_data"]["current_price"]["usd"],
+        "thumb": cg_ethereum_data["image"]["thumb"],
+        "symbol" :cg_ethereum_data["symbol"]
+    }
+    coin_data = [bitcoin_data,ethereum_data]
     datetime_today = date.today()      # get current date
     date_today = str(datetime_today)    # convert datetime class to string
     date_10daysago = str(datetime_today - timedelta(days=10))     # get date of today -10 days
@@ -57,7 +70,7 @@ def dashboard(request):
         else:
             wrong_input = 'Wrong date input selection: date from cant be greater than date to, please try again' #print out an error message if the user chooses a date that is greater than input1's date
     context = {
-        'btc_data': bitcoin_data,
+        'coin_data': coin_data,
         'price':btc_price_range,
         'search_form':search_form,
         'wrong_input' : wrong_input
