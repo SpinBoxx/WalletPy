@@ -1,8 +1,8 @@
 var dates = document.getElementsByClassName('date-item')
 var prices = document.getElementsByClassName('price-item')
 
-const date=[]
-const price=[]
+let date=[];
+let price=[];
 let myChart;
 const changeGraph = async (time) =>{
     let currentDate = new Date();
@@ -39,7 +39,10 @@ const changeGraph = async (time) =>{
             ContentType: "application/json"
         }
     });
+    date = [];
+    price = [];
     const data = await response.json();
+    console.log(data)
     for(let d in data.prices){
         date[d] = new Date(data.prices[d]["0"]).toISOString().slice(0, 19).replace('T', ' ');
         price[d] = data.prices[d]["1"];
