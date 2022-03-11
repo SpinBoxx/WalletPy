@@ -1,6 +1,9 @@
 from django.shortcuts import  render, redirect
 import requests
 from datetime import date, timedelta
+from django.core import serializers
+
+from coin.models import Coin
 from .forms import PriceSearchForm
 from pycoingecko import CoinGeckoAPI
 
@@ -11,21 +14,17 @@ def homepage(request):
 
 def dashboard(request):
     cg = CoinGeckoAPI()
-    cg_bitcoin_data = cg.get_coin_by_id(id='bitcoin',localization=False,tickers=False,community_data=False,developer_data=False,sparkline=False)
-    cg_ethereum_data = cg.get_coin_by_id(id='ethereum',localization=False,tickers=False,community_data=False,developer_data=False,sparkline=False)    
-    bitcoin_data = {
-        "price_change_percentage_24h": cg_bitcoin_data["market_data"]["price_change_percentage_24h"],
-        "current_price": cg_bitcoin_data["market_data"]["current_price"]["usd"],
-        "thumb": cg_bitcoin_data["image"]["thumb"],
-        "symbol" :cg_bitcoin_data["symbol"]
-    }
-    ethereum_data = {
-        "price_change_percentage_24h": cg_ethereum_data["market_data"]["price_change_percentage_24h"],
-        "current_price": cg_ethereum_data["market_data"]["current_price"]["usd"],
-        "thumb": cg_ethereum_data["image"]["thumb"],
-        "symbol" :cg_ethereum_data["symbol"]
-    }
-    coin_data = [bitcoin_data,ethereum_data]
+    coins = serializers.serialize("python",  Coin.objects.all())
+    coin_data = []
+    for coin in coins:
+        cg_data = cg.get_coin_by_id(id=coin["fields"]["name"],localization=False,tickers=False,community_data=False,developer_data=False,sparkline=False)
+        data = {
+            "price_change_percentage_24h": cg_data["market_data"]["price_change_percentage_24h"],
+            "current_price": cg_data["market_data"]["current_price"]["usd"],
+            "thumb": cg_data["image"]["thumb"],
+            "symbol":cg_data["symbol"]
+        }
+        coin_data.append(data)
     datetime_today = date.today()      # get current date
     date_today = str(datetime_today)    # convert datetime class to string
     date_10daysago = str(datetime_today - timedelta(days=10))     # get date of today -10 days
