@@ -13,8 +13,8 @@
 	  {% endblock script %}
   </head>
   <body>
-    {% if not request.resolver_match.url_name == 'homepage' and user.is_authenticated %}
     <div class="flex flex-row h-full">
+      {% if not request.resolver_match.url_name == 'homepage' and user.is_authenticated %}
       <nav class=" w-20 justify-between flex flex-col">
         <div class="mt-10 mb-10">
           <svg class="rounded-full w-10 h-10 mb-3 mx-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
@@ -129,7 +129,7 @@
         </div>
       </nav>
       {% endif %}
-      <div class="text-gray-700 bg-gray-200 h-screen w-screen">
+      <div class="bg-gradient-to-br from-yellow-100 via-white to-yellow-100 h-screen w-screen">
         <div>{% block content %}{% endblock %}</div>
       </div>
     </div>
