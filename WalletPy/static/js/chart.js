@@ -4,10 +4,8 @@ var prices = document.getElementsByClassName('price-item')
 //convert html collection to array
 const date=[]
 const price=[]
-console.log(dates)
 for (let i = 0; i < dates.length; i++) {  //iterate over the html collection (hidden input) retrieved from the html
     date[i] = dates[i].innerHTML //get the value(date) of each of the html collection (hidden input)
-    console.log(date[i])
 }
 
 for (let j = 0; j < prices.length; j++) {  //iterate over the html collection (hidden input) retrieved from the html
@@ -21,23 +19,15 @@ for (let j = 0; j < prices.length; j++) {  //iterate over the html collection (h
         data: {
             labels: date, //make the values of the date array the labels for the bar chart
             datasets: [{
-                label: 'Price fluctuation',
+                tension: 0.4,
+                label: 'Price',
+                pointRadius: 3,
                 data: price,  //make the values of the price array the data for the bar chart
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(0,0,0,0.2)',
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
                 ],
                 borderWidth: 3
             }]
@@ -47,19 +37,19 @@ for (let j = 0; j < prices.length; j++) {  //iterate over the html collection (h
             plugins: {
                 title: {
                     display: true,
-                    text: 'Bitcoin Price Change'
+                    text: 'Bitcoin Price'
                 },
             },
             scales: {
                 x: {
-                    display: true,
+                    display: false,
                     title: {
                         display: true,
                         text: 'Date'
                     }
                 },
                 y: {
-                    display: true,
+                    display: false,
                     title: {
                         display: true,
                         text: 'Price in USD$'

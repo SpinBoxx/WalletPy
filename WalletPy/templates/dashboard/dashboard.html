@@ -7,23 +7,22 @@
 	{{wrong_input}}
 </div>
 {% endif %}
-<form id="myForm" action="" method='POST'>
-	{% csrf_token %}
-	{{search_form}}
-	<div class="">
-		<button type="submit" class="btn btn-primary mt-3"> Render</button>
-	</div>
-</form>
 
 <!-- Filter the chart with the selected dates -->
 {% for date,price in price.items %}
-<span class="date-item">{{date}} </span> |
-<span class="price-item">{{price}}</span>
-<br>
+<span class="date-item hidden">{{date}} </span>
+<span class="price-item hidden">{{price}}</span>
 {% endfor %}
 
-<div class="chart-container">
+<div class="mx-auto max-w-xl bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ">
 	<canvas id="btcChart" class="w-80"></canvas>
+	<form id="myForm" action="" method='POST'>
+		{% csrf_token %}
+		{{search_form}}
+		<div class="">
+			<button type="submit" class="btn btn-primary mt-3"> Render</button>
+		</div>
+	</form>
 </div>
 <script src="/static/js/chart.js"></script>
 
