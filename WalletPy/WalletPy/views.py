@@ -14,6 +14,7 @@ def homepage(request):
     return render (request=request, template_name="homepage.html")
 
 def dashboard(request):
+    
     coin_data = get_available_coins_dashboard_data(request.user)
 
         
