@@ -14,7 +14,6 @@
 <span class="price-item hidden">{{price}}</span>
 {% endfor %}
 
-<div class="">
 	<div class="py-4 px-8">
 		<p class="font-bold antialiased text-xl">Total montant</p>
 		<p class="text-lg">5673 €</p>
@@ -28,10 +27,35 @@
 		</div>
 	</form>
 	<div class="py-4 px-8">
-		<p class="font-bold antialiased text-xl">Mon portefeuille</p>
+		<p class="font-bold antialiased text-xl pb-3">Mon portefeuille</p>
+		<div class="flex flex-col gap-4 items-left justify-center bg-white">
+			<a href="#" class="w-[30rem]">
+				<div class="grid grid-cols-6 p-2 gap-y-2">
+					<div>
+						<img src="https://s2.coinmarketcap.com/static/img/coins/200x200/1.png" class="max-w-16 max-h-16 rounded-full" />
+					</div>
+					<div class="col-span-5 md:col-span-4 ml-4">
+						<p class="text-sky-500 font-bold text-xs">BTC/EUR</p>
+						<p class="text-gray-600 font-bold"> Bitcoin</p>
+						<p class="text-gray-400"> 2200 € </p>
+					</div>
+				</div>
+			</a>
+			<a href="#" class="w-[30rem]">
+				<div class="grid grid-cols-6 p-2 gap-y-2">
+					<div>
+						<img src="https://cryptonaute.fr/wp-content/uploads/2020/06/ethereum-logo.png" class="max-w-16 max-h-16 rounded-full" />
+					</div>
+					<div class="col-span-5 md:col-span-4 ml-4">
+						<p class="text-sky-500 font-bold text-xs">ETH/EUR</p>
+						<p class="text-gray-600 font-bold">Ethereum</p>
+						<p class="text-gray-400"> 400 € </p>
+					</div>
+				</div>
+			</a>
+		</div>
 	</div>
 	
-</div>
 <script src="/static/js/chart.js"></script>
 
 {% endblock content %}
