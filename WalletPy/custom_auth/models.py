@@ -41,7 +41,7 @@ class User(AbstractUser):
     """User model."""
     username = models.CharField(_('username'), max_length=255)
     email = models.EmailField(_('email address'), unique=True)
-
+    preferred_currency = models.CharField(max_length=30, default='usd')
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
