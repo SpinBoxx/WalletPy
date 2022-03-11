@@ -19,15 +19,23 @@
 		<p class="text-lg">5673 €</p>
 	</div>
 	<canvas id="btcChart" class="w-80"></canvas>
-	<form id="myForm" action="" method='POST'>
+	<div class="flex text-center text-gray-500 py-4 pointer">
+		<div class="flex-1">1H</div>
+		<div class="flex-1">1D</div>
+		<div class="flex-1">1W</div>
+		<div class="flex-1">1M</div>
+		<div class="flex-1">1Y</div>
+		<div class="flex-1">3Y</div>
+	</div>
+<!--	<form id="myForm" action="" method='POST'>
 		{% csrf_token %}
 		{{search_form}}
 		<div class="">
 			<button type="submit" class="btn btn-primary pt-3"> Render</button>
 		</div>
-	</form>
+	</form>-->
 	<div class="py-4 px-8">
-		<p class="font-bold antialiased text-xl pb-3">Mon portefeuille</p>
+		<p class="font-bold antialiased text-xl pb-3">Top 3 des mes actifs</p>
 		<div class="flex flex-col gap-4 items-left justify-center bg-white">
 			<a href="#" class="w-[30rem]">
 				<div class="grid grid-cols-6 p-2 gap-y-2">
@@ -54,6 +62,7 @@
 				</div>
 			</a>
 		</div>
+		<p class="pt-8 text-gray-400 italic text-sm">Les services liés aux actifs de crypto-monnaie sont fournis par <strong>WalletPY</strong> Europe Limited.</p>
 	</div>
 	
 <script src="/static/js/chart.js"></script>
