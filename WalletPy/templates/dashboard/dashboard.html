@@ -14,15 +14,23 @@
 <span class="price-item hidden">{{price}}</span>
 {% endfor %}
 
-<div class="mx-auto max-w-xl bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ">
+<div class="">
+	<div class="py-4 px-8">
+		<p class="font-bold antialiased text-xl">Total montant</p>
+		<p class="text-lg">5673 €</p>
+	</div>
 	<canvas id="btcChart" class="w-80"></canvas>
 	<form id="myForm" action="" method='POST'>
 		{% csrf_token %}
 		{{search_form}}
 		<div class="">
-			<button type="submit" class="btn btn-primary mt-3"> Render</button>
+			<button type="submit" class="btn btn-primary pt-3"> Render</button>
 		</div>
 	</form>
+	<div class="py-4 px-8">
+		<p class="font-bold antialiased text-xl">Mon portefeuille</p>
+	</div>
+	
 </div>
 <script src="/static/js/chart.js"></script>
 

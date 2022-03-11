@@ -36,8 +36,11 @@ for (let j = 0; j < prices.length; j++) {  //iterate over the html collection (h
             responsive: true,
             plugins: {
                 title: {
-                    display: true,
+                    display: false,
                     text: 'Bitcoin Price'
+                },
+                legend: {
+                    display: false
                 },
             },
             scales: {
