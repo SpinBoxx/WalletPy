@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include('django.contrib.auth.urls')),
     path('dashboard/', views.dashboard, name="dashboard"),
+    path('fav/<int:id>/',views.favorite_add, name="favorite_add"),
     path('register/', custom_auth.views.register_request, name="register"),
     path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True),name="login"),
     path('password_reset/', auth_views.PasswordResetView.as_view(),name="password_reset"),
