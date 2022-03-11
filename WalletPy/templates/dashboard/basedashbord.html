@@ -1,8 +1,8 @@
 {% extends "base.html" %} {% load static %}
 {% block content %}
-<div class="grid grid-cols-3 gap-5 pt-5 divide-x pb-5 h-full">
+<div class="grid grid-cols-3 gap-5 pt-5 pb-5 h-full">
 	<div class="p-2">{% include "dashboard/informModule.html" %}</div>
 	<div class="mx-auto w-full bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">{% include "dashboard/dashboard.html" %}</div>
-	<div class="p-2">{% include "dashboard/transaction.html" %}</div>
+	<div>{% include "dashboard/transaction.html" %}</div>
 </div>
 {% endblock content %}

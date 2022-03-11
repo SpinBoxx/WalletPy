@@ -4,7 +4,10 @@ var prices = document.getElementsByClassName('price-item')
 let date=[];
 let price=[];
 let myChart;
-const changeGraph = async (time) =>{
+const changeGraph = async (el, time) => {
+    document.getElementsByClassName("bg-blue-300")[0]?.classList.remove("bg-blue-300","bg-opacity-50");
+
+    document.getElementById(el.id).classList.add("bg-blue-300","bg-opacity-50");
     let currentDate = new Date();
     let tNow = Math.floor(currentDate.getTime()/1000);
     let tChange;
