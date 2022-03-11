@@ -3,6 +3,8 @@ from django.contrib.auth.models import AbstractUser,BaseUserManager
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from coin.models import Coin
+
 
 class UserManager(BaseUserManager):
     """Define a model manager for User model with no username field."""
@@ -44,5 +46,7 @@ class User(AbstractUser):
     preferred_currency = models.CharField(max_length=30, default='usd')
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
+    favorite_coins = models.ManyToManyField(Coin, related_name="favorite",default=None,blank=True)
 
     objects = UserManager()

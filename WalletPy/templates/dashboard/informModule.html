@@ -1,4 +1,4 @@
-{% load static %} {% block content %}
+{% load static %} {% load custom_filter %} {% block content %}
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="flow-root">
   <div class="mb-2 bg-white max-w-sm rounded overflow-hidden shadow-lg">
@@ -11,10 +11,11 @@
       </p>
     </div>
   </div>
-  {% for coin in coin_data %}
-  <div class="bg-white px-6 py-4">
+  <div class="mb-2 bg-white px-6 py-4 rounded overflow-hidden shadow-lg">
+    {% for name, coin in coin_data.items %}
+
     <div class="flex justify-between items-center mb-4">
-      <img src=" {{ coin.thumb }}" alt="btc icon" />
+      <img src="{{ coin.thumb }}" alt="btc icon" />
       <div>
         {% if coin.price_change_percentage_24h < 0 %}
         <span class="font-bold text-red-500"
@@ -31,12 +32,64 @@
       </div>
     </div>
     <div>
-      <h3 class="font-semibold text-sm text-gray-400">{{ coin.symbol|upper }}</h3>
-      <h1 class="font-semibold text-xl text-gray-700">
-        $ {{ coin.current_price }}
-      </h1>
+      <h3 class="font-semibold text-sm text-gray-400">
+        {{ coin.symbol|upper }}
+      </h3>
+      <div class="flex justify-between">
+        <h1 class="font-semibold text-xl text-gray-700">
+          $ {{ coin.current_price }}
+        </h1>
+        {% if coin.is_favorite %}
+        <a
+          id="fav-icon"
+          class="my-auto mx-0"
+          href="{% url 'favorite_add' coin.internal_id %}"
+          ><img src="{% static 'star-solid.svg' %}" alt=""
+        /></a>
+        {% else %}
+        <a
+          id="fav-icon"
+          class="my-auto mx-0"
+          href="{% url 'favorite_add' coin.internal_id %}"
+          ><img src="{% static 'star-regular.svg' %}" alt=""
+        /></a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="mb-2 bg-white max-w-sm rounded overflow-hidden shadow-lg">
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2">Mes favoris</div>
+      {% for favorite in user.favorite_coins.all %} 
+	  {% with fav_coin=coin_data|get_item:favorite.name %}
+      <div>
+        <h3 class="font-semibold text-sm text-gray-400">
+          {{ fav_coin.symbol|upper }}
+        </h3>
+        <div class="flex justify-between">
+          <div>
+            <h1 class="font-semibold text-xl text-gray-700">
+              $ {{ fav_coin.current_price }}
+            </h1>
+            {% if fav_coin.price_change_percentage_24h < 0 %}
+            <span class="font-bold text-red-500"
+              >{{ fav_coin.price_change_percentage_24h|floatformat}} %</span
+            ><br />
+            {% else %}
+            <span class="font-bold text-green-500"
+              >{{ fav_coin.price_change_percentage_24h|floatformat}} %</span
+            ><br />
+            {% endif %}
+          </div>
+
+          <img  class="my-auto mx-0" src="{{ fav_coin.thumb }}" alt="btc icon" />
+        </div>
+      </div>
+	  <br/>
+      {% endwith %} {% endfor %}
     </div>
   </div>
-  {% endfor %}
 </div>
 {% endblock %}
