@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'tailwind',
     'dashboard',
     'widget_tweaks',
-    'custom_auth'
+    'custom_auth',
+    "coin"
 ]
 
 MIDDLEWARE = [
