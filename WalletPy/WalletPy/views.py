@@ -1,11 +1,9 @@
 from django.shortcuts import  render, redirect
 import requests
 from datetime import date, timedelta
-from django.core import serializers
 
-from coin.models import Coin
+from coin.coin_service import get_available_coins_dashboard_data
 from .forms import PriceSearchForm
-from pycoingecko import CoinGeckoAPI
 
 def homepage(request):
     """ test = requests.get("https://api.coingecko.com/api/v3/coins/bitcoin")
@@ -13,18 +11,7 @@ def homepage(request):
     return render (request=request, template_name="homepage.html")
 
 def dashboard(request):
-    cg = CoinGeckoAPI()
-    coins = serializers.serialize("python",  Coin.objects.all())
-    coin_data = []
-    for coin in coins:
-        cg_data = cg.get_coin_by_id(id=coin["fields"]["name"],localization=False,tickers=False,community_data=False,developer_data=False,sparkline=False)
-        data = {
-            "price_change_percentage_24h": cg_data["market_data"]["price_change_percentage_24h"],
-            "current_price": cg_data["market_data"]["current_price"]["usd"],
-            "thumb": cg_data["image"]["thumb"],
-            "symbol":cg_data["symbol"]
-        }
-        coin_data.append(data)
+    coin_data = get_available_coins_dashboard_data()
     datetime_today = date.today()      # get current date
     date_today = str(datetime_today)    # convert datetime class to string
     date_10daysago = str(datetime_today - timedelta(days=10))     # get date of today -10 days
