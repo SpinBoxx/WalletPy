@@ -1,7 +1,7 @@
 {% load static %} {% load custom_filter %} {% block content %}
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="flow-root">
-  <div class="mb-2 bg-white max-w-sm rounded overflow-hidden shadow-lg">
+  <div class="w-full mb-2 bg-white rounded overflow-hidden shadow-lg">
     <div class="px-6 py-4">
       <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
       <p class="text-gray-700 text-base">
@@ -11,7 +11,7 @@
       </p>
     </div>
   </div>
-  <div class="mb-2 bg-white px-6 py-4 rounded overflow-hidden shadow-lg">
+  <div class="w-full mb-2 bg-white px-6 py-4 rounded overflow-hidden shadow-lg">
     {% for name, coin in coin_data.items %}
 
     <div class="flex justify-between items-center">
@@ -60,7 +60,7 @@
     </div>
     {% endfor %}
   </div>
-  <div class="mb-2 bg-white max-w-sm rounded overflow-hidden shadow-lg">
+  <div class="w-full mb-2 bg-white rounded overflow-hidden shadow-lg">
     <div class="px-6 py-4">
       <div class="font-bold text-xl mb-2">Mes favoris</div>
 	  {% if user.is_authenticated %}
