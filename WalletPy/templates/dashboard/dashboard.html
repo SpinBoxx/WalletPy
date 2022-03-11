@@ -19,13 +19,13 @@
 		<p class="text-lg">5673 €</p>
 	</div>
 	<canvas id="btcChart" class="w-80"></canvas>
-	<div class="flex text-center text-gray-500 py-4 pointer">
-		<div class="flex-1">1H</div>
-		<div class="flex-1">1D</div>
-		<div class="flex-1">1W</div>
-		<div class="flex-1">1M</div>
-		<div class="flex-1">1Y</div>
-		<div class="flex-1">3Y</div>
+	<div class="flex text-center text-gray-500 py-4">
+		<a class="flex-1 w-fit"><span onclick="changeGraph('1H')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1H</span></a>
+		<a class="flex-1 w-fit"><span onclick="changeGraph('1D')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1D</span></a>
+		<a class="flex-1 w-fit"><span onclick="changeGraph('1W')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1W</span></a>
+		<a class="flex-1 w-fit"><span onclick="changeGraph('1M')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1M</span></a>
+		<a class="flex-1 w-fit"><span onclick="changeGraph('1Y')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1Y</span></a>
+		<a class="flex-1 w-fit"><span onclick="changeGraph('2Y')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">2Y</span></a>
 	</div>
 <!--	<form id="myForm" action="" method='POST'>
 		{% csrf_token %}
@@ -66,5 +66,6 @@
 	</div>
 	
 <script src="/static/js/chart.js"></script>
+
 
 {% endblock content %}
