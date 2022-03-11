@@ -1,9 +1,12 @@
-from django.shortcuts import  render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import  get_object_or_404, render, redirect
 import requests
 from datetime import date, timedelta
+from coin.models import Coin
 
 from coin.coin_service import get_available_coins_dashboard_data
 from .forms import PriceSearchForm
+from django.contrib.auth.decorators import login_required
 
 def homepage(request):
     """ test = requests.get("https://api.coingecko.com/api/v3/coins/bitcoin")
@@ -11,7 +14,10 @@ def homepage(request):
     return render (request=request, template_name="homepage.html")
 
 def dashboard(request):
-    coin_data = get_available_coins_dashboard_data()
+    
+    coin_data = get_available_coins_dashboard_data(request.user)
+
+        
     datetime_today = date.today()      # get current date
     date_today = str(datetime_today)    # convert datetime class to string
     date_10daysago = str(datetime_today - timedelta(days=10))     # get date of today -10 days
@@ -65,3 +71,13 @@ def dashboard(request):
   
 def error_404(request, exception):
     return render(request,'error_404.html')
+
+@login_required 
+def favorite_add(request, id):
+    current_user = request.user
+    if current_user.favorite_coins.filter(id=id).exists():
+        current_user.favorite_coins.remove(id)
+    else:
+        current_user.favorite_coins.add(id)
+
+    return HttpResponseRedirect(request.META["HTTP_REFERER"])
