@@ -67,6 +67,23 @@ for (let j = 0; j < prices.length; j++) {  //iterate over the html collection (h
 const chart = () => {
     var context = document.getElementById('btcChart').getContext('2d');
     myChart = new Chart(context, {
+        plugins: [{
+            afterDraw: chart => {
+                if (chart.tooltip?._active?.length) {
+                    let x = chart.tooltip._active[0].element.x;
+                    let yAxis = chart.scales.y;
+                    let ctx = chart.ctx;
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.moveTo(x, yAxis.top);
+                    ctx.lineTo(x, yAxis.bottom);
+                    ctx.lineWidth = 1;
+                    ctx.strokeStyle = 'rgba(22,177,196,0.7)';
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+        }],
         type: 'line',
         data: {
             labels: date, //make the values of the date array the labels for the bar chart
@@ -86,6 +103,11 @@ const chart = () => {
         },
         options: {
             responsive: true,
+            interaction: {
+                intersect: false,
+                mode: 'index',
+            },
+            spanGaps: true,
             plugins: {
                 title: {
                     display: false,

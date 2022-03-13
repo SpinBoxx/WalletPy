@@ -16,7 +16,7 @@
   <body class="overflow-x-hidden">
     <div class="flex flex-col-reverse sm:flex sm:flex-row h-full">
       {% if not request.resolver_match.url_name == 'homepage' and user.is_authenticated %}
-      <nav id="navbar" class="flex gap-12 justify-center h-16 bg-gray-200 w-full mx-auto fixed flex-row sm:w-20 sm:h-screen sm:justify-between sm:relative sm:gap-0  sm:flex-col">
+      <nav id="navbar" class="flex gap-12 justify-center h-16 bg-gray-100 w-full mx-auto fixed flex-row sm:w-20 sm:h-screen sm:justify-between sm:relative sm:gap-0  sm:flex-col">
         <div class="flex sm:flex-col sm:mt-10 sm:mb-10">
           <svg class="rounded-full hidden sm:block my-auto w-10 h-16 sm:mb-3 mx-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
           viewBox="0 0 500 500">
@@ -69,7 +69,7 @@
         </div>
       </nav>
       {% endif %}
-      <div class="bg-gradient-to-br from-yellow-100 via-white to-yellow-100 h-screen w-screen">
+      <div class="bg-gradient-to-br from-yellow-100 via-white to-yellow-100 lg:h-screen w-screen sm:h-full">
         {% block content %}{% endblock %}
       </div>
     </div>
