@@ -5,7 +5,13 @@ from django.db import migrations
 
 DEFAULT_COINS = (
     ('ethereum', 'ETH'),
-    ('bitcoin', 'BTC')
+    ('bitcoin', 'BTC'),
+    ('litecoin', 'LTC'),
+    ('chainlink', 'LINK'),
+    ('ripple', 'XRP'),
+    ('solana', 'SOL'),
+    ('cardano', 'ADA'),
+    ('polkadot', 'DOT')
 )
 
 def add_coin(apps, schema_editor):
