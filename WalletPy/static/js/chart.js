@@ -85,7 +85,7 @@ const chart = () => {
                     ctx.moveTo(x, yAxis.top);
                     ctx.lineTo(x, yAxis.bottom);
                     ctx.lineWidth = 1;
-                    ctx.strokeStyle = 'rgba(22,177,196,0.7)';
+                    ctx.strokeStyle = 'rgba(0,0,0,0.7)';
                     ctx.stroke();
                     ctx.restore();
                 }
