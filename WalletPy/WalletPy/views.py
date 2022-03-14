@@ -14,10 +14,28 @@ def homepage(request):
     return render (request=request, template_name="homepage.html")
 
 def dashboard(request):
-    
-    coin_data = get_available_coins_dashboard_data(request.user)
+    info = [
+        {
+            "name": 'Bitcoin',
+            "concurrency": "BTC/EUR",
+            "amount":2000,
+            "imgUrl": "https://s2.coinmarketcap.com/static/img/coins/200x200/1.png"
 
-        
+        },
+        {
+            "name": "Ethereum",
+            "concurrency": "ETH/EUR",
+            "amount": 1500,
+            "imgUrl": "https://cryptonaute.fr/wp-content/uploads/2020/06/ethereum-logo.png"
+        },
+        {
+             "name": "Doge",
+             "concurrency": "DOGE/EUR",
+             "amount": 700,
+             "imgUrl": "https://s2.coinmarketcap.com/static/img/coins/200x200/74.png"
+        }
+    ]
+    coin_data = get_available_coins_dashboard_data(request.user)
     datetime_today = date.today()      # get current date
     date_today = str(datetime_today)    # convert datetime class to string
     date_10daysago = str(datetime_today - timedelta(days=10))     # get date of today -10 days
@@ -65,7 +83,8 @@ def dashboard(request):
         'coin_data': coin_data,
         'price':btc_price_range,
         'search_form':search_form,
-        'wrong_input' : wrong_input
+        'wrong_input' : wrong_input,
+        'information': info
     }
     return render(request, 'dashboard/basedashbord.html', context)
   

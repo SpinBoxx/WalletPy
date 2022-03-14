@@ -1,12 +1,19 @@
+const toggleModal = (modalID) =>{
+    document.getElementById(modalID).classList.toggle("hidden");
+    document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+    document.getElementById(modalID).classList.toggle("flex");
+    document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+}
+
 var dates = document.getElementsByClassName('date-item')
 var prices = document.getElementsByClassName('price-item')
 
 let date=[];
 let price=[];
 let myChart;
+
 const changeGraph = async (el, time) => {
     document.getElementsByClassName("bg-blue-300")[0]?.classList.remove("bg-blue-300","bg-opacity-50");
-
     document.getElementById(el.id).classList.add("bg-blue-300","bg-opacity-50");
     let currentDate = new Date();
     let tNow = Math.floor(currentDate.getTime()/1000);
@@ -132,7 +139,9 @@ const chart = () => {
                         text: 'Price in USD$'
                     }
                 }
-            }
+            },
+            responsiveAnimationDuration: 500,
+            maintainAspectRatio: true,
         }
     });
 }
