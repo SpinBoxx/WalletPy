@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from . import views
+from portefeuille import views as portefeuille
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import handler404
@@ -27,6 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include('django.contrib.auth.urls')),
     path('dashboard/', views.dashboard, name="dashboard"),
+    path('mon-portefeuille/', portefeuille.index, name="wallet"),
     path('register/', custom_auth.views.register_request, name="register"),
     path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True),name="login"),
     path('password_reset/', auth_views.PasswordResetView.as_view(),name="password_reset"),
