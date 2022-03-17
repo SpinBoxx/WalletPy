@@ -6,17 +6,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="{% static 'global.css' %}">
 	  <link rel="shortcut icon" type="image/png" href="{% static 'logo.ico' %}"/>
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	  {% block script %}
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+	      <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 	  {% endblock script %}
   </head>
+  <script type="text/javascript" defer>
+	  document.addEventListener('DOMContentLoaded', (e)=>{
+		  document.getElementById("navbar_icones_dashboard").classList.add("bg-blue-300","bg-opacity-50");
+	  })
+	  const switchActive = (el) => {
+		  document.getElementById(el.id).classList.add("bg-blue-300","bg-opacity-50");
+	  }
+  </script>
   <body class="overflow-x-hidden">
     <div class="flex flex-col-reverse sm:flex sm:flex-row h-full">
       {% if not request.resolver_match.url_name == 'homepage' and user.is_authenticated %}
-      <nav id="navbar" class="flex gap-12 justify-center h-16 bg-gray-200 w-full mx-auto fixed flex-row sm:w-20 sm:h-screen sm:justify-between sm:relative sm:gap-0  sm:flex-col">
-        <div class="flex sm:flex-col sm:mt-10 sm:mb-10">
+      <nav id="navbar" class="flex gap-12  md:justify-center h-16 bg-gray-100 w-full sm:h-full sm:sticky flex-row sm:w-20 sm:h-screen sm:justify-between sm:relative sm:gap-0 sm:flex-col">
+        <div class="flex sm:flex-col sm:my-10">
           <svg class="rounded-full hidden sm:block my-auto w-10 h-16 sm:mb-3 mx-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
           viewBox="0 0 500 500">
             <g id="UrTavla">
@@ -25,30 +35,30 @@
               <text  font-size="20rem" x="50%" y="50%" text-anchor="middle" stroke="#51c5cf" fill="white" stroke-width="2px"  dy=".3em">{{ user.get_username|first|upper }}</text>
             </g>
           </svg>
-          <div id="navbar_icones" class="my-auto sm:mt-20 sm:h-full sm:ml-0">
-            <ul class="flex gap-10 sm:flex-col">
-              <li id="navbar_icones_user" class="sm:mb-6 sm:mx-auto">
-                <a href="#">
+          <div id="navbar_icones" class="my-auto sm:mt-20 sm:h-full sm:ml-0 ">
+            <ul class="flex gap-10 sm:flex-col align-middle">
+              <li id="navbar_icones_user" onClick="switchActive(this)" class="transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl sm:mb-6 cursor-pointer sm:mx-auto">
+                <a href="{% url 'dashboard' %}">
                   <span>
-                    <svg width="22" height="22" viewBox="0 0 27 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="m-6" width="22" height="22" viewBox="0 0 27 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M13.5 15.5C17.7609 15.5 21.2143 12.0301 21.2143 7.75C21.2143 3.46994 17.7609 0 13.5 0C9.23906 0 5.78571 3.46994 5.78571 7.75C5.78571 12.0301 9.23906 15.5 13.5 15.5ZM16.5556 18.4062H10.4444C4.67739 18.4062 0 23.1047 0 28.899C0 30.0579 0.935357 30.9982 2.08888 30.9982H24.9123C26.0658 31 27 30.0615 27 28.899C27 23.1047 22.3232 18.4062 16.5556 18.4062Z" fill="black"/>
                     </svg>
                   </span>
                 </a>
               </li>
-              <li id="navbar_icones_dashboard" class=" sm:mb-6 sm:mx-auto">
-                <a href="#">
+              <li id="navbar_icones_dashboard" onClick="switchActive(this)" class="transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl sm:mb-6 cursor-pointer sm:mx-auto">
+                <a href="{% url 'dashboard' %}">
                   <span>
-                    <svg width="22" height="22" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="m-6" width="22" height="22" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M3.25 21.6562C3.25 22.1547 3.61359 22.5625 4.0625 22.5625H24.375C25.2738 22.5625 26 23.3725 26 24.375C26 25.3775 25.2738 26.1875 24.375 26.1875H4.0625C1.81898 26.1875 0 24.1598 0 21.6562V2.625C0 1.62416 0.727695 0.8125 1.625 0.8125C2.5223 0.8125 3.25 1.62416 3.25 2.625V21.6562ZM17.3977 14.7801C16.7629 15.4881 15.7371 15.4881 15.1023 14.7801L12.1875 11.5346L7.64766 16.5926C7.01289 17.3006 5.98711 17.3006 5.35234 16.5926C4.71656 15.8846 4.71656 14.7404 5.35234 14.0324L11.0398 7.68867C11.6746 6.98066 12.7004 6.98066 13.3352 7.68867L16.25 10.9342L21.6023 4.96992C22.2371 4.26078 23.2629 4.26078 23.8977 4.96992C24.5324 5.67793 24.5324 6.82207 23.8977 7.53008L17.3977 14.7801Z" fill="black"/>
                     </svg>
                   </span>
                 </a>
               </li>
-              <li id="navbar_icones_wallet" class=" sm:mb-6 sm:mx-auto">
+              <li id="navbar_icones_wallet" onClick="switchActive(this)" class="transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl sm:mb-6 cursor-pointer sm:mx-auto">
                 <a href="#">
-                  <span >
-                    <svg width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <span>
+                    <svg  class="m-6" width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M24.5 1.75C25.468 1.75 26.25 2.53367 26.25 3.5C26.25 4.46633 25.468 5.25 24.5 5.25H4.375C3.89156 5.25 3.5 5.64375 3.5 6.125C3.5 6.60625 3.89156 7 4.375 7H24.5C26.4305 7 28 8.56953 28 10.5V22.75C28 24.6805 26.4305 26.25 24.5 26.25H3.5C1.5668 26.25 0 24.6805 0 22.75V5.25C0 3.3168 1.5668 1.75 3.5 1.75H24.5ZM22.75 18.375C23.718 18.375 24.5 17.593 24.5 16.625C24.5 15.657 23.718 14.875 22.75 14.875C21.782 14.875 21 15.657 21 16.625C21 17.593 21.782 18.375 22.75 18.375Z" fill="black"/>
                     </svg>
                   </span>
@@ -68,7 +78,7 @@
         </div>
       </nav>
       {% endif %}
-      <div class="bg-gradient-to-br from-yellow-100 via-white to-yellow-100 h-screen w-screen">
+      <div class="bg-gradient-to-br from-yellow-100 via-white to-yellow-100 h-100 w-screen lg:h-fit">
         {% block content %}{% endblock %}
       </div>
     </div>

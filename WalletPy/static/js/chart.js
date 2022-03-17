@@ -1,10 +1,20 @@
+const toggleModal = (modalID) =>{
+    document.getElementById(modalID).classList.toggle("hidden");
+    document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+    document.getElementById(modalID).classList.toggle("flex");
+    document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+}
+
 var dates = document.getElementsByClassName('date-item')
 var prices = document.getElementsByClassName('price-item')
 
-const date=[]
-const price=[]
+let date=[];
+let price=[];
 let myChart;
-const changeGraph = async (time) =>{
+
+const changeGraph = async (el, time) => {
+    document.getElementsByClassName("bg-blue-300")[0]?.classList.remove("bg-blue-300","bg-opacity-50");
+    document.getElementById(el.id).classList.add("bg-blue-300","bg-opacity-50");
     let currentDate = new Date();
     let tNow = Math.floor(currentDate.getTime()/1000);
     let tChange;
@@ -39,7 +49,10 @@ const changeGraph = async (time) =>{
             ContentType: "application/json"
         }
     });
+    date = [];
+    price = [];
     const data = await response.json();
+    console.log(data)
     for(let d in data.prices){
         date[d] = new Date(data.prices[d]["0"]).toISOString().slice(0, 19).replace('T', ' ');
         price[d] = data.prices[d]["1"];
@@ -61,6 +74,23 @@ for (let j = 0; j < prices.length; j++) {  //iterate over the html collection (h
 const chart = () => {
     var context = document.getElementById('btcChart').getContext('2d');
     myChart = new Chart(context, {
+        plugins: [{
+            afterDraw: chart => {
+                if (chart.tooltip?._active?.length) {
+                    let x = chart.tooltip._active[0].element.x;
+                    let yAxis = chart.scales.y;
+                    let ctx = chart.ctx;
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.moveTo(x, yAxis.top);
+                    ctx.lineTo(x, yAxis.bottom);
+                    ctx.lineWidth = 1;
+                    ctx.strokeStyle = 'rgba(0,0,0,0.7)';
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+        }],
         type: 'line',
         data: {
             labels: date, //make the values of the date array the labels for the bar chart
@@ -80,6 +110,11 @@ const chart = () => {
         },
         options: {
             responsive: true,
+            interaction: {
+                intersect: false,
+                mode: 'index',
+            },
+            spanGaps: true,
             plugins: {
                 title: {
                     display: false,
@@ -104,7 +139,9 @@ const chart = () => {
                         text: 'Price in USD$'
                     }
                 }
-            }
+            },
+            responsiveAnimationDuration: 500,
+            maintainAspectRatio: true,
         }
     });
 }

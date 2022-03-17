@@ -20,47 +20,68 @@
 	</div>
 	<canvas id="btcChart" class="w-80"></canvas>
 	<div class="flex text-center text-gray-500 py-4">
-		<a class="flex-1 w-fit"><span onclick="changeGraph('1H')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1H</span></a>
-		<a class="flex-1 w-fit"><span onclick="changeGraph('1D')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1D</span></a>
-		<a class="flex-1 w-fit"><span onclick="changeGraph('1W')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1W</span></a>
-		<a class="flex-1 w-fit"><span onclick="changeGraph('1M')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1M</span></a>
-		<a class="flex-1 w-fit"><span onclick="changeGraph('1Y')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1Y</span></a>
-		<a class="flex-1 w-fit"><span onclick="changeGraph('2Y')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">2Y</span></a>
+		<a class="flex-1 w-fit"><span id="heure" onclick="changeGraph(this, '1H')" class="hover:bg-blue-300 hover:bg-opacity-50 focus:bg-blue-300 focus:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1H</span></a>
+		<a class="flex-1 w-fit"><span id="jour" onclick="changeGraph(this, '1D')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1D</span></a>
+		<a class="flex-1 w-fit"><span id="semaine" onclick="changeGraph(this, '1W')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1W</span></a>
+		<a class="flex-1 w-fit"><span id="mois" onclick="changeGraph(this, '1M')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1M</span></a>
+		<a class="flex-1 w-fit"><span id="annee" onclick="changeGraph(this, '1Y')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1Y</span></a>
+		<a class="flex-1 w-fit"><span id="tAnnee" onclick="changeGraph(this, '2Y')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">2Y</span></a>
 	</div>
-<!--	<form id="myForm" action="" method='POST'>
-		{% csrf_token %}
-		{{search_form}}
-		<div class="">
-			<button type="submit" class="btn btn-primary pt-3"> Render</button>
-		</div>
-	</form>-->
 	<div class="py-4 px-8">
 		<p class="font-bold antialiased text-xl pb-3">Top 3 des mes actifs</p>
 		<div class="flex flex-col gap-4 items-left justify-center bg-white">
-			<a href="#" class="w-[30rem]">
+			{% for data in information %}
+			<a href="#" class="w-[30rem]" onclick="toggleModal('modal-id')">
 				<div class="grid grid-cols-6 p-2 gap-y-2">
 					<div>
-						<img src="https://s2.coinmarketcap.com/static/img/coins/200x200/1.png" class="max-w-16 max-h-16 rounded-full" />
+						<img src="{{data.imgUrl}}" class="max-w-16 max-h-16 rounded-full" />
 					</div>
 					<div class="col-span-5 md:col-span-4 ml-4">
-						<p class="text-sky-500 font-bold text-xs">BTC/EUR</p>
-						<p class="text-gray-600 font-bold"> Bitcoin</p>
-						<p class="text-gray-400"> 2200 € </p>
+						<p class="text-sky-500 font-bold text-xs">{{data.concurrency}}</p>
+						<p class="text-gray-600 font-bold"> {{data.name}}</p>
+						<p class="text-gray-400"> {{data.amount}} € </p>
 					</div>
 				</div>
 			</a>
-			<a href="#" class="w-[30rem]">
-				<div class="grid grid-cols-6 p-2 gap-y-2">
-					<div>
-						<img src="https://cryptonaute.fr/wp-content/uploads/2020/06/ethereum-logo.png" class="max-w-16 max-h-16 rounded-full" />
-					</div>
-					<div class="col-span-5 md:col-span-4 ml-4">
-						<p class="text-sky-500 font-bold text-xs">ETH/EUR</p>
-						<p class="text-gray-600 font-bold">Ethereum</p>
-						<p class="text-gray-400"> 400 € </p>
+			<div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
+				<div class="relative w-auto my-6 mx-auto max-w-3xl">
+					<!--content-->
+					<div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+						<!--header-->
+						<div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+							<h3 class="text-3xl font-semibold">
+								{{data.name}}
+							</h3>
+							<button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="toggleModal('modal-id')">
+          <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+            ×
+          </span>
+							</button>
+						</div>
+						<!--body-->
+						<div class="relative p-6 flex-auto">
+							<p class="my-4 text-blueGray-500 text-lg leading-relaxed">
+								I always felt like I could do anything. That’s the main
+								thing people are controlled by! Thoughts- their perception
+								of themselves! They're slowed down by their perception of
+								themselves. If you're taught you can’t do anything, you
+								won’t do anything. I was taught I could do everything.
+							</p>
+						</div>
+						<!--footer-->
+						<div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+							<button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">
+								Close
+							</button>
+							<button class="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">
+								Save Changes
+							</button>
+						</div>
 					</div>
 				</div>
-			</a>
+			</div>
+			<div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
+			{% endfor %}
 		</div>
 		<p class="pt-8 text-gray-400 italic text-sm">Les services liés aux actifs de crypto-monnaie sont fournis par <strong>WalletPY</strong> Europe Limited.</p>
 	</div>
