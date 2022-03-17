@@ -13,6 +13,7 @@ def homepage(request):
     print(test.json()) """
     return render (request=request, template_name="homepage.html")
 
+@login_required
 def dashboard(request):
     info = [
         {
