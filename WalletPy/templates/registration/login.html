@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% load static %}
-{% load widget_tweaks %} {% block content %} 
+{% load widget_tweaks %} {% block content %}
 
 <div
   class="h-screen min-h-full flex items-center justify-center py-12 px-4 sm:px-6 bg-gradient-to-br from-yellow-100 via-white to-yellow-100 lg:px-8"
@@ -14,18 +14,18 @@
     <form class="mt-8 space-y-6" action="{% url 'login' %}" method="POST">
       {% csrf_token %}
       <input type="hidden" name="remember" value="true" />
-      <div class="rounded-md shadow-sm -space-y-px">
+      <div class="rounded-md -space-y-px">
         <div class="py-2">
           <label for="email-address" class="sr-only"
             >{{ form.username.label_tag }}</label
           >
-          {{ form.username|attr:"placeholder:Adresse email"|add_class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" }}
+          {{ form.username|attr:"placeholder:Adresse email"|add_class:"appearance-none rounded-none relative block w-full px-3 py-2 shadow-lg placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" }}
         </div>
         <div class="py-2">
           <label for="password" class="sr-only"
             >{{ form.password.label_tag }}</label
           >
-          {{ form.password|attr:"placeholder:Mot de passe"|add_class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" }}
+          {{ form.password|attr:"placeholder:Mot de passe"|add_class:"appearance-none rounded-none relative block w-full px-3 py-2 shadow-lg placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" }}
         </div>
       </div>
 

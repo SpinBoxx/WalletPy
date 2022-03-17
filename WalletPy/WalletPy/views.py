@@ -1,18 +1,42 @@
-from django.shortcuts import  render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import  get_object_or_404, render, redirect
 import requests
 from datetime import date, timedelta
+from coin.models import Coin
+
+from coin.coin_service import get_available_coins_dashboard_data
 from .forms import PriceSearchForm
-from pycoingecko import CoinGeckoAPI
+from django.contrib.auth.decorators import login_required
 
 def homepage(request):
     """ test = requests.get("https://api.coingecko.com/api/v3/coins/bitcoin")
     print(test.json()) """
     return render (request=request, template_name="homepage.html")
 
+@login_required
 def dashboard(request):
-    cg = CoinGeckoAPI()
-    bitcoin_data = cg.get_price(ids='bitcoin', vs_currencies='usd', include_24hr_change='true')
+    info = [
+        {
+            "name": 'Bitcoin',
+            "concurrency": "BTC/EUR",
+            "amount":2000,
+            "imgUrl": "https://s2.coinmarketcap.com/static/img/coins/200x200/1.png"
 
+        },
+        {
+            "name": "Ethereum",
+            "concurrency": "ETH/EUR",
+            "amount": 1500,
+            "imgUrl": "https://cryptonaute.fr/wp-content/uploads/2020/06/ethereum-logo.png"
+        },
+        {
+             "name": "Doge",
+             "concurrency": "DOGE/EUR",
+             "amount": 700,
+             "imgUrl": "https://s2.coinmarketcap.com/static/img/coins/200x200/74.png"
+        }
+    ]
+    coin_data = get_available_coins_dashboard_data(request.user)
     datetime_today = date.today()      # get current date
     date_today = str(datetime_today)    # convert datetime class to string
     date_10daysago = str(datetime_today - timedelta(days=10))     # get date of today -10 days
@@ -57,12 +81,23 @@ def dashboard(request):
         else:
             wrong_input = 'Wrong date input selection: date from cant be greater than date to, please try again' #print out an error message if the user chooses a date that is greater than input1's date
     context = {
-        'btc_data': bitcoin_data,
+        'coin_data': coin_data,
         'price':btc_price_range,
         'search_form':search_form,
-        'wrong_input' : wrong_input
+        'wrong_input' : wrong_input,
+        'information': info
     }
     return render(request, 'dashboard/basedashbord.html', context)
   
 def error_404(request, exception):
     return render(request,'error_404.html')
+
+@login_required 
+def favorite_add(request, id):
+    current_user = request.user
+    if current_user.favorite_coins.filter(id=id).exists():
+        current_user.favorite_coins.remove(id)
+    else:
+        current_user.favorite_coins.add(id)
+
+    return HttpResponseRedirect(request.META["HTTP_REFERER"])
