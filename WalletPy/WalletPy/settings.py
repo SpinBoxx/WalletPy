@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'dashboard',
     'widget_tweaks',
     'custom_auth',
+    'account',
     "coin",
     "portefeuille",
 ]
