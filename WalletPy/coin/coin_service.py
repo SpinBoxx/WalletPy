@@ -14,7 +14,8 @@ def get_available_coins_dashboard_data(current_user):
             "current_price": cg_data["market_data"]["current_price"]["usd"],
             "thumb": cg_data["image"]["thumb"],
             "symbol":cg_data["symbol"],
-            "is_favorite": False
+            "is_favorite": False,
+            "name": cg_data["id"]
         }
         if current_user.is_authenticated:
             data["is_favorite"]= current_user.favorite_coins.filter(id=coin["pk"]).exists()
