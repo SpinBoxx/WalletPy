@@ -1,12 +1,12 @@
 {% extends "base.html" %} {% block content %} {% load static %}
 
 <div class="block">
-    <h1 class="text-3xl font-bold py-6 pl-10">Mon compte</h1>
+    <h1 class="text-3xl font-bold py-5 pl-10">Mon compte</h1>
     <div class="max-w-2xl mx-auto">
         <div class="w-full">
             <div class="w-full bg-blue-600 h-24 rounded-t-lg"></div>
             <div class="absolute -mt-20 ml-10">
-                <img class="w-28 mt-5" src="{% static 'profilenft.png' %}"/>
+                <img class="w-28 mt-5" src="{% static 'logo.ico' %}"/>
             </div>
             <div class="absolute ml-40 flex flex-row">
                 <label class="font-bold">{{user.username}}</label>
@@ -34,7 +34,7 @@
                 {% if messages %}
                     <ul class="messages">
                         {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                         {% endfor %}
                     </ul>
                 {% endif %}
