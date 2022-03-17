@@ -27,7 +27,6 @@ SECRET_KEY = 'django-insecure-k0ju6qo#0ow_y6@vd8km#n_l#(+hduoqiikm@r805pw=u4=^7l
 DEBUG = True
 
 ALLOWED_HOSTS = []
-TAILWIND_APP_NAME = 'dashboard'
 
 # Application definition
 
@@ -38,8 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tailwind',
-    'dashboard',
     'widget_tweaks',
     'custom_auth',
     "coin",

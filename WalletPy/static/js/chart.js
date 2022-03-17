@@ -5,7 +5,7 @@ const toggleModal = (modalID) =>{
     document.getElementById(modalID + "-backdrop").classList.toggle("flex");
 }
 
-
+/*
 const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/56a0386767d54d6a8e04f9c7a6c56fda"));
 
 let rawTransaction = {
@@ -108,7 +108,7 @@ const test = async () =>{
     web3.eth.accounts.signTransaction(rawTransaction, decryptedAccount.privateKey)
         .then(console.log);
     console.log(ethereum.request({ method: 'eth_requestAccounts' }));
-}
+}*/
 
 
 var dates = document.getElementsByClassName('date-item')
@@ -253,5 +253,5 @@ const chart = () => {
 }
 
 chart();
-test();
+/*test();*/
 
