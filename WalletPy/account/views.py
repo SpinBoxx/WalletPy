@@ -9,7 +9,6 @@ from coin.models import Fiat
 
 def index(request):
     fiat = Fiat.objects.all()
-    print(fiat)
     user = ''
     context = {"user" : request.user, "available_fiat": fiat}
     return render(request, 'account.html', context)
@@ -20,7 +19,7 @@ def update(request):
 
         username = request.POST['username']
         password = request.POST['new_password']
-        pref_fiat = request.POST['pref_fiat']
+        pref_fiat = str(request.POST['pref_fiat'])
         validators = [MinimumLengthValidator, CommonPasswordValidator]
 
         if password != "":
@@ -33,7 +32,8 @@ def update(request):
                 messages.error(request, error)
                 
 
-        if request.user.preferred_currency.id != pref_fiat and pref_fiat != "":
+
+        if str(request.user.preferred_currency.id) != pref_fiat and pref_fiat != "":
             request.user.preferred_currency = Fiat.objects.get(id=pref_fiat)
             messages.success(request, 'Monnaie de conversion modifié')
 

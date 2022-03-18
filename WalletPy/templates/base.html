@@ -12,9 +12,11 @@
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 	      <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 	      <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+        <script src='{% static "js/main.js" %}'></script>
 	  {% endblock script %}
   </head>
   <body class="overflow-x-hidden">
+    {% include "includes/messages.html" %}
     <div class="flex flex-col-reverse sm:flex sm:flex-row h-full">
       {% if not request.resolver_match.url_name == 'homepage' and user.is_authenticated %}
       <nav id="navbar" class="flex gap-2 justify-between  h-16 w-full sm:h-full sm:sticky flex-row sm:w-20 sm:h-screen sm:justify-between sm:relative md:gap-12 sm:flex-col">
@@ -44,6 +46,39 @@
                     <svg class="m-3" width="22" height="22" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M3.25 21.6562C3.25 22.1547 3.61359 22.5625 4.0625 22.5625H24.375C25.2738 22.5625 26 23.3725 26 24.375C26 25.3775 25.2738 26.1875 24.375 26.1875H4.0625C1.81898 26.1875 0 24.1598 0 21.6562V2.625C0 1.62416 0.727695 0.8125 1.625 0.8125C2.5223 0.8125 3.25 1.62416 3.25 2.625V21.6562ZM17.3977 14.7801C16.7629 15.4881 15.7371 15.4881 15.1023 14.7801L12.1875 11.5346L7.64766 16.5926C7.01289 17.3006 5.98711 17.3006 5.35234 16.5926C4.71656 15.8846 4.71656 14.7404 5.35234 14.0324L11.0398 7.68867C11.6746 6.98066 12.7004 6.98066 13.3352 7.68867L16.25 10.9342L21.6023 4.96992C22.2371 4.26078 23.2629 4.26078 23.8977 4.96992C24.5324 5.67793 24.5324 6.82207 23.8977 7.53008L17.3977 14.7801Z" fill="black"/>
                     </svg>
+                  </span>
+                </a>
+              </li>
+              <li id="navbar_icones_marche" onClick="switchActive(this)" class="transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl sm:mb-6 cursor-pointer sm:mx-auto">
+                <a href="{% url 'market' %}">
+                  <span>
+                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000" height="40.000000" viewBox="0 0 64.000000 64.000000" preserveAspectRatio="xMidYMid meet">
+
+                    <g transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
+                    fill="#000000" stroke="none">
+                    <path d="M33 608 c-41 -46 -36 -151 10 -183 28 -20 76 -19 105 1 21 15 25 15
+                    41 0 23 -21 89 -21 113 1 17 15 19 15 36 0 11 -10 35 -17 57 -17 22 0 46 7 57
+                    17 17 15 19 15 36 0 10 -10 24 -17 30 -17 9 0 12 -51 12 -190 l0 -190 -210 0
+                    -210 0 0 165 c0 140 -2 165 -15 165 -13 0 -15 -25 -15 -165 l0 -165 -36 0
+                    c-24 0 -34 -4 -31 -12 6 -19 608 -19 615 0 2 8 -8 12 -32 12 l-36 0 0 189 c0
+                    177 1 189 19 194 56 14 76 144 31 192 l-23 25 -267 0 c-264 0 -267 0 -287 -22z
+                    m117 -69 c0 -78 -11 -99 -53 -99 -18 0 -38 5 -45 12 -16 16 -16 120 0 136 7 7
+                    31 12 55 12 l43 0 0 -61z m150 -7 c0 -76 -9 -92 -54 -92 -49 0 -66 24 -66 97
+                    l0 63 60 0 60 0 0 -68z m150 0 c0 -76 -9 -92 -55 -92 -46 0 -55 16 -55 92 l0
+                    68 55 0 55 0 0 -68z m138 56 c7 -7 12 -37 12 -68 0 -64 -11 -80 -55 -80 -46 0
+                    -55 16 -55 92 l0 68 43 0 c24 0 48 -5 55 -12z"/>
+                    <path d="M250 355 c0 -16 -6 -25 -15 -25 -8 0 -15 -4 -15 -9 0 -5 7 -11 15
+                    -15 12 -4 15 -24 15 -91 0 -69 -3 -85 -15 -85 -8 0 -15 -4 -15 -9 0 -5 7 -11
+                    15 -15 8 -3 15 -15 15 -26 0 -11 7 -20 15 -20 8 0 15 9 15 20 0 13 7 20 20 20
+                    13 0 20 -7 20 -20 0 -11 7 -20 15 -20 8 0 15 9 15 19 0 13 9 21 30 26 32 7 60
+                    38 60 66 0 9 -9 27 -19 41 -12 15 -18 33 -14 46 6 26 -21 72 -42 72 -9 0 -15
+                    10 -15 25 0 16 -6 25 -15 25 -9 0 -15 -9 -15 -25 0 -18 -5 -25 -20 -25 -15 0
+                    -20 7 -20 25 0 16 -6 25 -15 25 -9 0 -15 -9 -15 -25z m128 -82 c4 -25 -28 -43
+                    -74 -43 -21 0 -24 5 -24 36 l0 35 48 -3 c40 -3 47 -6 50 -25z m30 -100 c4 -27
+                    -29 -43 -89 -43 -38 0 -39 1 -39 35 l0 36 63 -3 c56 -3 62 -5 65 -25z"/>
+                    </g>
+                    </svg>
+
                   </span>
                 </a>
               </li>
