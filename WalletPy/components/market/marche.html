@@ -1,0 +1,121 @@
+{% load static %}
+{% load custom_filter %}
+{% block content %}
+
+  <div class="py-4 px-8 h-full">
+    <p class="font-bold antialiased text-xl">Marché</p>
+
+    <div class="mt-10 h-3/4">
+      <div id="search_bar" class="">
+        <svg version="1.1" id="search_icon" class="h-4 text-dark mt-3 ml-3 absolute" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      	 viewBox="0 0 52.966 52.966" style="enable-background:new 0 0 52.966 52.966;" xml:space="preserve">
+          	<path d="M51.704,51.273L36.845,35.82c3.79-3.801,6.138-9.041,6.138-14.82c0-11.58-9.42-21-21-21s-21,9.42-21,21s9.42,21,21,21
+              c5.083,0,9.748-1.817,13.384-4.832l14.895,15.491c0.196,0.205,0.458,0.307,0.721,0.307c0.25,0,0.499-0.093,0.693-0.279
+              C52.074,52.304,52.086,51.671,51.704,51.273z M21.983,40c-10.477,0-19-8.523-19-19s8.523-19,19-19s19,8.523,19,19
+              S32.459,40,21.983,40z"/>
+      	</svg>
+        <input type="search" id="search-input" name="" placeholder="Search...(BTC, ETH, LTC, etc.)" value="" class="bg-gray-200 pl-10 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-lg">
+      </div>
+
+      <div id="cryptocurrencies" class="h-full">
+        <div id="badges" class="mt-6">
+            <span id="badge_my_favorites" onclick="selectBadge(this)" class="badge inline-block bg-blue-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer">Mes favoris</span>
+            <span id="badge_all_crypto" onclick="selectBadge(this)"  class="badge inline-block bg-blue-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer">Toutes les crypto-monnaies</span>
+        </div>
+        <div id="list_cryptocurrencies" class="mt-5 overflow-y-scroll h-full ">
+          <div id="followed" class="">
+            <p class="text-gray-500">Mes favoris</p>
+            <div class="container flex flex-wrap mt-2">
+              {% for favorite in user.favorite_coins.all %}
+              {% with fav_coin=coin_data|get_item:favorite.name %}
+                <div id="div_crypto" class="flex flex mt-3">
+                  <img class="my-auto mx-0" src="{{ fav_coin.thumb }}" alt="btc icon"/>
+                  <div id="crypto_informations" class="px-4 flex flex-col flex-shrink-0 border-dashed border-r-2 mr-4 mb-3 border-grey-600">
+                    <div class="flex">
+                      <h3 class="font-semibold text-sm text-gray-400">
+                        {{ fav_coin.symbol|upper }}
+                      </h3>
+                      <a id="fav-icon" class="ml-3 h-4 w-4 my-auto mx-0" href="{% url 'favorite_add' fav_coin.internal_id %}">
+                        <img src="{% static 'star-solid.svg' %}" alt=""/>
+                      </a>
+                    </div>
+                    <div class="flex justify-between">
+                      <div>
+                        <h1 class="font-semibold text-xl text-gray-700">
+                          $ {{ fav_coin.current_price }}
+                        </h1>
+                        {% if coin.price_change_percentage_24h < 0 %}
+                        <span class="font-bold text-red-500"
+                        >{{ fav_coin.price_change_percentage_24h|floatformat}} %</span
+                        ><br/>
+                        {% else %}
+                        <span class="font-bold text-green-500"
+                        >{{ fav_coin.price_change_percentage_24h|floatformat}} %</span
+                        ><br/>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endwith %}
+              {% endfor %}
+            </div>
+          </div>
+          <div id="all_crypto" class="">
+            <p class="text-gray-500">Toutes les crypto-monnaies</p>
+            <div class="container flex flex-wrap mt-2">
+              {% include "market/all_crypto.html" %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script type="text/javascript">
+    function selectBadge(thiss){
+      var badges = document.getElementsByClassName('badge')
+      for(var i = 0; i < badges.length; i++){
+        badges[i].classList.remove('bg-blue-300')
+      }
+      thiss.classList.add('bg-blue-300')
+      if(thiss.id == "badge_my_favorites"){
+        var element = document.getElementById('followed')
+        element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+      } else if(thiss.id == "badge_all_crypto"){
+        var element = document.getElementById('all_crypto')
+        element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+      }
+    }
+
+    const source = document.getElementById('search-input');
+
+    const inputHandler = function(e) {
+      let searchedCrypto;
+      console.log(e.target.value.length >= 2)
+      let allCryptos = document.getElementsByClassName('all_crypto');
+      if(e.target.value.length >= 2){
+
+        console.log(allCryptos)
+        for(var i = 0; i < allCryptos.length; i++){
+          if(!allCryptos[i].id.includes(e.target.value)){
+              allCryptos[i].classList.add('hidden')
+              allCryptos[i].classList.remove('block')
+          } else {
+            allCryptos[i].classList.add('block')
+            allCryptos[i].classList.remove('hidden')
+          }
+        }
+      } else {
+        for(var i = 0; i < allCryptos.length; i++){
+          allCryptos[i].classList.add('block')
+          allCryptos[i].classList.remove('hidden')
+        }
+      }
+      console.log(searchedCrypto)
+    }
+    source.addEventListener('input', inputHandler);
+
+
+  </script>
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% load static %}
+{% load custom_filter %}
+
+{% for name, coin in coin_data.items %}
+  <div id="all_crypto_{{coin.symbol}}" class="all_crypto flex mt-3">
+    <img class="my-auto mx-0" src="{{ coin.thumb }}" alt="btc icon"/>
+    <div class="px-4 flex-shrink-0 border-dashed border-r-2 mr-4 mb-3 border-grey-600">
+      <div>
+        <div class="flex">
+          <h3 class="font-semibold text-sm text-gray-400">
+            {{ coin.symbol|upper }}
+          </h3>
+          {% if user.is_authenticated %}
+          {% if coin.is_favorite %}
+          <a
+              id="fav-icon"
+              class="ml-3 h-4 w-4 my-auto mx-0"
+              href="{% url 'favorite_add' coin.internal_id %}"
+          ><img src="{% static 'star-solid.svg' %}" alt=""
+          /></a>
+          {% else %}
+          <a
+              id="fav-icon"
+              class="ml-3 h-4 w-4 my-auto mx-0"
+              href="{% url 'favorite_add' coin.internal_id %}"
+          ><img src="{% static 'star-regular.svg' %}" alt=""
+          /></a>
+          {% endif %}
+          {% endif %}
+        </div>
+        <div class="flex justify-between">
+          <div>
+            <h1 class="font-semibold text-xl text-gray-700">
+              $ {{ coin.current_price }}
+            </h1>
+            {% if coin.price_change_percentage_24h < 0 %}
+            <span class="font-bold text-red-500"
+            >{{ coin.price_change_percentage_24h|floatformat}} %</span
+            ><br/>
+            {% else %}
+            <span class="font-bold text-green-500"
+            >{{ coin.price_change_percentage_24h|floatformat}} %</span
+            ><br/>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
