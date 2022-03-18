@@ -22,7 +22,7 @@
             <span id="badge_my_favorites" onclick="selectBadge(this)" class="badge inline-block bg-blue-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer">Mes favoris</span>
             <span id="badge_all_crypto" onclick="selectBadge(this)"  class="badge inline-block bg-blue-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer">Toutes les crypto-monnaies</span>
         </div>
-        <div id="list_cryptocurrencies" class="mt-5 overflow-y-scroll h-full ">
+        <div id="list_cryptocurrencies" class="mt-5 overflow-y-auto h-full ">
           <div id="followed" class="">
             <p class="text-gray-500">Mes favoris</p>
             <div class="container flex flex-wrap mt-2">
@@ -92,11 +92,9 @@
 
     const inputHandler = function(e) {
       let searchedCrypto;
-      console.log(e.target.value.length >= 2)
       let allCryptos = document.getElementsByClassName('all_crypto');
       if(e.target.value.length >= 2){
 
-        console.log(allCryptos)
         for(var i = 0; i < allCryptos.length; i++){
           if(!allCryptos[i].id.includes(e.target.value)){
               allCryptos[i].classList.add('hidden')
@@ -112,7 +110,6 @@
           allCryptos[i].classList.remove('hidden')
         }
       }
-      console.log(searchedCrypto)
     }
     source.addEventListener('input', inputHandler);
 
