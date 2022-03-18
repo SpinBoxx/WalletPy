@@ -1,17 +1,20 @@
 from pycoingecko import CoinGeckoAPI
 from django.core import serializers
 from coin.models import Coin
+import html
 
 cg = CoinGeckoAPI()
 def get_available_coins_dashboard_data(current_user):
     coins = serializers.serialize("python",  Coin.objects.all())
     coin_data = {}
+    headers = {"Content-type": "application/json"}
     for coin in coins:
-        cg_data = cg.get_coin_by_id(id=coin["fields"]["name"],localization=False,tickers=False,community_data=False,developer_data=False,sparkline=False)
+        cg_data = cg.get_coin_by_id(id=coin["fields"]["name"],localization=False,tickers=False,community_data=False,developer_data=False,sparkline=False, headers = headers)
         data = {
             "internal_id": coin["pk"],
             "price_change_percentage_24h": cg_data["market_data"]["price_change_percentage_24h"],
             "current_price": cg_data["market_data"]["current_price"]["usd"],
+            "description": html.escape(cg_data["description"]["en"]),
             "thumb": cg_data["image"]["thumb"],
             "symbol":cg_data["symbol"],
             "is_favorite": False,
@@ -28,6 +31,7 @@ def get_coin_simple_data(name:str):
     name = {
             "price_change_percentage_24h": cg_data["market_data"]["price_change_percentage_24h"],
             "current_price": cg_data["market_data"]["current_price"]["usd"],
+            "description": html.escape(cg_data["description"]["en"]),
             "thumb": cg_data["image"]["thumb"],
             "symbol":cg_data["symbol"],
     }

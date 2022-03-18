@@ -1,16 +1,28 @@
 cover = document.getElementById("cover")
 activeCoin = ""
+description = ""
+let cChart;
 
 function handleToggle(info = null) {
-    console.log(String(info))
-    activeCoin = info
+    const jsonParsed = JSON.stringify(info, null,3);
+    const json = JSON.parse(jsonParsed);
+    console.log(json)
+    activeCoin = "litecoin"
+    document.getElementById("coinName").innerText = activeCoin
+    document.getElementById("coinDesc").innerText = "wow"
     cover.classList.toggle("active")
+    if(info != null){
+        loadCoinGraph()
+    }
+
 }
 
 
 const loadCoinGraph = async (el, time) => {
-    document.getElementsByClassName("bg-blue-300")[0]?.classList.remove("bg-blue-300", "bg-opacity-50");
-    document.getElementById(el.id).classList.add("bg-blue-300", "bg-opacity-50");
+    if(el){
+        document.getElementsByClassName("bg-green-300")[0]?.classList.remove("bg-green-300", "bg-opacity-50");
+        document.getElementById(el.id).classList.add("bg-green-300", "bg-opacity-50");
+    }
     let currentDate = new Date();
     let tNow = Math.floor(currentDate.getTime() / 1000);
     let tChange;
@@ -39,6 +51,9 @@ const loadCoinGraph = async (el, time) => {
             currentDate.setFullYear(currentDate.getFullYear() - 2);
             tChange = Math.floor(currentDate.getTime() / 1000);
             break;
+        default:
+            currentDate.setDate(currentDate.getDate() - 10);
+            tChange = Math.floor(currentDate.getTime() / 1000);
     }
     const response = await fetch(`https://api.coingecko.com/api/v3/coins/${activeCoin}/market_chart/range?vs_currency=eur&from=${tChange}&to=${tNow}`, {
         headers: {
@@ -52,12 +67,14 @@ const loadCoinGraph = async (el, time) => {
         date[d] = new Date(data.prices[d]["0"]).toISOString().slice(0, 19).replace('T', ' ');
         price[d] = data.prices[d]["1"];
     }
-    cChart.destroy();
+    if(cChart instanceof Chart) {
+        cChart.destroy();
+    }
     coinChart(date, price);
 }
 
 const coinChart = (date, price) => {
-    var context = document.getElementById(cover).getContext('2d');
+    var context = document.getElementById("coinChart").getContext('2d');
     cChart = new Chart(context, {
         plugins: [{
             afterDraw: chart => {
@@ -88,7 +105,7 @@ const coinChart = (date, price) => {
                     'rgba(0,0,0,0.2)',
                 ],
                 borderColor: [
-                    'rgba(54, 162, 235, 1)',
+                    'rgba(11,171,76,0.5)',
                 ],
                 borderWidth: 3
             }]
