@@ -1,10 +1,10 @@
 {% extends "base.html" %} {% block content %} {% load static %}
 
-<div class="block">
+<div class="block h-full">
     <h1 class="text-3xl font-bold py-5 pl-10">Mon compte</h1>
-    <div class="max-w-2xl mx-auto">
+    <div class="max-w-2xl my-12 mx-auto">
         <div class="w-full">
-            <div class="w-full bg-blue-600 h-24 rounded-t-lg"></div>
+            <div class="w-full bg-blue-400 h-24 rounded-t-lg"></div>
             <div class="absolute -mt-20 ml-10">
                 <img class="w-28 mt-5" src="{% static 'logo.ico' %}" />
             </div>
@@ -14,7 +14,7 @@
         </div>
         <form name="updateUser" action="update/" method="POST">
             {% csrf_token %}
-            <div class="bg-primary bg-white border border-primary rounded-b-lg p-5 pt-20">
+            <div class="bg-primary bg-white border border-primary shadow-xl rounded-b-lg p-5 pt-20">
                 <div class="bg-primary border border-primary rounded p-2 text-center">
                     <label class="font-bold">Mes informations :</label>
                     <div class="flex flex-col pt-4 pb-2">
@@ -38,7 +38,7 @@
                         <div class="flex flex-col lg:flex-row mx-auto lg:mx-0">
                             <label class="text-left py-5 text-center lg:text-left"> <strong>Monnaie conversion
                                     :</strong> </label>
-                            <select name="pref_fiat" class="lg:mx-2 border border-gray-300 p-2 w-52 lg:m-4 rounded-md text-md text-gray-700 outline-none"
+                            <select name="pref_fiat" class="lg:mx-2 border border-gray-300 bg-white p-2 w-52 lg:m-4 rounded-md text-md text-gray-700 outline-none"
                                 aria-label="Default select example">
                                 {% for fiat in available_fiat %}
                                 <option {% if fiat.short_name == user.preferred_currency.short_name %} selected {% endif %} value="{{fiat.id}}">{{fiat.short_name|upper}} ({{fiat.symbol}})</option>
