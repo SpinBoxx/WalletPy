@@ -45,7 +45,7 @@
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
                         {% for fiat in available_fiat %}
-                        <option  {% if fiat.short_name == user.preferred_currency.short_name %} selected {% endif %} value="{{fiat.id}}">{{fiat.short_name|upper}}</option>      
+                        <option  {% if fiat.short_name == user.preferred_currency.short_name %} selected {% endif %} value="{{fiat.id}}">{{fiat.short_name|upper}} ({{fiat.symbol}})</option>      
                         {% endfor %}
                       </select>                   
                     </div>

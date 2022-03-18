@@ -14,14 +14,6 @@
 	      <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 	  {% endblock script %}
   </head>
-  <script type="text/javascript" defer>
-	  document.addEventListener('DOMContentLoaded', (e)=>{
-		  document.getElementById("navbar_icones_dashboard").classList.add("bg-blue-300","bg-opacity-50");
-	  })
-	  const switchActive = (el) => {
-		  document.getElementById(el.id).classList.add("bg-blue-300","bg-opacity-50");
-	  }
-  </script>
   <body class="overflow-x-hidden">
     <div class="flex flex-col-reverse sm:flex sm:flex-row h-full">
       {% if not request.resolver_match.url_name == 'homepage' and user.is_authenticated %}
@@ -37,8 +29,8 @@
           </svg>
           <div id="navbar_icones" class="my-auto sm:mt-20 sm:h-full sm:ml-0 ">
             <ul class="flex gap-4 sm:gap-10 sm:flex-col align-middle">
-              <li id="navbar_icones_user" onClick="switchActive(this)" class="transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl sm:mb-6 cursor-pointer sm:mx-auto">
-                <a href="{% url 'dashboard' %}">
+              <li id="navbar_icones_user" class="{% if request.resolver_match.view_name == 'profile' %} bg-blue-300 bg-opacity-50 {% endif %} transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl sm:mb-6 cursor-pointer sm:mx-auto">
+                <a href="{% url 'profile' %}">
                   <span>
                     <svg class="m-3" width="22" height="22" viewBox="0 0 27 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M13.5 15.5C17.7609 15.5 21.2143 12.0301 21.2143 7.75C21.2143 3.46994 17.7609 0 13.5 0C9.23906 0 5.78571 3.46994 5.78571 7.75C5.78571 12.0301 9.23906 15.5 13.5 15.5ZM16.5556 18.4062H10.4444C4.67739 18.4062 0 23.1047 0 28.899C0 30.0579 0.935357 30.9982 2.08888 30.9982H24.9123C26.0658 31 27 30.0615 27 28.899C27 23.1047 22.3232 18.4062 16.5556 18.4062Z" fill="black"/>
@@ -46,7 +38,7 @@
                   </span>
                 </a>
               </li>
-              <li id="navbar_icones_dashboard" onClick="switchActive(this)" class="transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl sm:mb-6 cursor-pointer sm:mx-auto">
+              <li id="navbar_icones_dashboard"  class="{% if request.resolver_match.view_name == 'dashboard' %} bg-blue-300 bg-opacity-50 {% endif %}transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl sm:mb-6 cursor-pointer sm:mx-auto">
                 <a href="{% url 'dashboard' %}">
                   <span>
                     <svg class="m-3" width="22" height="22" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +47,7 @@
                   </span>
                 </a>
               </li>
-              <li id="navbar_icones_wallet" onClick="switchActive(this)" class="transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl sm:mb-6 cursor-pointer sm:mx-auto">
+              <li id="navbar_icones_wallet" class="transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl sm:mb-6 cursor-pointer sm:mx-auto">
                 <a href="#">
                   <span>
                     <svg  class="m-3" width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
