@@ -83,7 +83,7 @@
 	<div class="w-full bg-white rounded overflow-hidden shadow-lg">
 		<div class="px-6 py-4">
 			<div class="font-bold text-xl mb-2">Mes favoris</div>
-			<div class="flex overflow-x-scroll">
+			<div class="flex overflow-x-auto">
 				{% if user.is_authenticated %}
 				{% for favorite in user.favorite_coins.all %}
 				{% with fav_coin=coin_data|get_item:favorite.name %}

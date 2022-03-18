@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% load static %}
 {% block content %}
 <div class="px-4 grid lg:grid-cols-3 gap-1 md:gap-5 pt-5 pb-5 h-full md:grid-cols-2 sm:grid-cols-1">
-	<div class="overflow-y-scroll no-scrollbar h-full hidden md:block sm:hidden">{% include "dashboard/informModule.html" %}</div>
+	<div class="overflow-y-auto no-scrollbar h-full hidden md:block sm:hidden">{% include "dashboard/informModule.html" %}</div>
 	<div class="mx-auto w-full bg-white rounded-lg border border-gray-200 shadow-lg dark:bg-gray-800 dark:border-gray-700">{% include "dashboard/dashboard.html" %}</div>
 	<div class="sm:hidden hidden md:hidden lg:block">{% include "dashboard/transaction.html" %}</div>
 </div>
