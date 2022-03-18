@@ -11,7 +11,7 @@ def get_available_coins_dashboard_data(current_user):
         data = {
             "internal_id": coin["pk"],
             "price_change_percentage_24h": cg_data["market_data"]["price_change_percentage_24h"],
-            "current_price": cg_data["market_data"]["current_price"]["usd"],
+            "current_price": cg_data["market_data"]["current_price"][current_user.preferred_currency.short_name],
             "thumb": cg_data["image"]["thumb"],
             "symbol":cg_data["symbol"],
             "is_favorite": False

@@ -35,6 +35,7 @@ def update(request):
 
         if request.user.preferred_currency.id != pref_fiat and pref_fiat != "":
             request.user.preferred_currency = Fiat.objects.get(id=pref_fiat)
+            messages.success(request, 'Monnaie de conversion modifié')
 
         if request.user.username != username and username != "":
             request.user.username = username
