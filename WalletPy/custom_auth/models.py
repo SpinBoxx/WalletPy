@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser,BaseUserManager
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from coin.models import Coin
+from coin.models import Coin, Fiat
 
 
 class UserManager(BaseUserManager):
@@ -43,10 +43,10 @@ class User(AbstractUser):
     """User model."""
     username = models.CharField(_('username'), max_length=255)
     email = models.EmailField(_('email address'), unique=True)
-    preferred_currency = models.CharField(max_length=30, default='usd')
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     favorite_coins = models.ManyToManyField(Coin, related_name="favorite",default=None,blank=True)
+    preferred_currency = models.ForeignKey(Fiat,related_name="preferred_currency", on_delete=models.CASCADE, default=1)
 
     objects = UserManager()

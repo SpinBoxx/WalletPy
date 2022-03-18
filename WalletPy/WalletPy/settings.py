@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'custom_auth',
+    'account',
     "coin",
     "portefeuille",
 ]
