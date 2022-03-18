@@ -3,10 +3,15 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.password_validation import UserAttributeSimilarityValidator, MinimumLengthValidator, CommonPasswordValidator, NumericPasswordValidator
 from django.contrib import messages
+from django.core import serializers
+
+from coin.models import Fiat
 
 def index(request):
+    fiat = Fiat.objects.all()
+    print(fiat)
     user = ''
-    context = {user : request.user}
+    context = {"user" : request.user, "available_fiat": fiat}
     return render(request, 'account.html', context)
 
 def update(request):
@@ -15,6 +20,7 @@ def update(request):
 
         username = request.POST['username']
         password = request.POST['new_password']
+        pref_fiat = request.POST['pref_fiat']
         validators = [MinimumLengthValidator, CommonPasswordValidator]
 
         if password != "":
@@ -26,6 +32,9 @@ def update(request):
             except ValidationError as error:
                 messages.error(request, error)
                 
+
+        if request.user.preferred_currency.id != pref_fiat and pref_fiat != "":
+            request.user.preferred_currency = Fiat.objects.get(id=pref_fiat)
 
         if request.user.username != username and username != "":
             request.user.username = username
