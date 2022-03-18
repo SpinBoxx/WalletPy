@@ -4,14 +4,11 @@ description = ""
 let cChart;
 
 function handleToggle(info = null) {
-    const jsonParsed = JSON.stringify(info, null,3);
-    const json = JSON.parse(jsonParsed);
-    console.log(json)
-    activeCoin = "litecoin"
-    document.getElementById("coinName").innerText = activeCoin
-    document.getElementById("coinDesc").innerText = "wow"
+    activeCoin = info
     cover.classList.toggle("active")
     if(info != null){
+        document.getElementById("coinName").innerText = activeCoin
+        document.getElementById("coinDesc").innerText = document.getElementById(activeCoin).innerText
         loadCoinGraph()
     }
 
