@@ -15,6 +15,7 @@ Including another URLconf
 """
 from . import views
 from portefeuille import views as portefeuille
+from market import views as market
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import handler404
@@ -30,6 +31,7 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name="dashboard"),
     path('portefeuille/', portefeuille.index, name="wallet"),
     path('fav/<int:id>/',views.favorite_add, name="favorite_add"),
+    path('marche/', market.index, name="market"),
     path('register/', custom_auth.views.register_request, name="register"),
     path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True),name="login"),
     path('password_reset/', auth_views.PasswordResetView.as_view(),name="password_reset"),
