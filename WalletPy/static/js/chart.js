@@ -5,6 +5,112 @@ const toggleModal = (modalID) =>{
     document.getElementById(modalID + "-backdrop").classList.toggle("flex");
 }
 
+/*
+const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/56a0386767d54d6a8e04f9c7a6c56fda"));
+
+let rawTransaction = {
+    "from": "0x42902C50443916454A406E10420A4D152615cBA2",
+    "to": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+    "value": web3.utils.toHex(web3.utils.toWei("1", "ether")),
+    "gas": 21000,
+    "chainId": 3
+};
+const balances = async () => {
+    console.log(await web3.eth.getAccounts());
+    const balanceFrom = web3.utils.fromWei(
+        await web3.eth.getBalance(rawTransaction.from),
+        'ether'
+    );
+    const balanceTo = await web3.utils.fromWei(
+        await web3.eth.getBalance("0xe2c3d69c565bae28e2f3067334080e4f8351edaf"),
+        'ether'
+    );
+
+    console.log(`The balance of ${rawTransaction.from} is: ${balanceFrom} ETH.`);
+    console.log(`The balance of ${rawTransaction.to} is: ${balanceTo} ETH.`);
+};
+
+const test = async () =>{
+    balances()
+    if (typeof window.ethereum !== 'undefined') {
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        web3.eth.getBalance(accounts[0])
+            .then((e) => console.log(e)).catch((e)=> console.log(e));
+        const tokenABI = [
+            {
+                "constant": true,
+                "inputs": [],
+                "name": "name",
+                "outputs": [
+                    {
+                        "name": "",
+                        "type": "string"
+                    }
+                ],
+                "payable": false,
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [],
+                "name": "decimals",
+                "outputs": [
+                    {
+                        "name": "",
+                        "type": "uint8"
+                    }
+                ],
+                "payable": false,
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [
+                    {
+                        "name": "_owner",
+                        "type": "address"
+                    }
+                ],
+                "name": "balanceOf",
+                "outputs": [
+                    {
+                        "name": "balance",
+                        "type": "uint256"
+                    }
+                ],
+                "payable": false,
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [],
+                "name": "symbol",
+                "outputs": [
+                    {
+                        "name": "",
+                        "type": "string"
+                    }
+                ],
+                "payable": false,
+                "type": "function"
+            }
+        ]
+
+        let tokenInst = new web3.eth.Contract(tokenABI,"0x64ff637fb478863b7468bc97d30a5bf3a428a1fd");
+        console.log(tokenInst.methods.balanceOf("0x53341E065c03CeA20612209A626146dd26cE2732").call());
+
+    } else {
+        // tell the user to install an `ethereum` provider extension
+    }
+    const keystore = "{\"address\":\"42902c50443916454a406e10420a4d152615cba2\",\"crypto\":{\"cipher\":\"aes-128-ctr\",\"ciphertext\":\"7a773edc038316581e1bdd0cdfd836be0cdb2b97607a5869e1e0d5e1303d2752\",\"cipherparams\":{\"iv\":\"64ca35d359e2e5c64058a2fda84e3953\"},\"kdf\":\"scrypt\",\"kdfparams\":{\"dklen\":32,\"n\":262144,\"p\":1,\"r\":8,\"salt\":\"66d23dc0ae07201fb565bc18ab5860baa3e7f9e4d7e781966d6301259b2c5a49\"},\"mac\":\"552508f20c14922909a5cc2bcebd65d89444be62797c7153f2d1ffaca5dc2d5c\"},\"id\":\"7706fd9a-87c0-44cb-abfe-75de0f59b2bf\",\"version\":3}";
+    const decryptedAccount = web3.eth.accounts.decrypt(keystore, 'jesuislois');
+
+    web3.eth.accounts.signTransaction(rawTransaction, decryptedAccount.privateKey)
+        .then(console.log);
+    console.log(ethereum.request({ method: 'eth_requestAccounts' }));
+}*/
+
+
 var dates = document.getElementsByClassName('date-item')
 var prices = document.getElementsByClassName('price-item')
 
@@ -147,4 +253,5 @@ const chart = () => {
 }
 
 chart();
+/*test();*/
 

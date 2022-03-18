@@ -1,4 +1,4 @@
-{% load static tailwind_tags %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,12 +6,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="{% static 'global.css' %}">
 	  <link rel="shortcut icon" type="image/png" href="{% static 'logo.ico' %}"/>
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	  {% block script %}
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 	      <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+	      <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 	  {% endblock script %}
   </head>
   <body class="overflow-x-hidden">
@@ -47,8 +47,8 @@
                   </span>
                 </a>
               </li>
-              <li id="navbar_icones_wallet" class="transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl sm:mb-6 cursor-pointer sm:mx-auto">
-                <a href="#">
+              <li id="navbar_icones_wallet" onClick="switchActive(this)" class="transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl sm:mb-6 cursor-pointer sm:mx-auto">
+                <a href="{% url 'wallet' %}">
                   <span>
                     <svg  class="m-3" width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M24.5 1.75C25.468 1.75 26.25 2.53367 26.25 3.5C26.25 4.46633 25.468 5.25 24.5 5.25H4.375C3.89156 5.25 3.5 5.64375 3.5 6.125C3.5 6.60625 3.89156 7 4.375 7H24.5C26.4305 7 28 8.56953 28 10.5V22.75C28 24.6805 26.4305 26.25 24.5 26.25H3.5C1.5668 26.25 0 24.6805 0 22.75V5.25C0 3.3168 1.5668 1.75 3.5 1.75H24.5ZM22.75 18.375C23.718 18.375 24.5 17.593 24.5 16.625C24.5 15.657 23.718 14.875 22.75 14.875C21.782 14.875 21 15.657 21 16.625C21 17.593 21.782 18.375 22.75 18.375Z" fill="black"/>

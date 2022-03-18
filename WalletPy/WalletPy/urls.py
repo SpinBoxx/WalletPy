@@ -28,7 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include('django.contrib.auth.urls')),
     path('dashboard/', views.dashboard, name="dashboard"),
-    path('mon-portefeuille/', portefeuille.index, name="wallet"),
+    path('portefeuille/', portefeuille.index, name="wallet"),
     path('fav/<int:id>/',views.favorite_add, name="favorite_add"),
     path('register/', custom_auth.views.register_request, name="register"),
     path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True),name="login"),

@@ -1,0 +1,50 @@
+{% load static %}
+{% block content %}
+
+<div class="mt-5 px-5">
+	<span class="text-lg font-extrabold ">Ma feuille de compte</span>
+</div>
+
+<div class="mx-20 flex flex-row mt-10 border-t-2 border-b-2 py-10">
+    <div class="w-2/4 flex flex-col text-center">
+        <p class="text-lg text-gray-600 font-bold">Argent reçu mensuel</p>
+        <label class="text-md font-medium">2876€</label>
+    </div>
+    <div class="w-2/4 flex flex-col text-center">
+        <p class="text-lg text-gray-600 font-bold">Argent retiré mensuel</p>
+        <label class="text-md font-medium">286€</label>
+    </div>
+</div>
+
+<div class="mx-20 mt-12 h-3/5 overflow-auto">
+    <div id="transaction" class="pb-2">
+        <p class="font-semibold text-sm text-gray-400">Le 1 janvier 2022</p>
+        <div class="flex flex-row">
+            <div class="w-2/4">
+                <div class="w-full">
+                    <div class="flex flex-row">
+                        <img class="w-12" src="{% static 'logo.ico' %}"/>
+                        <div class="flex flex-col">
+                            <label class="font-semibold">Reçu BTC</label>
+                            <label class="font-semibold text-sm text-gray-400">De user 1</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-2/4 text-right flex flex-col">
+                <label class="font-semibold">0,002 BTC</label>
+                <label class="font-semibold text-sm text-gray-400">304 euros</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a
+    href="{% url 'login' %}"
+    type="button"
+    class="shadow-xl float-right mr-8 uppercase bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+>
+	Exporter en CSV
+</a>
+
+{% endblock %}
