@@ -119,8 +119,10 @@ let price=[];
 let myChart;
 
 const changeGraph = async (el, time) => {
-    document.getElementsByClassName("bg-blue-300")[0]?.classList.remove("bg-blue-300","bg-opacity-50");
-    document.getElementById(el.id).classList.add("bg-blue-300","bg-opacity-50");
+    if(el){
+        document.getElementsByClassName("bg-blue-300")[0]?.classList.remove("bg-blue-300","bg-opacity-50");
+        document.getElementById(el.id).classList.add("bg-blue-300","bg-opacity-50");
+    }
     let currentDate = new Date();
     let tNow = Math.floor(currentDate.getTime()/1000);
     let tChange;
@@ -149,6 +151,9 @@ const changeGraph = async (el, time) => {
             currentDate.setFullYear(currentDate.getFullYear() - 2);
             tChange = Math.floor(currentDate.getTime()/1000);
             break;
+        default:
+            currentDate.setDate(currentDate.getDate() - 10);
+            tChange = Math.floor(currentDate.getTime()/1000);
     }
     const response = await fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${tChange}&to=${tNow}`, {
         headers: {
@@ -163,7 +168,9 @@ const changeGraph = async (el, time) => {
         date[d] = new Date(data.prices[d]["0"]).toISOString().slice(0, 19).replace('T', ' ');
         price[d] = data.prices[d]["1"];
     }
-    myChart.destroy();
+    if(myChart instanceof Chart) {
+        myChart.destroy();
+    }
     chart();
 }
 
@@ -252,6 +259,6 @@ const chart = () => {
     });
 }
 
-chart();
+changeGraph();
 /*test();*/
 
