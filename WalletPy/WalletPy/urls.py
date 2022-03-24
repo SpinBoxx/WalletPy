@@ -30,6 +30,7 @@ urlpatterns = [
     # path('', include('django.contrib.auth.urls')),
     path('dashboard/', views.dashboard, name="dashboard"),
     path('portefeuille/', portefeuille.index, name="wallet"),
+    path('portefeuille/exporter-portefeuille', portefeuille.exportWalletCsv, name="wallet_export_wallet"),
     path('fav/<int:id>/',views.favorite_add, name="favorite_add"),
     path('marche/', market.index, name="market"),
     path('register/', custom_auth.views.register_request, name="register"),
