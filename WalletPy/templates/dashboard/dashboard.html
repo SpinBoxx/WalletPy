@@ -15,8 +15,8 @@
 {% endfor %}
 
 	<div class="py-4 px-8">
-		<p class="font-bold antialiased text-xl">Total montant</p>
-		<p class="text-lg">5673 €</p>
+		<p class="font-bold antialiased text-xl">Total de mon portefeuille</p>
+		<p id="totalAmount" class="text-lg"></p>
 	</div>
 	<canvas id="btcChart" class="w-80"></canvas>
 	<div class="flex text-center text-gray-500 py-4">
@@ -29,7 +29,7 @@
 	</div>
 	<div class="py-4 px-8">
 		<p class="font-bold antialiased text-xl pb-3">Top 3 des mes actifs</p>
-		<div class="flex flex-col gap-4 items-left justify-center bg-white">
+		<div id="isConnectedForAsset" class="flex hidden flex-col gap-4 items-left justify-center bg-white">
 			{% for data in information %}
 			<a href="#" class="w-[30rem]" onclick="toggleModal('modal-id')">
 				<div class="grid grid-cols-6 p-2 gap-y-2">
@@ -83,6 +83,10 @@
 			<div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
 			{% endfor %}
 		</div>
+		<div id="isNotConnectedForAsset" class="flex hidden flex-col gap-4 items-left justify-center bg-white">
+			<p class="text-red-500 font-bold pt-5 text-center text-lg">Aucunes données reçu ...</p>
+		</div>
+		
 		<p class="pt-8 text-gray-400 italic text-sm">Les services liés aux actifs de crypto-monnaie sont fournis par <strong>WalletPY</strong> Europe Limited.</p>
 	</div>
 	
