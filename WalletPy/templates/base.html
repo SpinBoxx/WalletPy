@@ -51,12 +51,11 @@
           </a>
         </li>
         <li id="navbar_icones_marche"
-          class="transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl -6 cursor-pointer my-auto mx-2 sm:mx-4">
+          class=" {% if request.resolver_match.view_name == 'market' %} bg-blue-300 bg-opacity-50 {% endif %} transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl -6 cursor-pointer my-auto mx-2 sm:mx-4">
           <a href="{% url 'market' %}">
             <span>
-              <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000" height="40.000000"
+              <svg class="m-3" width="22" height="22"
                 viewBox="0 0 64.000000 64.000000" preserveAspectRatio="xMidYMid meet">
-
                 <g transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
                   <path d="M33 608 c-41 -46 -36 -151 10 -183 28 -20 76 -19 105 1 21 15 25 15
                     41 0 23 -21 89 -21 113 1 17 15 19 15 36 0 11 -10 35 -17 57 -17 22 0 46 7 57
@@ -80,7 +79,6 @@
                     -29 -43 -89 -43 -38 0 -39 1 -39 35 l0 36 63 -3 c56 -3 62 -5 65 -25z" />
                 </g>
               </svg>
-
             </span>
           </a>
         </li>
@@ -101,7 +99,7 @@
           class="transition-all hover:bg-blue-400 hover:bg-opacity-50 rounded-2xl -6 cursor-pointer my-auto mx-2 sm:mx-4 h-12">
           <a href="{% url 'logout' %}">
             <span>
-              <svg class="m-3" width="26" height="26" viewBox="0 0 26 26" fill="none"
+              <svg class="m-3" width="22" height="22" viewBox="0 0 26 26" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M8.125 21.125H4.875C3.97769 21.125 3.25 20.3973 3.25 19.5V6.5C3.25 5.6027 3.97769 4.875 4.875 4.875H8.125C9.0223 4.875 9.75 4.1473 9.75 3.25C9.75 2.3527 9.02383 1.625 8.125 1.625H4.875C2.18258 1.625 0 3.80758 0 6.5V19.5C0 22.1924 2.18258 24.375 4.875 24.375H8.125C9.0223 24.375 9.75 23.6473 9.75 22.75C9.75 21.8527 9.02383 21.125 8.125 21.125ZM25.5227 11.8523L19.0227 5.35234C18.3874 4.71707 17.3591 4.71809 16.7248 5.35234C16.09 5.98711 16.09 7.01543 16.7248 7.6502L20.4547 11.375H9.75C8.85117 11.375 8.125 12.1012 8.125 13C8.125 13.8988 8.85168 14.625 9.75 14.625H20.4547L16.7284 18.3513C16.0936 18.9861 16.0936 20.0144 16.7284 20.6492C17.3631 21.2839 18.3914 21.2839 19.0262 20.6492L25.5262 14.1492C26.1574 13.5129 26.1574 12.4871 25.5227 11.8523Z"
