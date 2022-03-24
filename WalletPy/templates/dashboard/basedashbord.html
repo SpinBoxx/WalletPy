@@ -12,6 +12,7 @@
 	const transactionETH = document.querySelector('#sendEth');
 	const APIKeyEthScan = "GNFG1NWHVNRTIKARX5MPFEB581CPIDBQZV";
 	const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/56a0386767d54d6a8e04f9c7a6c56fda"));
+	let actualPriceETH = 0 ;
 	
 	const isMetaMaskInstalled = () => {
 		return Boolean(window.ethereum && window.ethereum.isMetaMask);
@@ -41,7 +42,7 @@
 					"date": dateOfTransaction,
 					"nameTo": result[0].ContractName != "" ? result[0].ContractName : history.to == localStorage.getItem('address') ? "me" : history.to,
 					"nameFrom": history.from == localStorage.getItem('address') ? "me" : history.from,
-					"value": `${web3.utils.fromWei(history.value) * 4500}`
+					"value": `${web3.utils.fromWei(history.value) * actualPriceETH.ethereum["{{user.preferred_currency.short_name}}"]}`
 				})
 			}, 500)
 		}
@@ -66,9 +67,10 @@
 				await web3.eth.getBalance(account),
 				'ether'
 		))
-		const requestETH = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd,eur')
-		const actualPrice = await requestETH.json()
-		document.getElementById('totalAmount').innerHTML = `${Math.round(localStorage.getItem('amountAccount') * actualPrice.ethereum.eur * 100) / 100 } €`
+		const requestETH = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies={{user.preferred_currency.short_name}}')
+		console.log("https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies={{user.preferred_currency.short_name}}")
+		actualPriceETH = await requestETH.json()
+		document.getElementById('totalAmount').innerHTML = `${Math.round(localStorage.getItem('amountAccount') * actualPriceETH.ethereum["{{user.preferred_currency.short_name}}"] * 100) / 100 } {{user.preferred_currency.symbol}}`
 	}
 	
 	const init = async () => {
