@@ -1,19 +1,23 @@
 {% extends "base.html" %} {% block content %}
-
-  <div class="flex items-center justify-center min-h-screen py-48">
-    <div class="flex flex-col">
-      <div class="flex flex-col items-center">
-        <div class="text-indigo-600 font-bold text-7xl">404</div>
-        <div class="font-bold text-3xl xl:text-7xl lg:text-6xl md:text-5xl mt-5">Cette page n’existe pas</div>
-        <div class="text-gray-400 font-medium text-sm md:text-xl lg:text-2xl mt-8">La page que vous recherchez est introuvable.</div>
-        <button 
-          type="button" 
-          onClick="location.href='http://127.0.0.1:8000/'" 
-          class="bg-indigo-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8">
-          Accueil
-        </button>
-      </div>
-    </div>
-  </div>
-
+<div class="bg-indigo-900 relative overflow-hidden h-screen">
+	<img src="https://www.tailwind-kit.com/images/landscape/8.svg" class="absolute h-full w-full object-cover"/>
+	<div class="inset-0 bg-black opacity-25 absolute">
+	</div>
+	<div class="container mx-auto px-6 md:px-12 relative z-10 flex items-center py-32 xl:py-40">
+		<div class="w-full font-mono flex flex-col items-center relative z-10">
+			<h1 class="font-extrabold text-5xl text-center text-white leading-tight mt-4">
+				You&#x27;re alone here
+			</h1>
+			<p class="font-extrabold text-8xl my-44 text-white animate-bounce">
+				404
+			</p>
+			<button
+					type="button"
+					onClick="location.href='http://127.0.0.1:8000/'"
+					class="bg-indigo-800 hover:bg-indigo-700 text-white rounded-full font-bold py-2 px-4 rounded mt-8">
+				Go back
+			</button>
+		</div>
+	</div>
+</div>
 {% endblock %}
