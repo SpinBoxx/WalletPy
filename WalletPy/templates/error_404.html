@@ -1,17 +1,15 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} {% block content %} {% load i18n %}
 
   <div class="flex items-center justify-center min-h-screen py-48">
     <div class="flex flex-col">
       <div class="flex flex-col items-center">
-        <div class="text-indigo-600 font-bold text-7xl">404</div>
-        <div class="font-bold text-3xl xl:text-7xl lg:text-6xl md:text-5xl mt-5">Cette page n’existe pas</div>
-        <div class="text-gray-400 font-medium text-sm md:text-xl lg:text-2xl mt-8">La page que vous recherchez est introuvable.</div>
+        <span class="text-indigo-600 font-bold text-7xl">404</span>
+        <p class="font-bold text-3xl xl:text-7xl lg:text-6xl md:text-5xl mt-5">{% blocktranslate %}Cette page n’existe pas{% endblocktranslate %}</div>
+        <p class="text-gray-400 font-medium text-sm md:text-xl lg:text-2xl mt-8">{% blocktranslate %}La page que vous recherchez est introuvable.{% endblocktranslate %}</p>
         <button 
           type="button" 
           onClick="location.href='http://127.0.0.1:8000/'" 
-          class="bg-indigo-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8">
-          Accueil
-        </button>
+          class="bg-indigo-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8">{% translate "Accueil" %}</button>
       </div>
     </div>
   </div>
