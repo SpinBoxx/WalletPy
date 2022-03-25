@@ -114,7 +114,7 @@ const balances = async (accounts) => {
      });
     return amountOnAccounts;
 };
-const metamaskConnectt = async () =>{
+const metamaskConnect = async () =>{
     if (typeof window.ethereum !== 'undefined') {
         const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
         return await balances(accounts);
