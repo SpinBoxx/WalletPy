@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://walletpy.cleverapps.io/',"https://{}.cleverapps.io/".format(os.environ.get('APP_ID')), "https://{}.cleverapps.io/".format(os.environ.get('CC_APP_NAME'))]
+CSRF_TRUSTED_ORIGINS = ['https://walletpy.cleverapps.io/',"https://{}.cleverapps.io/".format(os.environ.get('APP_ID')), "https://{}.cleverapps.io/".format(os.environ.get('CC_APP_NAME')),"*"]
 
 
 ROOT_URLCONF = 'WalletPy.urls'
