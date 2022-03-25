@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-25 08:08+0100\n"
+"POT-Creation-Date: 2022-03-25 09:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,19 @@ msgstr ""
 #: .\WalletPy\settings.py:128
 msgid "English"
 msgstr ""
+
+#: .\components\market\marche.html:7
+msgid "Marché"
+msgstr "Market"
+
+#: .\components\market\marche.html:23 .\components\market\marche.html:28
+#: .\templates\dashboard\informModule.html:83
+msgid "Mes favoris"
+msgstr "My favorites"
+
+#: .\components\market\marche.html:24 .\components\market\marche.html:66
+msgid "Toutes les crypto-monnaies"
+msgstr "All crypto-currencies"
 
 #: .\custom_auth\admin.py:15
 msgid "Personal info"
@@ -55,32 +68,101 @@ msgid "Mes informations"
 msgstr "My information"
 
 #: .\templates\account.html:43
-#, fuzzy
-#| msgid "Mot de passe :"
 msgid "Mot de passe"
 msgstr "Password"
 
 #: .\templates\account.html:45
-#, fuzzy
-#| msgid "Nouveau mot de passe :"
 msgid "Nouveau mot de passe"
 msgstr "New password"
 
 #: .\templates\account.html:48
-#, fuzzy
-#| msgid "Confirmer mot de passe :"
 msgid "Confirmer mot de passe"
 msgstr "Confirm password"
 
 #: .\templates\account.html:52
-#, fuzzy
-#| msgid "Monnaie conversion :"
 msgid "Monnaie conversion"
 msgstr "Currency conversion"
 
-#: .\templates\account.html:65
+#: .\templates\account.html:62
 msgid "Confirmer"
 msgstr "Validate"
+
+#: .\templates\dashboard\dashboard.html:18
+msgid "Total montant"
+msgstr "Total amount"
+
+#: .\templates\dashboard\dashboard.html:31
+msgid "Top 3 de mes actifs"
+msgstr "Top 3 of my assets"
+
+#: .\templates\dashboard\dashboard.html:86
+msgid "Les services liés aux actifs de crypto-monnaie sont fournis par "
+msgstr "Services related to crypto-currency assets are provided by "
+
+#: .\templates\dashboard\informModule.html:26
+msgid "Description"
+msgstr "Details"
+
+#: .\templates\dashboard\informModule.html:33
+msgid "Limite infini de retrait"
+msgstr "Infinite shrinkage limit"
+
+#: .\templates\dashboard\informModule.html:34
+#, fuzzy
+#| msgid ""
+#| "Déposer et retirer en toute sécurité avec WalletPY en ayant aucune "
+#| "contrainte de limite."
+msgid ""
+"Déposer et retirer en toute sécurité avec WalletPY en n'ayant aucune "
+"contrainte de limite."
+msgstr "Deposit and withdraw safely with WalletPY with no limit constraints."
+
+#: .\templates\dashboard\informModule.html:115
+#: .\templates\registration\login.html:11
+msgid "Connectez-vous"
+msgstr "Sign in"
+
+#: .\templates\dashboard\informModule.html:115
+#, fuzzy
+#| msgid "pour accèder à vos favoris"
+msgid "pour accéder à vos favoris"
+msgstr "to access your favourites"
+
+#: .\templates\dashboard\informModule.html:122
+msgid "Mon historique des transactions"
+msgstr "My transaction history"
+
+#: .\templates\dashboard\informModule.html:140
+msgid "Envoie vers userX"
+msgstr "Send to userX"
+
+#: .\templates\dashboard\informModule.html:162
+msgid "Reçu de User Y"
+msgstr "Received from User Y"
+
+#: .\templates\dashboard\transaction.html:4
+msgid "Créer une transaction"
+msgstr "Create a transaction"
+
+#: .\templates\dashboard\transaction.html:6
+msgid "De"
+msgstr "From"
+
+#: .\templates\dashboard\transaction.html:19
+msgid "Á"
+msgstr "To"
+
+#: .\templates\dashboard\transaction.html:28
+msgid "Envoyer"
+msgstr "Send"
+
+#: .\templates\dashboard\transaction.html:35
+msgid "Fondation"
+msgstr "Foundation"
+
+#: .\templates\dashboard\transaction.html:37
+msgid "WalletPY est une société privée dont les fondateurs sont :"
+msgstr "WalletPY is a private company whose founders are :"
 
 #: .\templates\error_404.html:7
 msgid "Cette page n’existe pas"
@@ -114,9 +196,38 @@ msgstr "Login"
 msgid "Créer un compte"
 msgstr "Create an account"
 
-#: .\templates\registration\login.html:11
-msgid "Connectez-vous"
-msgstr "Sign in"
+#: .\templates\portefeuille\detailTransaction.html:5
+msgid "Ma feuille de compte"
+msgstr "My account sheet"
+
+#: .\templates\portefeuille\detailTransaction.html:10
+msgid "Argent reçu mensuel"
+msgstr "Money received monthly"
+
+#: .\templates\portefeuille\detailTransaction.html:14
+msgid "Argent retiré mensuel"
+msgstr "Money withdrawn monthly"
+
+#: .\templates\portefeuille\detailTransaction.html:47
+#: .\templates\portefeuille\wallet.html:56
+msgid "Exporter en CSV"
+msgstr "Export to CSV"
+
+#: .\templates\portefeuille\wallet.html:4
+msgid "Mon portefeuille"
+msgstr "My wallet"
+
+#: .\templates\portefeuille\wallet.html:6
+msgid "Total balance"
+msgstr ""
+
+#: .\templates\portefeuille\wallet.html:14
+msgid "P&L Aujourd'hui"
+msgstr "P&L Today"
+
+#: .\templates\portefeuille\wallet.html:16
+msgid "P&L Mensuel"
+msgstr "P&L Monthly"
 
 #: .\templates\registration\login.html:36
 msgid "Mot de passe oublié ?"

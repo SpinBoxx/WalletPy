@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% load i18n %}
 {% block content %}
 
 <!-- error with selected dates  -->
@@ -15,7 +15,7 @@
 {% endfor %}
 
 	<div class="py-4 px-8">
-		<p class="font-bold antialiased text-xl">Total montant</p>
+		<p class="font-bold antialiased text-xl">{% translate "Total montant" %}</p>
 		<p class="text-lg">5673 €</p>
 	</div>
 	<canvas id="btcChart" class="w-80"></canvas>
@@ -28,7 +28,7 @@
 		<a class="flex-1 w-fit"><span id="tAnnee" onclick="changeGraph(this, '2Y')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">2Y</span></a>
 	</div>
 	<div class="py-4 px-8">
-		<p class="font-bold antialiased text-xl pb-3">Top 3 des mes actifs</p>
+		<p class="font-bold antialiased text-xl pb-3">{% translate "Top 3 de mes actifs" %}</p>
 		<div class="flex flex-col gap-4 items-left justify-center bg-white">
 			{% for data in information %}
 			<a href="#" class="w-[30rem]" onclick="toggleModal('modal-id')">
@@ -83,7 +83,7 @@
 			<div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
 			{% endfor %}
 		</div>
-		<p class="pt-8 text-gray-400 italic text-sm">Les services liés aux actifs de crypto-monnaie sont fournis par <strong>WalletPY</strong> Europe Limited.</p>
+		<p class="pt-8 text-gray-400 italic text-sm">{% blocktranslate %}Les services liés aux actifs de crypto-monnaie sont fournis par {% endblocktranslate %}<strong>WalletPY</strong> Europe Limited.</p>
 	</div>
 	
 <script src="/static/js/chart.js"></script>
