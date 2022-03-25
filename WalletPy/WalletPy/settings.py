@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-k0ju6qo#0ow_y6@vd8km#n_l#(+hduoqiikm@r805pw=u4=^7l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG_MODE')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',os.environ.get('ALLOWED_HOST'),"*"]
 
 # Application definition
 
@@ -53,6 +53,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CSRF_TRUSTED_ORIGINS = ["https://*.cleverapps.io"]
+
 
 ROOT_URLCONF = 'WalletPy.urls'
 
@@ -81,13 +84,23 @@ WSGI_APPLICATION = 'WalletPy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': str(BASE_DIR / "db.sqlite3"),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR / "db.sqlite3"),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('MYSQL_DATABASE'),
+        'USER': os.environ.get('MYSQL_ROOT_USER'),
+        'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD'),
+        'HOST': os.environ.get('MYSQL_HOST'),
+        'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
