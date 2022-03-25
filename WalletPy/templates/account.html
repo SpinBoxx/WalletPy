@@ -19,10 +19,10 @@
             {% get_available_languages as LANGUAGES %}
             {% get_language_info_list for LANGUAGES as languages %}
             {% for language in languages %}
-            {% if LANGUAGE_CODE != language.code %}
-            <input type="hidden" name="language" value="{{ language.code }}">
+                {% if LANGUAGE_CODE != language.code %}
+                    <input type="hidden" name="language" value="{{ language.code }}">
                     <input type="submit" value="{{ language.name_local }} ({{ language.code }})" class="bg-white text-sm cursor-pointer mr-2 text-indigo-600">
-                    {% endif %}
+                {% endif %}
             {% endfor %}
         </form>
         <form name="updateUser" action="update/" method="POST">
@@ -68,6 +68,7 @@
 <script>
     var password = document.getElementById("id_new_password");
     var confirm_password = document.getElementById("id_confirm_password");
+    var validatePassword;
     function validate() {
         if (password.value != confirm_password.value) {
             confirm_password.setCustomValidity("Mot de passe pas identique");
