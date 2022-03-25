@@ -16,27 +16,6 @@
     </div>
 </div>
 
-<div class="mx-20 mt-12 h-3/5 overflow-auto">
-    <div id="transaction" class="pb-2">
-        <p class="font-semibold text-sm text-gray-400">Le 1 janvier 2022</p>
-        <div class="flex flex-row">
-            <div class="w-2/4">
-                <div class="w-full">
-                    <div class="flex flex-row">
-                        <img class="w-12" src="{% static 'logo.ico' %}"/>
-                        <div class="flex flex-col">
-                            <label class="font-semibold">Reçu BTC</label>
-                            <label class="font-semibold text-sm text-gray-400">De user 1</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-2/4 text-right flex flex-col">
-                <label class="font-semibold">0,002 BTC</label>
-                <label class="font-semibold text-sm text-gray-400">304 euros</label>
-            </div>
-        </div>
-    </div>
-</div>
+{% include "historique.html" %}
 
 {% endblock %}

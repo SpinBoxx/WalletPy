@@ -144,4 +144,3 @@ const coinChart = (date, price) => {
         }
     });
 }
-

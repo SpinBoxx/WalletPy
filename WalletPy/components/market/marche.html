@@ -73,6 +73,7 @@
     </div>
   </div>
   <script type="text/javascript">
+    //Fonction qui permet l'animation des badges (ex : mes favoris, toutes les crypto) dans la card de gauche au clique
     function selectBadge(thiss){
       var badges = document.getElementsByClassName('badge')
       for(var i = 0; i < badges.length; i++){
@@ -90,11 +91,11 @@
 
     const source = document.getElementById('search-input');
 
+    //Fonction qui permet d'effectuer un filtre dynamique parmi toutes les cryptos existantes
     const inputHandler = function(e) {
       let searchedCrypto;
       let allCryptos = document.getElementsByClassName('all_crypto');
       if(e.target.value.length >= 2){
-
         for(var i = 0; i < allCryptos.length; i++){
           if(!allCryptos[i].id.includes(e.target.value)){
               allCryptos[i].classList.add('hidden')
@@ -112,7 +113,5 @@
       }
     }
     source.addEventListener('input', inputHandler);
-
-
   </script>
 {% endblock content %}
