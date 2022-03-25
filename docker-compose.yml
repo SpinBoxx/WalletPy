@@ -14,7 +14,7 @@ services:
       - "3306:3306"
   web:
     build: .
-    command: python WalletPy/manage.py runserver 0.0.0.0:8000
+    command: bash -c "python WalletPy/manage.py migrate coin && python WalletPy/manage.py migrate && python WalletPy/manage.py runserver 0.0.0.0:8000"
     environment:
       - MYSQL_ROOT_PASSWORD=mariadb
       - MYSQL_DATABASE=mariadb
@@ -23,7 +23,7 @@ services:
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "8080:8000"
     depends_on:
       - db
 
