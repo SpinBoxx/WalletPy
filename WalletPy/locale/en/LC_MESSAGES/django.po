@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-25 09:29+0100\n"
+"POT-Creation-Date: 2022-03-25 11:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,27 +63,31 @@ msgstr ""
 msgid "Mon compte"
 msgstr "My account"
 
-#: .\templates\account.html:33
+#: .\templates\account.html:17
+msgid "Passer en "
+msgstr "Switch to "
+
+#: .\templates\account.html:44
 msgid "Mes informations"
 msgstr "My information"
 
-#: .\templates\account.html:43
+#: .\templates\account.html:54
 msgid "Mot de passe"
 msgstr "Password"
 
-#: .\templates\account.html:45
+#: .\templates\account.html:56
 msgid "Nouveau mot de passe"
 msgstr "New password"
 
-#: .\templates\account.html:48
+#: .\templates\account.html:59
 msgid "Confirmer mot de passe"
 msgstr "Confirm password"
 
-#: .\templates\account.html:52
+#: .\templates\account.html:63
 msgid "Monnaie conversion"
 msgstr "Currency conversion"
 
-#: .\templates\account.html:62
+#: .\templates\account.html:73
 msgid "Confirmer"
 msgstr "Validate"
 
@@ -108,10 +112,6 @@ msgid "Limite infini de retrait"
 msgstr "Infinite shrinkage limit"
 
 #: .\templates\dashboard\informModule.html:34
-#, fuzzy
-#| msgid ""
-#| "Déposer et retirer en toute sécurité avec WalletPY en ayant aucune "
-#| "contrainte de limite."
 msgid ""
 "Déposer et retirer en toute sécurité avec WalletPY en n'ayant aucune "
 "contrainte de limite."
