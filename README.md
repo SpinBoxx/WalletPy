@@ -1,4 +1,4 @@
-`![logo WalletPY](./WalletPy/static/logo.ico)`
+![logo WalletPY](./WalletPy/static/logo.ico)
 
 # WalletPy
 
