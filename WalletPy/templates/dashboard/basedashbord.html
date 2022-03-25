@@ -38,6 +38,7 @@
 				const sendToCheckNameAddress = await fetch(`https://api.etherscan.io/api?module=contract&action=getsourcecode&address=${history.to}&apikey=${APIKeyEthScan}`);
 				const dateOfTransaction = new Date(history.timeStamp * 1000).toISOString().slice(0, 19).replace('T', ' ');
 				const {result} = await sendToCheckNameAddress.json();
+				console.log(actualPriceETH)
 				displayedHistoryHTML({
 					"date": dateOfTransaction,
 					"nameTo": result[0].ContractName != "" ? result[0].ContractName : history.to == localStorage.getItem('address') ? "me" : history.to,
@@ -70,6 +71,8 @@
 		const requestETH = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies={{user.preferred_currency.short_name}}')
 		console.log("https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies={{user.preferred_currency.short_name}}")
 		actualPriceETH = await requestETH.json()
+		console.log(actualPriceETH)
+		console.log("test")
 		document.getElementById('totalAmount').innerHTML = `${Math.round(localStorage.getItem('amountAccount') * actualPriceETH.ethereum["{{user.preferred_currency.short_name}}"] * 100) / 100 } {{user.preferred_currency.symbol}}`
 	}
 
