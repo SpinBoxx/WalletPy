@@ -1,7 +1,7 @@
-{% load static %} {% load custom_filter %} {% block content %}
 
+{% load static %} {% load custom_filter %} {% block content %} {% load i18n %}
 
-<div  class="flow-root h-full relative">
+<div class="flow-root h-full relative">
 	<!-- Div toggled on click on "+" -->
 	<div id="cover" class="w-full absolute z-50 bg-white">
 		<p id="coinName" class="text-xl font-extrabold p-5"></p>
@@ -25,17 +25,15 @@
 			<a class="flex-1 w-fit"><span id="tAnneeC" onclick="loadCoinGraph(this, '2Y')"
 			                              class="hover:bg-green-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">2Y</span></a>
 		</div>
-		<span class="text-xl font-extrabold p-5 mb-2">Description</span>
+		<span class="text-xl font-extrabold p-5 mb-2">{% translate "Description" %}</span>
 		<div class="overflow-y-auto overflow-x-hidden mt-4 h-2/5 ">
 			<p id="coinDesc" class=" p-4 text-justify text-sm h-full"></p>
 		</div>
 	</div>
 	<div class="w-full mb-2 bg-white rounded overflow-hidden shadow-lg">
 		<div class="px-6 py-4">
-			<div class="font-bold text-xl mb-2">Limite infini de retrait</div>
-			<p class="text-gray-700 text-base">
-				Déposer et retirer en toute sécurité avec WalletPY en ayant aucune contrainte de limite.
-			</p>
+			<div class="font-bold text-xl mb-2">{% translate "Limite infini de retrait" %}</div>
+			<p class="text-gray-700 text-base">{% blocktranslate %}Déposer et retirer en toute sécurité avec WalletPY en n'ayant aucune contrainte de limite.{% endblocktranslate %}</p>
 		</div>
 	</div>
 	<div class="w-full mb-2 bg-white px-6 py-4 rounded overflow-hidden shadow-lg">
@@ -84,7 +82,7 @@
 	</div>
 	<div class="w-full bg-white rounded overflow-hidden shadow-lg">
 		<div class="px-6 py-4">
-			<div class="font-bold text-xl mb-2">Mes favoris</div>
+			<div class="font-bold text-xl mb-2">{% translate "Mes favoris" %}</div>
 			<div class="flex overflow-x-auto">
 				{% if user.is_authenticated %}
 				{% for favorite in user.favorite_coins.all %}
@@ -116,13 +114,12 @@
 				</div>
 				{% endwith %} {% endfor %}
 				{% else %}
-				<a class="font-bold text-indigo-500" href="{% url 'login' %}">Connectez-vous</a> pour accèder à vos
-				favoris
+				<a class="font-bold text-indigo-500" href="{% url 'login' %}">{% translate "Connectez-vous" %}</a> {% blocktranslate %}pour accéder à vos favoris{% endblocktranslate %}
 				{% endif %}
 			</div>
 		</div>
 	</div>
-
+	
 {% include "historique.html" %}
 
 </div>
