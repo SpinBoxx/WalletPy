@@ -30,65 +30,46 @@
 	<div class="py-4 px-8">
 		<p class="font-bold antialiased text-xl pb-3">{% translate "Top 3 de mes actifs" %}</p>
 		<div id="isConnectedForAsset" class="flex hidden flex-col gap-4 items-left justify-center bg-white">
-			{% for data in information %}
-			<a href="#" class="w-[30rem]" onclick="toggleModal('modal-id')">
-				<div class="grid grid-cols-6 p-2 gap-y-2">
-					<div>
-						<img src="{{data.imgUrl}}" class="max-w-16 max-h-16 rounded-full" />
-					</div>
-					<div class="col-span-5 md:col-span-4 ml-4">
-						<p class="text-sky-500 font-bold text-xs">{{data.concurrency}}</p>
-						<p class="text-gray-600 font-bold"> {{data.name}}</p>
-						<p class="text-gray-400"> {{data.amount}} € </p>
-					</div>
+
+			<div class="flex bg-white rounded-md shadow-lg py-4">
+				<div class="flex align-center">
+					<img class="w-10 h-10 ml-1 mt-1" src="https://cryptonaute.fr/wp-content/uploads/2020/06/ethereum-logo.png" alt="btc icon"/>
 				</div>
-			</a>
-			<div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
-				<div class="relative w-auto my-6 mx-auto max-w-3xl">
-					<!--content-->
-					<div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-						<!--header-->
-						<div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-							<h3 class="text-3xl font-semibold">
-								{{data.name}}
-							</h3>
-							<button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="toggleModal('modal-id')">
-          <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-            ×
-          </span>
-							</button>
-						</div>
-						<!--body-->
-						<div class="relative p-6 flex-auto">
-							<p class="my-4 text-blueGray-500 text-lg leading-relaxed">
-								I always felt like I could do anything. That’s the main
-								thing people are controlled by! Thoughts- their perception
-								of themselves! They're slowed down by their perception of
-								themselves. If you're taught you can’t do anything, you
-								won’t do anything. I was taught I could do everything.
-							</p>
-						</div>
-						<!--footer-->
-						<div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-							<button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">
-								Close
-							</button>
-							<button class="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">
-								Save Changes
-							</button>
-						</div>
+				<div class="flex justify-around w-full">
+					<div class="flex flex-col">
+						<span class="font-bold" >Ethereum</span>
+						<span class="text-gray-500">ETH</span>
+					</div>
+					<div class="flex flex-col">
+						<span id="total_balance" class="total_balance font-bold"></span>
+						<span id="total_balance_currency" class="text-gray-500"></span>
 					</div>
 				</div>
 			</div>
-			<div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
-			{% endfor %}
+
 		</div>
 		<div id="isNotConnectedForAsset" class="flex hidden flex-col gap-4 items-left justify-center bg-white">
 			<p class="text-red-500 font-bold pt-5 text-center text-lg">Aucunes données reçu ...</p>
 		</div>
 		<p class="pt-8 text-gray-400 italic text-sm">{% blocktranslate %}Les services liés aux actifs de crypto-monnaie sont fournis par {% endblocktranslate %}<strong>WalletPY</strong> Europe Limited.</p>
 	</div>
-	
+
+<script type="text/javascript">
+
+	const loadBalances = async () => {
+		var total_balance = document.getElementsByClassName('total_balance')
+		for(var i = 0; i < total_balance.length; i++){
+			total_balance[i].innerHTML = localStorage.getItem('amountAccount').slice(0,6) + " ETH"
+		}
+
+		const preferedFiat = localStorage.getItem('preferred_currency');
+		const getEthPriceInUserCurrency = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies='+ preferedFiat)
+		const actualPriceETH = await getEthPriceInUserCurrency.json()
+		console.log(actualPriceETH)
+		document.getElementById('total_balance_currency').innerHTML =  (Math.round(localStorage.getItem('amountAccount') * actualPriceETH.ethereum[("" + preferedFiat + "").toLowerCase()] * 100) / 100) + " ".concat(' ',(preferedFiat == "USD") ? "$" : "€")
+	}
+	loadBalances();
+</script>
 <script src="/static/js/chart.js"></script>
 
 
