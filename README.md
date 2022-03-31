@@ -57,3 +57,10 @@ Ensuite se rendre sur http://localhost:8080  <br />
 
 **Pas de superuser par defaut**
 Pour en créer lancer `python manage.py createsuperuser` et suivre les instructions
+
+## Test
+
+ - ### Pour pouvoir executer des tests il faut se rendre dans Walletpy/walletpy
+
+ - ### Des tests sont disponibles dans le fichier (et executable avec la commande) :
+    - custom_auth ( python ./manage.py test custom_auth )
