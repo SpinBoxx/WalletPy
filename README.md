@@ -11,9 +11,9 @@ L'application est disponible à cette URL : https://walletpy.cleverapps.io/
 ## Administration
 
 Compte par defaut admin :
-admin@admin.fr
-admin
-URL : https://walletpy.cleverapps.io/admin
+- admin@admin.fr
+- admin
+- URL : https://walletpy.cleverapps.io/admin
 
 ### Coin
 
@@ -36,7 +36,7 @@ name: american dollar, euro...
 
 ### Pour lancer le projet via docker-compose.
 
-La branche `feature/mariadb_docker_integration/WalletPy` possède un Dockerfile et un docker-compose.yml, c'est la seule branche disponible pour utiliser docker (pas merge dans main)
+La branche `feature/mariadb_docker_integration` possède un Dockerfile et un docker-compose.yml, c'est la seule branche disponible pour utiliser docker (pas merge dans main)
 
 Se positionner dans le dossier parent du projet et lancer la commande :
 `docker-compose up`
