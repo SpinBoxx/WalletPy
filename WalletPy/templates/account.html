@@ -1,85 +1,95 @@
-{% extends "base.html" %} {% block content %} {% load static %} {% load i18n %}
+{% extends "base.html" %}
+{% block title %}Mon profil
+{% endblock %}
+{% block meta %}
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+	<meta name="description" content="Aperçu de votre profil">
+{% endblock %}
+{% block content %}
+	{% load static %}
+	{% load i18n %}
+	<div class="block h-full">
+		<h1 class="text-3xl font-bold py-5 pl-10">{% translate "Mon compte" %}</h1>
+		<div class="max-w-2xl my-12 mx-auto">
+			<div class="w-full">
+				<div class="w-full bg-blue-400 h-24 shadow-xl rounded-t-lg"></div>
+				<div class="absolute -mt-20 ml-10">
+					<img class="w-28 mt-5" src="{% static 'logo.ico' %}"/>
+				</div>
+				<div class="absolute ml-40 flex flex-row">
+					<label class="font-bold text-lg">{{user.username}}</label>
+				</div>
+			</div>
+			<form action="{% url 'set_language' %}" method="post" class="float-right w-fit">{% csrf_token %}
+				<input name="next" type="hidden" value="{{ redirect_to }}">
+				<label class="text-sm">{% translate "Passer en " %}</label>
+				{% get_current_language as LANGUAGE_CODE %}
+				{% get_available_languages as LANGUAGES %}
+				{% get_language_info_list for LANGUAGES as languages %}
+				{% for language in languages %}
+					{% if LANGUAGE_CODE != language.code %}
+						<input type="hidden" name="language" value="{{ language.code }}">
+						<input type="submit" value="{{ language.name_local }} ({{ language.code }})" class="bg-white text-sm cursor-pointer mr-2 text-indigo-600">
+					{% endif %}
+				{% endfor %}
+			</form>
+			<form name="updateUser" action="update/" method="POST">
+				{% csrf_token %}
+				<div class="bg-primary bg-white border border-primary shadow-xl rounded-b-lg p-5 pt-20">
+					<div class="bg-primary border border-primary rounded p-2 text-center">
+						<label class="font-bold">{% translate "Mes informations" %}</label>
+						<div class="flex flex-col pt-4 pb-2">
+							<div class="flex flex-col lg:flex-row mx-auto lg:mx-0">
+								<label class="font-bold mb-2 lg:mb-0 lg:mr-2 leading-10">Pseudo :</label>
+								<input type="text" id="id_username" name="username" maxlength="20" placeholder="{{user.username}}" class="text-sm sm:text-base relative w-52 border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-2">
+							</div>
+							<label class="text-left py-5 text-center lg:text-left">
+								<strong>Email :
+								</strong>
+								{{user.email}}</label>
+							<div id="password" class="flex flex-col lg:flex-row mx-auto lg:mx-0">
+								<label class="font-bold leading-10">{% translate "Mot de passe" %}
+									:</label>
+								<input type="password" id="id_new_password" name="new_password" placeholder="{% translate "Nouveau mot de passe" %}" class="lg:mx-2 border border-gray-300 w-52 px-4 py-2 rounded-md text-md text-gray-700 outline-none">
+								<input type="password" id="id_confirm_password" name="confirm_password" placeholder="{% translate "Confirmer mot de passe" %}" class="border border-gray-300 w-52 px-4 py-2 rounded-md text-md text-gray-700 outline-none">
+							</div>
+							<div class="flex flex-col lg:flex-row mx-auto lg:mx-0">
+								<label class="text-left py-5 text-center lg:text-left">
+									<strong>{% translate "Monnaie conversion" %}
+										:</strong>
+								</label>
+								<select name="pref_fiat" class="lg:mx-2 border border-gray-300 bg-white p-2 w-52 lg:m-4 rounded-md text-md text-gray-700 outline-none" aria-label="Default select example">
+									{% for fiat in available_fiat %}
+										<option {% if fiat.short_name == user.preferred_currency.short_name %} selected {% endif %} value="{{fiat.id}}">{{fiat.short_name|upper}}
+											({{fiat.symbol}})</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+						<button type="submit" onclick="validate()" value="submit" class="mt-3 bg-indigo-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{% translate "Confirmer" %}</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 
-<div class="block h-full">
-    <h1 class="text-3xl font-bold py-5 pl-10">{% translate "Mon compte" %}</h1>
-    <div class="max-w-2xl my-12 mx-auto">
-        <div class="w-full">
-            <div class="w-full bg-blue-400 h-24 shadow-xl rounded-t-lg"></div>
-            <div class="absolute -mt-20 ml-10">
-                <img class="w-28 mt-5" src="{% static 'logo.ico' %}" />
-            </div>
-            <div class="absolute ml-40 flex flex-row">
-                <label class="font-bold text-lg">{{user.username}}</label>
-            </div>
-        </div>
-        <form action="{% url 'set_language' %}" method="post" class="float-right w-fit">{% csrf_token %}
-            <input name="next" type="hidden" value="{{ redirect_to }}">
-            <label class="text-sm">{% translate "Passer en " %}</label>
-            {% get_current_language as LANGUAGE_CODE %}
-            {% get_available_languages as LANGUAGES %}
-            {% get_language_info_list for LANGUAGES as languages %}
-            {% for language in languages %}
-                {% if LANGUAGE_CODE != language.code %}
-                    <input type="hidden" name="language" value="{{ language.code }}">
-                    <input type="submit" value="{{ language.name_local }} ({{ language.code }})" class="bg-white text-sm cursor-pointer mr-2 text-indigo-600">
-                {% endif %}
-            {% endfor %}
-        </form>
-        <form name="updateUser" action="update/" method="POST">
-            {% csrf_token %}
-            <div class="bg-primary bg-white border border-primary shadow-xl rounded-b-lg p-5 pt-20">
-                <div class="bg-primary border border-primary rounded p-2 text-center">
-                    <label class="font-bold">{% translate "Mes informations" %}</label>
-                    <div class="flex flex-col pt-4 pb-2">
-                        <div class="flex flex-col lg:flex-row mx-auto lg:mx-0">
-                            <label class="font-bold mb-2 lg:mb-0 lg:mr-2 leading-10">Pseudo :</label>
-                            <input type="text" id="id_username" name="username" maxlength="20"
-                                placeholder="{{user.username}}"
-                                class="text-sm sm:text-base relative w-52 border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-2">
-                        </div>
-                        <label class="text-left py-5 text-center lg:text-left"><strong>Email : </strong>{{user.email}}</label>
-                        <div id="password" class="flex flex-col lg:flex-row mx-auto lg:mx-0">
-                            <label class="font-bold leading-10">{% translate "Mot de passe" %} :</label>
-                            <input type="password" id="id_new_password" name="new_password"
-                                placeholder="{% translate "Nouveau mot de passe" %}"
-                                class="lg:mx-2 border border-gray-300 w-52 px-4 py-2 rounded-md text-md text-gray-700 outline-none">
-                            <input type="password" id="id_confirm_password" name="confirm_password"
-                                placeholder="{% translate "Confirmer mot de passe" %}"
-                                class="border border-gray-300 w-52 px-4 py-2 rounded-md text-md text-gray-700 outline-none">
-                        </div>
-                        <div class="flex flex-col lg:flex-row mx-auto lg:mx-0">
-                            <label class="text-left py-5 text-center lg:text-left"><strong>{% translate "Monnaie conversion" %} :</strong></label>
-                            <select name="pref_fiat" class="lg:mx-2 border border-gray-300 bg-white p-2 w-52 lg:m-4 rounded-md text-md text-gray-700 outline-none"
-                                aria-label="Default select example">
-                                {% for fiat in available_fiat %}
-                                    <option {% if fiat.short_name == user.preferred_currency.short_name %} selected {% endif %} value="{{fiat.id}}">{{fiat.short_name|upper}} ({{fiat.symbol}})</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <button type="submit" onClick="validate()" value="submit"
-                        class="mt-3 bg-indigo-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{% translate "Confirmer" %}</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+	<script>
+		var password = document.getElementById("id_new_password");
+var selectPrefFiat = document.getElementById("pref_fiat");
+var value = selectPrefFiat.options[selectPrefFiat.selectedIndex].text.slice(0, 3);
+localStorage.setItem('preferred_currency', value)
 
-<script>
-    var password = document.getElementById("id_new_password");
-    var selectPrefFiat = document.getElementById("pref_fiat");
-    var value = selectPrefFiat.options[selectPrefFiat.selectedIndex].text.slice(0,3);
-    localStorage.setItem('preferred_currency', value)
-    
-    var confirm_password = document.getElementById("id_confirm_password");
-    var validatePassword;
-    function validate() {
-        if (password.value != confirm_password.value) {
-            confirm_password.setCustomValidity("Mot de passe pas identique");
-        } else {
-            confirm_password.setCustomValidity("");
-        }
-    }
-</script>
+var confirm_password = document.getElementById("id_confirm_password");
+var validatePassword;
+function validate() {
+if (password.value != confirm_password.value) {
+confirm_password.setCustomValidity("Mot de passe pas identique");
+} else {
+confirm_password.setCustomValidity("");
+}
+}
+	</script>
 
 {% endblock %}
