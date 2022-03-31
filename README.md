@@ -11,8 +11,8 @@ L'application est disponible à cette URL : https://walletpy.cleverapps.io/
 ## Administration
 
 Compte par defaut admin :
-- admin@admin.fr
-- admin
+- email : admin@admin.fr
+- password : admin
 - URL : https://walletpy.cleverapps.io/admin
 
 ### Coin
