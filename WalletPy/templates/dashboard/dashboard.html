@@ -15,7 +15,7 @@
 {% endfor %}
 
 	<div class="py-4 px-8">
-		<p class="font-bold antialiased text-xl">Total de mon portefeuille</p>
+		<p class="font-bold antialiased text-xl">{% translate "Total de mon portefeuille" %}</p>
 		<p id="totalAmount" class="text-lg"></p>
 	</div>
 	<canvas id="btcChart" class="w-80"></canvas>
@@ -71,10 +71,10 @@
 						<!--footer-->
 						<div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
 							<button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">
-								Close
+								{% translate "Fermer" %}
 							</button>
 							<button class="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">
-								Save Changes
+								{% translate "Sauvegarder" %}
 							</button>
 						</div>
 					</div>
@@ -84,7 +84,7 @@
 			{% endfor %}
 		</div>
 		<div id="isNotConnectedForAsset" class="flex hidden flex-col gap-4 items-left justify-center bg-white">
-			<p class="text-red-500 font-bold pt-5 text-center text-lg">Aucunes données reçu ...</p>
+			<p class="text-red-500 font-bold pt-5 text-center text-lg">{% translate "Aucunes données reçu ..." %}</p>
 		</div>
 		<p class="pt-8 text-gray-400 italic text-sm">{% blocktranslate %}Les services liés aux actifs de crypto-monnaie sont fournis par {% endblocktranslate %}<strong>WalletPY</strong> Europe Limited.</p>
 	</div>
