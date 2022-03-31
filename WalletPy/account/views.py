@@ -4,15 +4,18 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.password_validation import UserAttributeSimilarityValidator, MinimumLengthValidator, CommonPasswordValidator, NumericPasswordValidator
 from django.contrib import messages
 from django.core import serializers
+from django.contrib.auth.decorators import login_required
 
 from coin.models import Fiat
 
+@login_required
 def index(request):
     fiat = Fiat.objects.all()
     user = ''
     context = {"user" : request.user, "available_fiat": fiat}
     return render(request, 'account.html', context)
 
+@login_required
 def update(request):
     context = {}
     if request.method == 'POST':
