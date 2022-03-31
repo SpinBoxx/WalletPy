@@ -44,7 +44,7 @@ const changeGraph = async (el, time) => {
             tChange = Math.floor(currentDate.getTime()/1000);
             break;
     }
-    const response = await fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${tChange}&to=${tNow}`, {
+    const response = await fetch(`https://api.coingecko.com/api/v3/coins/ethereum/market_chart/range?vs_currency=eur&from=${tChange}&to=${tNow}`, {
         headers: {
             ContentType: "application/json"
         }
