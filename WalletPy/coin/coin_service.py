@@ -2,6 +2,7 @@ from pycoingecko import CoinGeckoAPI
 from django.core import serializers
 from coin.models import Coin
 import html
+from django.core.exceptions import ObjectDoesNotExist
 
 cg = CoinGeckoAPI()
 def get_available_coins_dashboard_data(current_user):
@@ -9,7 +10,13 @@ def get_available_coins_dashboard_data(current_user):
     headers = {"Content-type": "application/json"}
     markets = cg.get_coins_markets(current_user.preferred_currency.short_name)
     for coin in markets:
-        local_coin = Coin.objects.get(name=coin["id"])
+        try:
+            local_coin = Coin.objects.get(name=coin["id"])
+        except ObjectDoesNotExist:
+            local_coin = None
+        
+        if not local_coin :
+            continue
         
         data = {
             "internal_id": local_coin.id,
