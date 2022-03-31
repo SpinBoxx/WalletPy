@@ -23,7 +23,7 @@ def get_available_coins_dashboard_data(current_user):
         }
         if current_user.is_authenticated:
             data["is_favorite"]= current_user.favorite_coins.filter(id=local_coin.id).exists()
-        coin_data[coin["id"]] = data
+        coin_data[coin["name"]] = data
     return coin_data
 
 def get_coin_simple_data(name:str):
