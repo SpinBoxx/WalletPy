@@ -4,7 +4,7 @@
 {% for name, coin in coin_data.items %}
 <div id="all_crypto_{{coin.symbol}}" class="bg-white h-20 flex items-center rounded-2xl border shadow-md w-full  all_crypto">
 	<div class="flex px-3">
-		<img class="h-9 w-10 ml-2" src="{{ coin.thumb }}" alt="btc icon"/>
+		<img class="h-9 w-10 ml-2" src="{{ coin.thumb }}" alt="{{ coin.name }} {{ coin.symbol }} icon"/>
 	</div>
 	<div class="w-full flex justify-around items-center">
 		<div class="flex flex-col">

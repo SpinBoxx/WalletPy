@@ -49,7 +49,7 @@
 		<div class="w-full mb-2 bg-white px-6 py-4 rounded overflow-hidden shadow-lg">
 			<div id="h-slider" class="container">
 				{% for name, coin in coin_data.items %}
-					<img class="my-auto mx-0" src="{{ coin.thumb }}" alt="btc icon"/>
+					<img class="my-auto mx-0" src="{{ coin.thumb }}" alt="{{ coin.name }} icon"/>
 					<div class="px-4 flex-shrink-0 w-32 border-dashed border-r-2 mr-4 mb-3 border-grey-600">
 						<div>
 							{% if user.is_authenticated %}
@@ -94,7 +94,7 @@
 						{% for favorite in user.favorite_coins.all %}
 							{% with fav_coin=coin_data|get_item:favorite.name %}
 							{% if fav_coin %}
-								<img class="my-auto mx-0" src="{{ fav_coin.thumb }}" alt="btc icon"/>
+								<img class="my-auto mx-0" src="{{ fav_coin.thumb }}" alt="{{ fav_coin.name }} icon"/>
 								<div class="px-4 flex-shrink-0 border-dashed border-r-2 mr-4 mb-3 border-grey-600 cursor-pointer" onclick='handleToggle("{{fav_coin.name}}")'>
 									<div>
 										<h3 class="font-semibold text-sm text-gray-400">

@@ -13,7 +13,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"/>
       </svg>
   </span>
-      <img id="loader" class="hidden mt-5" src="https://thumbs.gfycat.com/DearWellinformedDalmatian-size_restricted.gif"/>
+      <img id="loader" alt="loader WalletPY" class="hidden mt-5" src="https://thumbs.gfycat.com/DearWellinformedDalmatian-size_restricted.gif"/>
     </div>
     <div id="notConnected" class="hidden bg-white align-center overflow-hidden shadow rounded-lg w-full relative">
       <img src="http://www.crypto-nation.io/cn-files/uploads/2020/10/metamask-logo.png" alt="metamask-logo" class="h-24 w-24 rounded-full absolute opacity-50 -top-6 -right-6 md:-right-4"/>
@@ -34,7 +34,7 @@
 	const APIKeyEthScan2 = "GNFG1NWHVNRTIKARX5MPFEB581CPIDBQZV";
 	const web3_2 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/56a0386767d54d6a8e04f9c7a6c56fda"));
 	let actualPriceETH = 0 ;
- 
+
 	const getAccounts_2 = async () => {
 		return await ethereum.request({method: 'eth_accounts'});
 	}
@@ -93,7 +93,7 @@
 				transaction.remove();
 			}
 		}
-    
+
 		getAccounts_2().then(async (res) => {
 			localStorage.setItem('address', res);
 			await getBalance_2(res[0])
