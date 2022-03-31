@@ -1,9 +1,10 @@
 {% load static %}
 {% load custom_filter %}
 {% block content %}
+{% load i18n %}
 
   <div class="py-4 px-8 h-full">
-    <p class="font-bold antialiased text-xl">Marché</p>
+    <p class="font-bold antialiased text-xl">{% translate "Marché" %}</p>
 
     <div class="mt-10 h-3/4">
       <div id="search_bar" class="">
@@ -19,12 +20,12 @@
 
       <div id="cryptocurrencies" class="h-full">
         <div id="badges" class="mt-6">
-            <span id="badge_my_favorites" onclick="selectBadge(this)" class="badge inline-block bg-blue-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer">Mes favoris</span>
-            <span id="badge_all_crypto" onclick="selectBadge(this)"  class="badge inline-block bg-blue-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer">Toutes les crypto-monnaies</span>
+            <span id="badge_my_favorites" onclick="selectBadge(this)" class="badge inline-block bg-blue-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer">{% translate "Mes favoris" %}</span>
+            <span id="badge_all_crypto" onclick="selectBadge(this)"  class="badge inline-block bg-blue-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 cursor-pointer">{% translate "Toutes les crypto-monnaies" %}</span>
         </div>
         <div id="list_cryptocurrencies" class="mt-5 overflow-y-auto h-full ">
           <div id="followed" class="">
-            <p class="text-gray-500">Mes favoris</p>
+            <p class="text-gray-500">{% translate "Mes favoris" %}</p>
             <div class="container flex flex-wrap mt-2">
               {% for favorite in user.favorite_coins.all %}
               {% with fav_coin=coin_data|get_item:favorite.name %}
@@ -62,7 +63,7 @@
             </div>
           </div>
           <div id="all_crypto" class="">
-            <p class="text-gray-500">Toutes les crypto-monnaies</p>
+            <p class="text-gray-500">{% translate "Toutes les crypto-monnaies" %}</p>
             <div class="container flex flex-wrap mt-2">
               {% include "market/all_crypto.html" %}
             </div>

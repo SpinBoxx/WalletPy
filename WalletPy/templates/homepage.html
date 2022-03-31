@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block content %} {% load static %}
+{% extends "base.html" %} {% block content %} {% load static %} {% load i18n %}
 
 <div
   class="bg-cover relative leading-normal tracking-normal text-neutral-400 bg-cover bg-center"
@@ -24,13 +24,13 @@
           <span data-aos="fade-right"
             class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600"
           >
-            Prêt à faire travailler votre argent ?
+          {% blocktranslate %}Prêt à faire travailler votre argent ?{% endblocktranslate %}
           </span>
         </h1>
         <p data-aos="fade-right"
           class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left"
         >
-          Investir c'est pensé à son futur !
+        {% blocktranslate %}Investir c'est pensé à son futur !{% endblocktranslate %}
         </p>
         {% if user.is_authenticated %}
         <a data-aos="fade-right"
@@ -38,7 +38,7 @@
           type="button"
           class="shadow-xl uppercase bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
         >
-          Accèder au tableau de bord
+        {% blocktranslate %}Accèder au tableau de bord{% endblocktranslate %}
         </a>
         {% else %}
         <div class="flex items-center justify-between space-x-12 pt-4">
@@ -48,14 +48,14 @@
             type="button"
             class="shadow-xl uppercase bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
           >
-            Se connecter
+            {% translate "Se connecter" %}
           </a>
           <a
             href="{% url 'register' %}"
             class="text-black uppercase font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
             type="button"
           >
-            Créer un compte
+          {% translate "Créer un compte" %}
           </a>
         </div>
         {% endif %}
