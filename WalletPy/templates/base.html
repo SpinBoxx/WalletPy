@@ -10,7 +10,7 @@
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-			
+
 		{% endblock %}
 		<link rel="shortcut icon" type="image/png" href="{% static 'logo.ico' %}"/>
 		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -24,7 +24,7 @@
 	</head>
 
 	<body class="overflow-x-hidden h-screen">
-		{% include "includes/messages.html" %}
+		{% include "alert/alert.html" %}
 		{% if not request.resolver_match.url_name == 'homepage' and user.is_authenticated %}
 			<nav id="navbar" class="flex z-50 border-t-2 fixed gap-2 justify-between  h-16 w-full flex-row bg-white bottom-0 lg:left-0 lg:top-0 lg:h-full lg:w-20 lg:border-r-2 ">
 				<div class="flex w-full lg:w-12">

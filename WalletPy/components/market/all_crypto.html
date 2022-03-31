@@ -2,43 +2,41 @@
 {% load custom_filter %}
 
 {% for name, coin in coin_data.items %}
-<div id="all_crypto_{{coin.symbol}}" class="bg-white h-20 flex items-center rounded-2xl border shadow-md w-full  all_crypto">
-	<div class="flex px-3">
-		<img class="h-9 w-10 ml-2" src="{{ coin.thumb }}" alt="{{ coin.name }} {{ coin.symbol }} icon"/>
-	</div>
-	<div class="w-full flex justify-around items-center">
-		<div class="flex flex-col">
-			{% if user.is_authenticated %}
-			<a id="fav-icon" class="flex" href="{% url 'favorite_add' coin.internal_id %}">
-				<h3 class="font-semibold text-lg text-gray-700 mr-2">
-					{{coin.name}}
-				</h3>
-				{% if coin.is_favorite %}
-				<img src="{% static 'star-solid.svg' %}" alt=""/>
-				{% else %}
-				<img src="{% static 'star-regular.svg' %}" alt=""/>
+	<div id="all_crypto_{{coin.symbol}}" class="bg-white h-20 flex items-center rounded-2xl border shadow-md w-full  all_crypto">
+		<div class="flex px-3">
+			<img class="h-9 w-10 ml-2" src="{{ coin.thumb }}" alt="{{ coin.name }} {{ coin.symbol }} icon"/>
+		</div>
+		<div class="w-full flex justify-around items-center">
+			<div class="flex flex-col">
+				{% if user.is_authenticated %}
+				<a id="fav-icon" class="flex" href="{% url 'favorite_add' coin.internal_id %}">
+					<h3 class="font-semibold text-lg text-gray-700 mr-2">
+						{{coin.name}}
+					</h3>
+					{% if coin.is_favorite %}
+					<img src="{% static 'star-solid.svg' %}" alt=""/>
+					{% else %}
+					<img src="{% static 'star-regular.svg' %}" alt=""/>
+					{% endif %}
+				</a>
 				{% endif %}
-			</a>
-			{% endif %}
-			<h3 class="font-semibold text-sm text-gray-400">{{ coin.symbol|upper }}</h3>
-		</div>
-		<div class="flex flex-col">
-			<span class="font-semibold text-xl text-gray-700">
-				$ {{ coin.current_price }}
-			</span>
-			{% if coin.price_change_percentage_24h < 0 %}
-				<span class="font-medium text-xs text-gray-500 font-bold text-red-500">
-					{{ coin.price_change_percentage_24h|floatformat}} %
+				<h3 class="font-semibold text-sm text-gray-400">{{ coin.symbol|upper }}</h3>
+			</div>
+			<div class="flex flex-col">
+				<span class="font-semibold text-xl text-gray-700">
+					$ {{ coin.current_price }}
 				</span>
-			{% else %}
-				<span class="font-medium text-xs text-gray-500 font-bold text-green-500">
-					{{ coin.price_change_percentage_24h|floatformat}} %
-				</span>
-			{% endif %}
+				{% if coin.price_change_percentage_24h < 0 %}
+					<span class="font-medium text-xs text-gray-500 font-bold text-red-500">
+						{{ coin.price_change_percentage_24h|floatformat}} %
+					</span>
+				{% else %}
+					<span class="font-medium text-xs text-gray-500 font-bold text-green-500">
+						{{ coin.price_change_percentage_24h|floatformat}} %
+					</span>
+				{% endif %}
+			</div>
 		</div>
 	</div>
-
-
-</div>
 
 {% endfor %}

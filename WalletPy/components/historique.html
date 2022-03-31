@@ -51,7 +51,6 @@
 				const sendToCheckNameAddress = await fetch(`https://api.etherscan.io/api?module=contract&action=getsourcecode&address=${history.to}&apikey=${APIKeyEthScan2}`);
 				const dateOfTransaction = new Date(history.timeStamp * 1000).toISOString().slice(0, 19).replace('T', ' ');
 				const {result} = await sendToCheckNameAddress.json();
-				console.log(actualPriceETH)
 				displayedHistoryHTML_2({
 					"date": dateOfTransaction,
 					"nameTo": result[0].ContractName != "" ? result[0].ContractName : history.to == localStorage.getItem('address') ? "me" : history.to,

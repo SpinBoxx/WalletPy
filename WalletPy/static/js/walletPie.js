@@ -95,7 +95,7 @@ const balances = async (accounts) => {
             )
         })
     }
-    const url = document.getElementById('test');
+    const url = document.getElementById('url-route-export');
     let csrftoken = getCookie('csrftoken');
     data = JSON.stringify({
       address: amountOnAccounts[0].address,

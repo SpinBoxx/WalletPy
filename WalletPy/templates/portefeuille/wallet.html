@@ -1,54 +1,40 @@
 {% load static %} {% load i18n %}
 {% block content %}
-<div class="mt-5 px-5">
-	<span class="text-lg font-extrabold ">{% translate "Mon portefeuille" %}</span>
-</div>
-<p class="text-lg mt-5 font-light text-gray-600 text-center">{% translate "Total balance" %}</p>
-<div class="flex mt-5 justify-center">
-	<p id="total_balance" class="text-5xl font-extrabold total_balance"></p>
-	<p id="percentage_wallet_aot" class="text-2xl self-center ml-5 font-light text-green-500"></p></div>
-<div class="mx-auto mt-5 pt-5 px-20 justify-center" style="text-align:-webkit-center">
-	<div class="flex flex-col w-50 divide-y-2 divide-slate-900">
-		<div></div>
-		<div class="h-40 grid grid-cols-2 justify-items-center gap-4 content-center">
-			<div>
-				<p class="text-lg text-gray-600 font-bold">{% translate "P&L Aujourd'hui" %}</p>
-				<p id="pnl_today" class="text-md font-medium text-center"></p>
+	<div class="mt-5 px-5">
+		<span class="text-lg font-extrabold ">{% translate "Mon portefeuille" %}</span>
+	</div>
+	<p class="text-lg mt-5 font-light text-gray-600 text-center">{% translate "Total balance" %}</p>
+	<div class="flex mt-5 justify-center">
+		<p id="total_balance" class="text-5xl font-extrabold total_balance"></p>
+		<p id="percentage_wallet_aot" class="text-2xl self-center ml-5 font-light text-green-500"></p></div>
+	<div class="mx-auto mt-5 pt-5 px-20 justify-center" style="text-align:-webkit-center">
+		<div class="flex flex-col w-50 divide-y-2 divide-slate-900">
+			<div></div>
+			<div class="h-40 grid grid-cols-2 justify-items-center gap-4 content-center">
+				<div>
+					<p class="text-lg text-gray-600 font-bold">{% translate "P&L Aujourd'hui" %}</p>
+					<p id="pnl_today" class="text-md font-medium text-center"></p>
+				</div>
+				<div>
+					<p class="text-lg text-gray-600 font-bold">{% translate "P&L Mensuel" %}</p>
+					<p id="pnl_month" class="text-md font-medium text-center"></p>
+				</div>
 			</div>
-			<div>
-				<p class="text-lg text-gray-600 font-bold">{% translate "P&L Mensuel" %}</p>
-				<p id="pnl_month" class="text-md font-medium text-center"></p>
-			</div>
+			<div></div>
 		</div>
-		<div></div>
+		<div class="w-60 mt-10">
+			<canvas id="walletChart" style="text-align:center"></canvas>
+		</div>
 	</div>
-	<div class="w-60 mt-10">
-		<canvas id="walletChart" style="text-align:center"></canvas>
+	<div class="mx-14 py-4">
+		{% include "cards/card_crypto_asset.html" with cryptoName="Ethereum" cryptoSymbol="ETH"%}
 	</div>
-</div>
-<div class="flex bg-white rounded-md shadow-lg py-4 mx-14">
-  <div class="flex align-center">
-      <img class="w-10 h-10 ml-1 mt-1" src="https://cryptonaute.fr/wp-content/uploads/2020/06/ethereum-logo.png" alt="Ethereum eth icon"/>
-  </div>
-  <div class="flex justify-around w-full">
-      <div class="flex flex-col">
-          <span class="font-bold" >Ethereum</span>
-          <span class="text-gray-500">ETH</span>
-      </div>
-      <div class="flex flex-col">
-          <span id="total_balance" class="total_balance font-bold"></span>
-          <span id="total_balance_currency" class="text-gray-500"></span>
-      </div>
-  </div>
-</div>
 
-<div id="test" data-url="{% url 'wallet_export_wallet' %}">
-</div>
-<button type="button" id="exportWalletCsv"
-		class="shadow-xl mb-3 mt-14 float-right mr-14 uppercase bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
->
-{% translate "Exporter en CSV" %}
-</button>
+	<div id="url-route-export" data-url="{% url 'wallet_export_wallet' %}"></div>
+	<button type="button" id="exportWalletCsv"
+			class="shadow-xl mb-3 mt-14 float-right mr-14 uppercase bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out">
+			{% translate "Exporter en CSV" %}
+	</button>
 
-<script src="/static/js/walletPie.js"></script>
+	<script src="/static/js/walletPie.js"></script>
 {% endblock %}
