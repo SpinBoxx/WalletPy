@@ -13,7 +13,7 @@
 	{% load static %}
 	{% load i18n %}
 
-	<div class="bg-cover relative leading-normal tracking-normal text-neutral-400 bg-cover bg-center" style="background-image: url('/static/graphFinal.jpg')">
+	<div class="bg-cover relative leading-normal tracking-normal text-neutral-400 bg-cover bg-center" style="background-image: url('/static/worl_bitcoin_background.jpg')">
 		<div
 			class="min-h-screen">
 			<!--Nav-->
@@ -27,7 +27,7 @@
 			<div
 				class="container pt-24 mt-32 md:pt-24 mx-auto flex flex-wrap flex-col md:flex-row items-center">
 				<!--Left Col-->
-				<div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start">
+				<div class="flex flex-col w-full xl:w-2/5 justify-center md:items-start">
 					<h1 class="my-4 text-3xl md:text-6xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
 						<span data-aos="fade-right" class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">
 							{% blocktranslate %}Prêt à faire travailler votre argent ?{% endblocktranslate %}
@@ -37,7 +37,7 @@
 						{% blocktranslate %}Investir c'est pensé à son futur !{% endblocktranslate %}
 					</p>
 					{% if user.is_authenticated %}
-						<a data-aos="fade-right" href="{% url 'dashboard' %}" type="button" class="shadow-xl uppercase bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out">
+						<a data-aos="fade-right" href="{% url 'dashboard' %}" type="button" class="mx-auto md:mx-0 shadow-xl uppercase bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out">
 							{% blocktranslate %}Accèder au tableau de bord{% endblocktranslate %}
 						</a>
 					{% else %}
@@ -53,7 +53,7 @@
 				</div>
 			</div>
 			<!--Footer-->
-			<footer class="bottom-3 absolute mx-auto text-center" style="left: 50%">
+			<footer class="bottom-3 absolute mx-auto text-center left-0 right-0">
 				<span id="moreInfo" class="mt-3 b-0 cursor-pointer inline-block border-black animate-bounce shadow-lg rounded-full p-3 shadow-lg bg-yellow-300 text-white">
 					<svg class="w-8 h-8 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"/>
