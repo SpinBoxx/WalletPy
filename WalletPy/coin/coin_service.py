@@ -5,24 +5,25 @@ import html
 
 cg = CoinGeckoAPI()
 def get_available_coins_dashboard_data(current_user):
-    coins = serializers.serialize("python",  Coin.objects.all())
     coin_data = {}
     headers = {"Content-type": "application/json"}
-    for coin in coins:
-        cg_data = cg.get_coin_by_id(id=coin["fields"]["name"],localization=False,tickers=False,community_data=False,developer_data=False,sparkline=False, headers = headers)
+    markets = cg.get_coins_markets(current_user.preferred_currency.short_name)
+    for coin in markets:
+        local_coin = Coin.objects.get(name=coin["id"])
+        
         data = {
-            "internal_id": coin["pk"],
-            "price_change_percentage_24h": cg_data["market_data"]["price_change_percentage_24h"],
-            "current_price": cg_data["market_data"]["current_price"][current_user.preferred_currency.short_name],
-            "description": html.escape(cg_data["description"]["en"]),
-            "thumb": cg_data["image"]["thumb"],
-            "symbol":cg_data["symbol"],
+            "internal_id": local_coin.id,
+            "price_change_percentage_24h": coin["price_change_percentage_24h"],
+            "current_price": coin["current_price"],
+            "description": coin["name"],
+            "thumb": coin["image"].replace("large","thumb"),
+            "symbol":coin["symbol"],
             "is_favorite": False,
-            "name": cg_data["id"]
+            "name": coin["id"]
         }
         if current_user.is_authenticated:
-            data["is_favorite"]= current_user.favorite_coins.filter(id=coin["pk"]).exists()
-        coin_data[coin["fields"]["name"]] = data
+            data["is_favorite"]= current_user.favorite_coins.filter(id=local_coin.id).exists()
+        coin_data[coin["name"]] = data
     return coin_data
 
 def get_coin_simple_data(name:str):
