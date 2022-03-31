@@ -1,18 +1,20 @@
-{% load static %} {% load i18n %}
+{% load static %}
+{% load i18n %}
 {% block content %}
 
-<!-- error with selected dates  -->
-{% if wrong_input %}
-<div class="alert alert-warning" role="alert">
-	{{wrong_input}}
-</div>
-{% endif %}
+	<!-- error with selected dates  -->
+	{% if wrong_input %}
+		<div class="alert alert-warning" role="alert">
+			{{wrong_input}}
+		</div>
+	{% endif %}
 
-<!-- Filter the chart with the selected dates -->
-{% for date,price in price.items %}
-<span class="date-item hidden">{{date}} </span>
-<span class="price-item hidden">{{price}}</span>
-{% endfor %}
+	<!-- Filter the chart with the selected dates -->
+	{% for date,price in price.items %}
+		<span class="date-item hidden">{{date}}
+		</span>
+		<span class="price-item hidden">{{price}}</span>
+	{% endfor %}
 
 	<div class="py-4 px-8">
 		<p class="font-bold antialiased text-xl">Total de mon portefeuille</p>
@@ -20,12 +22,24 @@
 	</div>
 	<canvas id="btcChart" class="w-80"></canvas>
 	<div class="flex text-center text-gray-500 py-4">
-		<a class="flex-1 w-fit"><span id="heure" onclick="changeGraph(this, '1H')" class="hover:bg-blue-300 hover:bg-opacity-50 focus:bg-blue-300 focus:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1H</span></a>
-		<a class="flex-1 w-fit"><span id="jour" onclick="changeGraph(this, '1D')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1D</span></a>
-		<a class="flex-1 w-fit"><span id="semaine" onclick="changeGraph(this, '1W')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1W</span></a>
-		<a class="flex-1 w-fit"><span id="mois" onclick="changeGraph(this, '1M')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1M</span></a>
-		<a class="flex-1 w-fit"><span id="annee" onclick="changeGraph(this, '1Y')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1Y</span></a>
-		<a class="flex-1 w-fit"><span id="tAnnee" onclick="changeGraph(this, '2Y')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">2Y</span></a>
+		<a class="flex-1 w-fit">
+			<span id="heure" onclick="changeGraph(this, '1H')" class="hover:bg-blue-300 hover:bg-opacity-50 focus:bg-blue-300 focus:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1H</span>
+		</a>
+		<a class="flex-1 w-fit">
+			<span id="jour" onclick="changeGraph(this, '1D')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1D</span>
+		</a>
+		<a class="flex-1 w-fit">
+			<span id="semaine" onclick="changeGraph(this, '1W')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1W</span>
+		</a>
+		<a class="flex-1 w-fit">
+			<span id="mois" onclick="changeGraph(this, '1M')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1M</span>
+		</a>
+		<a class="flex-1 w-fit">
+			<span id="annee" onclick="changeGraph(this, '1Y')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">1Y</span>
+		</a>
+		<a class="flex-1 w-fit">
+			<span id="tAnnee" onclick="changeGraph(this, '2Y')" class="hover:bg-blue-300 hover:bg-opacity-50 transition-all rounded-2xl py-2 px-4 cursor-pointer">2Y</span>
+		</a>
 	</div>
 	<div class="py-4 px-8">
 		<p class="font-bold antialiased text-xl pb-3">{% translate "Top 3 de mes actifs" %}</p>
@@ -51,7 +65,9 @@
 		<div id="isNotConnectedForAsset" class="flex hidden flex-col gap-4 items-left justify-center bg-white">
 			<p class="text-red-500 font-bold pt-5 text-center text-lg">Aucunes données reçu ...</p>
 		</div>
-		<p class="pt-8 text-gray-400 italic text-sm">{% blocktranslate %}Les services liés aux actifs de crypto-monnaie sont fournis par {% endblocktranslate %}<strong>WalletPY</strong> Europe Limited.</p>
+		<p class="pt-8 text-gray-400 italic text-sm">{% blocktranslate %}Les services liés aux actifs de crypto-monnaie sont fournis par
+			{% endblocktranslate %}<strong>WalletPY</strong>
+			Europe Limited.</p>
 	</div>
 
 <script type="text/javascript">
