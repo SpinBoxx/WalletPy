@@ -26,32 +26,26 @@
 		<canvas id="walletChart" style="text-align:center"></canvas>
 	</div>
 </div>
-<div style="text-align:-webkit-center">
-	<div class="w-8/12 rounded overflow-hidden rounded-xl">
-		<div class="px-6 py-4 mt-5">
-			<div class="flex overflow-x-auto justify-center">
-				<img class="w-10 h-10" src="https://cryptonaute.fr/wp-content/uploads/2020/06/ethereum-logo.png" alt="btc icon"/>
-				<div class="px-4 flex-shrink-0 border-dashed border-r-2 mr-4 mb-3 border-grey-600">
-					<div>
-						<h3 class="font-semibold text-sm text-gray-400">Ethereum</h3>
-						<div class="flex justify-between">
-							<div>
-								<h1 id="total_balance" class="font-semibold text-xl text-gray-700 total_balance"></h1>
-								<span id="total_balance_currency" class="font-bold text-slate-500"></span>
-								<br/>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="flex bg-white rounded-md shadow-lg py-4 mx-14">
+  <div class="flex align-center">
+      <img class="w-10 h-10 ml-1 mt-1" src="https://cryptonaute.fr/wp-content/uploads/2020/06/ethereum-logo.png" alt="btc icon"/>
+  </div>
+  <div class="flex justify-around w-full">
+      <div class="flex flex-col">
+          <span class="font-bold" >Ethereum</span>
+          <span class="text-gray-500">ETH</span>
+      </div>
+      <div class="flex flex-col">
+          <span id="total_balance" class="total_balance font-bold"></span>
+          <span id="total_balance_currency" class="text-gray-500"></span>
+      </div>
+  </div>
 </div>
 
 <div id="test" data-url="{% url 'wallet_export_wallet' %}">
 </div>
 <button type="button" id="exportWalletCsv"
-		class="shadow-xl mb-3 float-right mr-8 uppercase bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+		class="shadow-xl mb-3 mt-14 float-right mr-14 uppercase bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
 >
 {% translate "Exporter en CSV" %}
 </button>
