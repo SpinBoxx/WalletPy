@@ -7,7 +7,7 @@
 		<div class="relative inline-block w-full text-gray-700">
 			<select class="w-full h-10 pl-3 pr-6 text-base bg-white shadow-lg rounded-lg appearance-none focus:shadow-outline"
 			        placeholder="Bitcoin wallet">
-				<option id="myAddress" selected disabled hidden>Metamask wallet ...</option>
+				<option id="myAddress" selected disabled hidden>{% translate " Portefeuille Metamask ..." %}</option>
 			</select>
 			<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
 				<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="text-gray-700 float-right relative">
-			<label class="block mb-1 pt-8" for="amount">Amount (in ETH)</label>
+			<label class="block mb-1 pt-8" for="amount">{% translate "Montant" %} (in ETH)</label>
 			<input id="amount" class="w-full h-10 px-3 text-base shadow-lg rounded-xl focus:shadow-outline" type="text"
 			       placeholder="5" id="amount"/>
 		</div>
@@ -31,7 +31,7 @@
 					id="sendEth"
 					class="mb-5 shadow-xl align-center uppercase bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
 			>
-				Envoyer ETH
+				{% translate "Envoyer ETH" %}
 			</button>
 		</div>
 	</div>
@@ -40,7 +40,7 @@
 				id="enableEthereumButton"
 				class="hidden shadow-xl uppercase bg-gradient-to-r from-green-500 to-green-700 text-white font-bold py-3 px-6 rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
 		>
-			Connexion via Metamask
+			{% translate "Connexion via Metamask" %}
 		</button>
 	</div>
 </div>
