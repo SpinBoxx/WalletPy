@@ -4,173 +4,161 @@
 {% block title %}Tableau de bord
 {% endblock %}
 {% block meta %}
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-	<meta name="description" content="Votre tableau de bord des cryptomonnaie personalisable">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+<meta name="description" content="Votre tableau de bord des cryptomonnaie personalisable">
 {% endblock %}
 
 {% block content %}
 
-	<div data-aos="zoom-in-up" id="bannerToDLMetamask" class="hidden bg-red-400">
-		<div class="max-w-7xl mx-auto py-1 px-1 sm:px-2 lg:px-4">
-			<div class="flex items-center justify-between flex-wrap">
-				<div class="w-0 flex-1 flex items-center">
+<div data-aos="zoom-in-up" id="bannerToDLMetamask" class="hidden bg-red-400">
+	<div class="max-w-7xl mx-auto py-1 px-1 sm:px-2 lg:px-4">
+		<div class="flex items-center justify-between flex-wrap">
+			<div class="w-0 flex-1 flex items-center">
 					<span
-						class="flex p-2 rounded-lg bg-indigo-800">
+							class="flex p-2 rounded-lg bg-indigo-800">
 						<!-- Heroicon name: outline/speakerphone -->
-						<svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
+						<svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+						     viewbox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+							      d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
 						</svg>
 					</span>
-					<p class="ml-3 font-medium text-white truncate">
+				<p class="ml-3 font-medium text-white truncate">
 						<span class="md:hidden">
 							Télécharger Metamask ...
 						</span>
-						<span class="hidden md:inline">
+					<span class="hidden md:inline">
 							Pour votre information, le téléchargement de metamask est nécessaire
 						</span>
-					</p>
-				</div>
-				<div class="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
-					<a target="_blank" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=fr" class="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white hover:bg-indigo-50">
-						Extension Metamask
-					</a>
-				</div>
-				<div class="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
-					<p>.</p>
-				</div>
+				</p>
+			</div>
+			<div class="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
+				<a target="_blank"
+				   href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=fr"
+				   class="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white hover:bg-indigo-50">
+					Extension Metamask
+				</a>
+			</div>
+			<div class="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
+				<p>.</p>
 			</div>
 		</div>
 	</div>
-	<div class="px-4 grid lg:grid-cols-3 gap-1 md:gap-5 pt-5 pb-5 h-full md:grid-cols-2 sm:grid-cols-1">
-		<div data-aos="fade-right" data-aos-duration="1000" class="overflow-y-auto no-scrollbar h-full hidden md:block sm:hidden">{% include "dashboard/informModule.html" %}</div>
-		<div data-aos="zoom-in-up" data-aos-duration="1000" class="mx-auto w-full bg-white rounded-lg border border-gray-200 shadow-lg dark:bg-gray-800 dark:border-gray-700">
-			{% include "dashboard/dashboard.html" %}
-		</div>
-		<div data-aos="fade-left" data-aos-duration="1000" class="sm:hidden hidden md:hidden lg:block">{% include "dashboard/transaction.html" %}</div>
+</div>
+<div class="px-4 grid lg:grid-cols-3 gap-1 md:gap-5 pt-5 pb-5 h-full md:grid-cols-2 sm:grid-cols-1">
+	<div data-aos="fade-right" data-aos-duration="1000"
+	     class="overflow-y-auto no-scrollbar h-full hidden md:block sm:hidden">{% include "dashboard/informModule.html"%}
 	</div>
-	<script>
-
-		const metamaskConnectButton = document.getElementById('enableEthereumButton');
-		const transactionETH = document.querySelector('#sendEth');
-		const APIKeyEthScan = "GNFG1NWHVNRTIKARX5MPFEB581CPIDBQZV";
-		const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/56a0386767d54d6a8e04f9c7a6c56fda"));
-
-
-const isMetaMaskInstalled = () => {
-return Boolean(window.ethereum && window.ethereum.isMetaMask);
-}
-const isMetaMaskConnected = async () => {
-const {ethereum} = window;
-const accounts = await ethereum.request({method: 'eth_accounts'});
-return accounts && accounts.length > 0;
-}
-const getAccounts = async () => {
-	return await ethereum.request({method: 'eth_accounts'});
-}
-	if (window ?. ethereum ?. on) {
+	<div data-aos="zoom-in-up" data-aos-duration="1000"
+	     class="mx-auto w-full bg-white rounded-lg border border-gray-200 shadow-lg dark:bg-gray-800 dark:border-gray-700">
+		{% include "dashboard/dashboard.html" %}
+	</div>
+	<div data-aos="fade-left" data-aos-duration="1000" class="sm:hidden hidden md:hidden lg:block">{% include "dashboard/transaction.html" %}
+	</div>
+</div>
+<script>
+	
+	const metamaskConnectButton = document.getElementById('enableEthereumButton');
+	const transactionETH = document.querySelector('#sendEth');
+	const APIKeyEthScan = "GNFG1NWHVNRTIKARX5MPFEB581CPIDBQZV";
+	const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/56a0386767d54d6a8e04f9c7a6c56fda"));
+	
+	
+	const isMetaMaskInstalled = () => {
+		return Boolean(window.ethereum && window.ethereum.isMetaMask);
+	}
+	const isMetaMaskConnected = async () => {
+		const {ethereum} = window;
+		const accounts = await ethereum.request({method: 'eth_accounts'});
+		return accounts && accounts.length > 0;
+	}
+	const getAccounts = async () => {
+		return await ethereum.request({method: 'eth_accounts'});
+	}
+	if (window?.ethereum?.on) {
 		window.ethereum.on('accountsChanged', async () => {
 			init();
 		});
-} else {
-document.getElementById('navbar_icones_wallet').classList.add('hidden')
-document.getElementById('isNotConnectedForAsset').classList.remove("hidden")
-document.getElementById('notConnected').classList.remove('hidden')
-document.getElementById('bannerToDLMetamask').classList.remove("hidden")
-document.getElementById('isConnectedForTransaction').classList.add('hidden');
-document.getElementById('connectedMetamask').classList.add('hidden');
-document.getElementById('enableEthereumButton').classList.remove('hidden');
-}
-
-
-const displayHistory = async () => {
-const response = await fetch(`https://api.etherscan.io/api?module=account&action=txlist&address=${
-localStorage.getItem('address')
-}&startblock=0&endblock=99999999&offset=10&sort=asc&apikey=${APIKeyEthScan}`);
-const dataHistory = await response.json();
-for (let history of dataHistory.result) {
-setTimeout(async () => {
-const sendToCheckNameAddress = await fetch(`https://api.etherscan.io/api?module=contract&action=getsourcecode&address=${
-history.to
-}&apikey=${APIKeyEthScan}`);
-const dateOfTransaction = new Date(history.timeStamp * 1000).toISOString().slice(0, 19).replace('T', ' ');
-const {result} = await sendToCheckNameAddress.json();
-displayedHistoryHTML({
-"date": dateOfTransaction,
-"nameTo": result[0].ContractName != "" ? result[0].ContractName : history.to == localStorage.getItem('address') ? "me" : history.to,
-"nameFrom": history.from == localStorage.getItem('address') ? "me" : history.from,
-"value": `${
-web3.utils.fromWei(history.value) * actualPriceETH.ethereum["{{ user.preferred_currency.short_name }}"]
-}`
-})
-}, 500)
-}
-}
-const stringToHTML = (str) => {
-let parser = new DOMParser();
-let doc = parser.parseFromString(str, 'text/html');
-document.getElementById('transactionList').append(doc.body)
-}
-
-
-const displayedHistoryHTML = (dataForTransaction) => {
-if (dataForTransaction.nameTo == "me") {
-stringToHTML(`<li class="transaction" class><div class="relative pb-8"><div class="relative flex space-x-3"><div><span class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white"><svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor"><path d="M342.6 374.6l-128 128C208.4 508.9 200.2 512 191.1 512s-16.38-3.125-22.63-9.375l-127.1-128c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 402.8V80C160 71.19 152.8 64 144 64H32C14.33 64 0 49.69 0 32s14.33-32 32-32h112C188.1 0 224 35.88 224 80v322.8l73.37-73.38c12.5-12.5 32.75-12.5 45.25 0S355.1 362.1 342.6 374.6z"/></svg></span></div><div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"><div class="text-left w-1/3 lg:w-1/2 overflow-hidden"><p class=" text-sm text-gray-500">Reçu de ${
-dataForTransaction.nameFrom
-}</p></div><div class="text-right text-sm whitespace-nowrap text-gray-500"><time datetime="2020-10-04">${
-dataForTransaction.date
-}</time><p class="text-sm text-green-500">+${
-(Math.round(dataForTransaction.value * 100) / 100).toFixed(2)
-} {{ user.preferred_currency.symbol }}</p></div></div></div></div></li>`)
-} else {
-stringToHTML(`<li class="transaction"><div class="relative pb-8"> <div class="relative flex space-x-3"> <div> <span class="h-8 w-8 rounded-full bg-red-400 flex items-center justify-center ring-8 ring-white"> <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"fill="currentColor"> <path d="M285.6 444.1C279.8 458.3 264.8 466.3 249.8 463.4C234.8 460.4 223.1 447.3 223.1 432V256H47.1C32.71 256 19.55 245.2 16.6 230.2C13.65 215.2 21.73 200.2 35.88 194.4L387.9 50.38C399.8 45.5 413.5 48.26 422.6 57.37C431.7 66.49 434.5 80.19 429.6 92.12L285.6 444.1z"/> </svg> </span> </div> <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"><div class="overflow-hidden text-left w-1/3 lg:w-1/2"><p class=" text-sm text-gray-500">Envoie vers ${
-dataForTransaction.nameTo
-}</p> </div> <div class="text-right text-sm whitespace-nowrap text-gray-500"> <time>${
-dataForTransaction.date
-}</time> <p class="text-sm text-red-500">- ${
-(Math.round(dataForTransaction.value * 100) / 100).toFixed(2)
-} {{ user.preferred_currency.symbol }}</p> </div> </div> </div> </div> </li>`)
-}
-}
-
-const getBalance = async (account) => {
-localStorage.setItem('amountAccount', web3.utils.fromWei(await web3.eth.getBalance(account), 'ether'))
-const requestETH = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies= {{ user.preferred_currency.short_name }}')
-actualPriceETH = await requestETH.json()
-document.getElementById('totalAmount').innerHTML = `${
-Math.round(localStorage.getItem('amountAccount') * actualPriceETH.ethereum["{{ user.preferred_currency.short_name }}"] * 100) / 100
-} {{user.preferred_currency.symbol}}`
-}
-
-const init = async () => {
-	if (await isMetaMaskConnected()) {
-		document.getElementById('navbar_icones_wallet').classList.remove('hidden')
-		document.getElementById('loader').classList.remove("hidden")
-		document.getElementById('isConnectedForAsset').classList.remove("hidden")
-		document.getElementById('enableEthereumButton').classList.add('hidden');
-		document.getElementById('isConnectedForTransaction').classList.remove('hidden');
-		document.getElementById('notConnected').classList.add('hidden')
-		let transactionsLI = document.getElementsByClassName('transaction')
-		if (transactionsLI.length > 0) {
-		for (let transaction of transactionsLI) {
-		transaction.remove();
+	} else {
+		document.getElementById('navbar_icones_wallet').classList.add('hidden')
+		document.getElementById('isNotConnectedForAsset').classList.remove("hidden")
+		document.getElementById('notConnected').classList.remove('hidden')
+		document.getElementById('bannerToDLMetamask').classList.remove("hidden")
+		document.getElementById('isConnectedForTransaction').classList.add('hidden');
+		document.getElementById('connectedMetamask').classList.add('hidden');
+		document.getElementById('enableEthereumButton').classList.remove('hidden');
+	}
+	
+	
+	const displayHistory = async () => {
+		const response = await fetch(`https://api.etherscan.io/api?module=account&action=txlist&address=${localStorage.getItem('address')}&startblock=0&endblock=99999999&offset=10&sort=asc&apikey=${APIKeyEthScan}`);
+		const dataHistory = await response.json();
+		for (let history of dataHistory.result) {
+			setTimeout(async () => {
+				const sendToCheckNameAddress = await fetch(`https://api.etherscan.io/api?module=contract&action=getsourcecode&address=${history.to}&apikey=${APIKeyEthScan}`);
+				const dateOfTransaction = new Date(history.timeStamp * 1000).toISOString().slice(0, 19).replace('T', ' ');
+				const {result} = await sendToCheckNameAddress.json();
+				displayedHistoryHTML({
+					"date": dateOfTransaction,
+					"nameTo": result[0].ContractName != "" ? result[0].ContractName : history.to == localStorage.getItem('address') ? "me" : history.to,
+					"nameFrom": history.from == localStorage.getItem('address') ? "me" : history.from,
+					"value": `${web3.utils.fromWei(history.value) * actualPriceETH.ethereum["{{ user.preferred_currency.short_name }}"]}`
+				})
+			}, 500)
 		}
+	}
+	const stringToHTML = (str) => {
+		let parser = new DOMParser();
+		let doc = parser.parseFromString(str, 'text/html');
+		document.getElementById('transactionList').append(doc.body)
+	}
+	
+	
+	const displayedHistoryHTML = (dataForTransaction) => {
+		if (dataForTransaction.nameTo == "me") {
+			console.log(dataForTransaction)
+			stringToHTML(`<li class="transaction" class><div class="relative pb-8"><div class="relative flex space-x-3"><div><span class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white"><svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor"><path d="M342.6 374.6l-128 128C208.4 508.9 200.2 512 191.1 512s-16.38-3.125-22.63-9.375l-127.1-128c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 402.8V80C160 71.19 152.8 64 144 64H32C14.33 64 0 49.69 0 32s14.33-32 32-32h112C188.1 0 224 35.88 224 80v322.8l73.37-73.38c12.5-12.5 32.75-12.5 45.25 0S355.1 362.1 342.6 374.6z"/></svg></span></div><div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"><div class="text-left w-1/3 lg:w-1/2 overflow-hidden"><p class=" text-sm text-gray-500">Reçu de ${dataForTransaction.nameFrom}</p></div><div class="text-right text-sm whitespace-nowrap text-gray-500"><time datetime="2020-10-04">${dataForTransaction.date}</time><p class="text-sm text-green-500">+${(Math.round(dataForTransaction.value * 100) / 100).toFixed(2)} {{ user.preferred_currency.symbol }}</p></div></div></div></div></li>`)
+		} else {
+			stringToHTML(`<li class="transaction"><div class="relative pb-8"> <div class="relative flex space-x-3"> <div> <span class="h-8 w-8 rounded-full bg-red-400 flex items-center justify-center ring-8 ring-white"> <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"fill="currentColor"> <path d="M285.6 444.1C279.8 458.3 264.8 466.3 249.8 463.4C234.8 460.4 223.1 447.3 223.1 432V256H47.1C32.71 256 19.55 245.2 16.6 230.2C13.65 215.2 21.73 200.2 35.88 194.4L387.9 50.38C399.8 45.5 413.5 48.26 422.6 57.37C431.7 66.49 434.5 80.19 429.6 92.12L285.6 444.1z"/> </svg> </span> </div> <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"><div class="overflow-hidden text-left w-1/3 lg:w-1/2"><p class=" text-sm text-gray-500">Envoie vers ${dataForTransaction.nameTo}</p> </div> <div class="text-right text-sm whitespace-nowrap text-gray-500"> <time>${dataForTransaction.date}</time> <p class="text-sm text-red-500">- ${(Math.round(dataForTransaction.value * 100) / 100).toFixed(2)} {{ user.preferred_currency.symbol }}</p> </div> </div> </div> </div> </li>`)
 		}
-		getAccounts().then(async (res) => {
-		localStorage.setItem('address', res);
-		document.getElementById('myAddress').innerText = res
-		await getBalance(res[0])
-		displayHistory(). finally(() => {
-		document.getElementById('buttonBounce').classList.remove("hidden")
-		document.getElementById('loader').classList.add("hidden")
-
-		})
-		});
+	}
+	
+	const getBalance = async (account) => {
+		localStorage.setItem('amountAccount', web3.utils.fromWei(await web3.eth.getBalance(account), 'ether'))
+		const requestETH = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies={{ user.preferred_currency.short_name }}')
+		actualPriceETH = await requestETH.json()
+		document.getElementById('totalAmount').innerHTML = `${Math.round(localStorage.getItem('amountAccount') * actualPriceETH.ethereum["{{ user.preferred_currency.short_name }}"] * 100) / 100} {{user.preferred_currency.symbol}}`}
+	
+	const init = async () => {
+		if (await isMetaMaskConnected()) {
+			document.getElementById('navbar_icones_wallet').classList.remove('hidden')
+			document.getElementById('loader').classList.remove("hidden")
+			document.getElementById('isConnectedForAsset').classList.remove("hidden")
+			document.getElementById('enableEthereumButton').classList.add('hidden');
+			document.getElementById('isConnectedForTransaction').classList.remove('hidden');
+			document.getElementById('notConnected').classList.add('hidden')
+			let transactionsLI = document.getElementsByClassName('transaction')
+			if (transactionsLI.length > 0) {
+				for (let transaction of transactionsLI) {
+					transaction.remove();
+				}
+			}
+			getAccounts().then(async (res) => {
+				localStorage.setItem('address', res);
+				document.getElementById('myAddress').innerText = res
+				await getBalance(res[0])
+				displayHistory().finally(() => {
+					document.getElementById('buttonBounce').classList.remove("hidden")
+					document.getElementById('loader').classList.add("hidden")
+					
+				})
+			});
 		} else {
 			document.getElementById('navbar_icones_wallet').classList.add('hidden')
-			localStorage ?. removeItem('address');
-			localStorage ?. removeItem('amountAccount')
+			localStorage?.removeItem('address');
+			localStorage?.removeItem('amountAccount')
 			document.getElementById('isNotConnectedForAsset').classList.remove("hidden")
 			document.getElementById('notConnected').classList.remove('hidden')
 			document.getElementById('isConnectedForTransaction').classList.add('hidden');
@@ -179,48 +167,48 @@ const init = async () => {
 		}
 	}
 	init()
-// get name of contract https://api.etherscan.io/api?module=contract&action=getsourcecode&address=0xE66b3AA360bB78468c00Bebe163630269DB3324F&apikey=GNFG1NWHVNRTIKARX5MPFEB581CPIDBQZV
-// get all transaction for an adresse https://api.etherscan.io/api?module=account&action=txlist&address=0x959C8D7331883cB49ba9719760621449b41712C7&startblock=0&endblock=99999999&offset=10&sort=asc&apikey=GNFG1NWHVNRTIKARX5MPFEB581CPIDBQZV
-metamaskConnectButton.addEventListener('click', () => {
-if (isMetaMaskInstalled()) {
-ethereum.request({method: 'eth_requestAccounts'}).then(async () => {
-document.getElementById('enableEthereumButton').classList.add('hidden');
-document.getElementById('isNotConnectedForAsset').classList.add("hidden");
-document.getElementById('connectedMetamask').classList.remove('hidden');
-document.getElementById('myAddress').innerText = localStorage.getItem('address');
-displayHistory()
-}).catch((err) => {
-console.log("nope", err)
-});
-} else {
-localStorage.setItem("metaConnected", false);
-alert("Install Metamask")
-}
-});
-
-/*
+	// get name of contract https://api.etherscan.io/api?module=contract&action=getsourcecode&address=0xE66b3AA360bB78468c00Bebe163630269DB3324F&apikey=GNFG1NWHVNRTIKARX5MPFEB581CPIDBQZV
+	// get all transaction for an adresse https://api.etherscan.io/api?module=account&action=txlist&address=0x959C8D7331883cB49ba9719760621449b41712C7&startblock=0&endblock=99999999&offset=10&sort=asc&apikey=GNFG1NWHVNRTIKARX5MPFEB581CPIDBQZV
+	metamaskConnectButton.addEventListener('click', () => {
+		if (isMetaMaskInstalled()) {
+			ethereum.request({method: 'eth_requestAccounts'}).then(async () => {
+				document.getElementById('enableEthereumButton').classList.add('hidden');
+				document.getElementById('isNotConnectedForAsset').classList.add("hidden");
+				document.getElementById('connectedMetamask').classList.remove('hidden');
+				document.getElementById('myAddress').innerText = localStorage.getItem('address');
+				displayHistory()
+			}).catch((err) => {
+				console.log("nope", err)
+			});
+		} else {
+			localStorage.setItem("metaConnected", false);
+			alert("Install Metamask")
+		}
+	});
+	
+	/*
 	*  Evènement click pour réaliser une transaction entre deux wallets.
-    */
-transactionETH.addEventListener('click', async () => {
-if (this.localStorage.getItem('address') && document.getElementById('addressTo') ?. value && document.getElementById('amount') ?. value) {
-const gasPrice = await web3.eth.getGasPrice();
-// Transformation de la value en nombre lisable
-let valueWei = web3.utils.toWei(document.getElementById('amount') ?. value)
-ethereum.request({
-method: 'eth_sendTransaction',
-params: [
-{
-from: this.localStorage.getItem('address'),
-to: document.getElementById('addressTo') ?. value,
-value: web3.utils.toHex(valueWei),
-gasPrice: gasPrice,
-gas: '0x2710'
-},
-]
-}).then((txHash) => console.log(txHash)).catch((error) => alert(JSON.stringify(error.message)));
-} else {
-alert('Il manque des paramètres !!')
-}
-})
-	</script>
+	*/
+	transactionETH.addEventListener('click', async () => {
+		if (this.localStorage.getItem('address') && document.getElementById('addressTo')?.value && document.getElementById('amount')?.value) {
+			const gasPrice = await web3.eth.getGasPrice();
+			// Transformation de la value en nombre lisable
+			let valueWei = web3.utils.toWei(document.getElementById('amount')?.value)
+			ethereum.request({
+				method: 'eth_sendTransaction',
+				params: [
+					{
+						from: this.localStorage.getItem('address'),
+						to: document.getElementById('addressTo')?.value,
+						value: web3.utils.toHex(valueWei),
+						gasPrice: gasPrice,
+						gas: '0x2710'
+					},
+				]
+			}).then((txHash) => console.log(txHash)).catch((error) => alert(JSON.stringify(error.message)));
+		} else {
+			alert('Il manque des paramètres !!')
+		}
+	})
+</script>
 {% endblock content %}
