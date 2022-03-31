@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 14:06+0200\n"
+"POT-Creation-Date: 2022-03-31 14:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,18 @@ msgstr ""
 #: .\WalletPy\settings.py:128
 msgid "English"
 msgstr ""
+
+#: .\components\historique.html:7
+msgid "Mon historique des transactions"
+msgstr "My transaction history"
+
+#: .\components\historique.html:23
+msgid "Pour l'historique"
+msgstr "For the history"
+
+#: .\components\historique.html:26
+msgid "Connexion à Metamask ..."
+msgstr "Connection via Metamask ..."
 
 #: .\components\market\marche.html:7
 msgid "Marché"
@@ -219,26 +231,35 @@ msgstr "Compatible only with Metamask"
 #: .\templates\homepage.html:115
 msgid ""
 "Pour la connexion sur WalletPY, il faut impérativement posséder un "
-"portefeuille Metamask afin de pouvoir profiter de l'entièretés des "
+"portefeuille Metamask afin de pouvoir profiter de l'entièreté des "
 "fonctionnalités disponibles."
-msgstr "To connect to WalletPY, you must have a Metamask wallet in order to take advantage of all the available features."
+msgstr ""
+"To connect to WalletPY, you must have a Metamask wallet in order to take "
+"advantage of all the available features."
 
 #: .\templates\homepage.html:116
 msgid ""
-"En effet, lors de la création de votre portefeuille sur Metamask, il "
-"faudrait créer un wallet sous le réseau principal d'Ethereum. Pour le rendu, "
-"notre application prendra en charge uniquement les données comportants de "
+"En effet, lors de la création de votre portefeuille sur Metamask, il faudra "
+"créer un wallet sous le réseau principal d'Ethereum. Pour le rendu, notre "
+"application prendra en charge uniquement les données comportants de "
 "l'Ethereum."
-msgstr "Indeed, when creating your wallet on Metamask, you would have to create a wallet under the Ethereum main network. For rendering purposes, our application will only handle data carrying Ethereum."
+msgstr ""
+"Indeed, when creating your wallet on Metamask, you would have to create a "
+"wallet under the Ethereum main network. For rendering purposes, our "
+"application will only handle data carrying Ethereum."
 
 #: .\templates\homepage.html:117
 msgid ""
-"WalletPY proposera de vous liée avec votre portefeuille Metamask afin de "
-"consulter l'historique des anciennes transactions réalisée et bien sûr, "
+"WalletPY vous proposera de lier votre portefeuille Metamask afin de "
+"consulter l'historique des anciennes transactions réalisées et bien sûr, "
 "pouvoir en faire entre portefeuille. De plus, vous pourrez exporter vos "
 "données en format .csv pour consulter plus facilement les informations de "
 "votre portefeuille."
-msgstr "WalletPY will propose to link you with your Metamask wallet in order to consult the history of past transactions and of course, to be able to make them between wallets. Moreover, you will be able to export your data in .csv format to consult your wallet information more easily."
+msgstr ""
+"WalletPY will propose to link you with your Metamask wallet in order to "
+"consult the history of past transactions and of course, to be able to make "
+"them between wallets. Moreover, you will be able to export your data in .csv "
+"format to consult your wallet information more easily."
 
 #: .\templates\homepage.html:118
 msgid "Téléchargement de l'extension Metamask"
@@ -315,9 +336,6 @@ msgstr "Already an account ?"
 #: .\templates\registration\register.html:36
 msgid "C'est parti"
 msgstr "Let's go"
-
-#~ msgid "Mon historique des transactions"
-#~ msgstr "My transaction history"
 
 #~ msgid "Envoie vers userX"
 #~ msgstr "Send to userX"
