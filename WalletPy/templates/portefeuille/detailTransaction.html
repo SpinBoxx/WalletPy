@@ -8,11 +8,11 @@
 <div class="mx-20 flex flex-row mt-10 border-t-2 border-b-2 py-10">
     <div class="w-2/4 flex flex-col text-center">
         <p class="text-lg text-gray-600 font-bold">{% translate "Argent reçu mensuel" %}</p>
-        <label class="text-md font-medium">2876€</label>
+        <label class="text-md font-medium">22 {{user.preferred_currency.symbol}}</label>
     </div>
     <div class="w-2/4 flex flex-col text-center">
         <p class="text-lg text-gray-600 font-bold">{% translate "Argent retiré mensuel" %}</p>
-        <label class="text-md font-medium">286€</label>
+        <label class="text-md font-medium">6 {{ user.preferred_currency.symbol }}</label>
     </div>
 </div>
 

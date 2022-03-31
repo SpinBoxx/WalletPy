@@ -1,4 +1,4 @@
-{% load static %}
+  {% load static %}
 {% load custom_filter %}
 {% block content %}
 {% load i18n %}
@@ -64,7 +64,7 @@
           </div>
           <div id="all_crypto" class="">
             <p class="text-gray-500">{% translate "Toutes les crypto-monnaies" %}</p>
-            <div class="grid xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 gap-4 mt-2">
+            <div class="grid 2xl:grid-cols-3 xl:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 gap-4 mt-2">
               {% include "market/all_crypto.html" %}
             </div>
           </div>
