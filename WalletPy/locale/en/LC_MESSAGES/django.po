@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-25 11:50+0100\n"
+"POT-Creation-Date: 2022-03-31 14:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,12 +26,24 @@ msgstr ""
 msgid "English"
 msgstr ""
 
+#: .\components\historique.html:7
+msgid "Mon historique des transactions"
+msgstr "My transaction history"
+
+#: .\components\historique.html:23
+msgid "Pour l'historique"
+msgstr "For the history"
+
+#: .\components\historique.html:26
+msgid "Connexion à Metamask ..."
+msgstr "Connection via Metamask ..."
+
 #: .\components\market\marche.html:7
 msgid "Marché"
 msgstr "Market"
 
 #: .\components\market\marche.html:23 .\components\market\marche.html:28
-#: .\templates\dashboard\informModule.html:83
+#: .\templates\dashboard\informModule.html:91
 msgid "Mes favoris"
 msgstr "My favorites"
 
@@ -67,78 +79,86 @@ msgstr "My account"
 msgid "Passer en "
 msgstr "Switch to "
 
-#: .\templates\account.html:44
+#: .\templates\account.html:32
 msgid "Mes informations"
 msgstr "My information"
 
-#: .\templates\account.html:54
+#: .\templates\account.html:42
 msgid "Mot de passe"
 msgstr "Password"
 
-#: .\templates\account.html:56
+#: .\templates\account.html:44
 msgid "Nouveau mot de passe"
 msgstr "New password"
 
-#: .\templates\account.html:59
+#: .\templates\account.html:47
 msgid "Confirmer mot de passe"
 msgstr "Confirm password"
 
-#: .\templates\account.html:63
+#: .\templates\account.html:51
 msgid "Monnaie conversion"
 msgstr "Currency conversion"
 
-#: .\templates\account.html:73
+#: .\templates\account.html:61
 msgid "Confirmer"
 msgstr "Validate"
 
+#: .\templates\dashboard\basedashbord.html:15
+msgid "Télécharger Metamask ... "
+msgstr "Download Metamask ..."
+
+#: .\templates\dashboard\basedashbord.html:16
+msgid "Pour votre information, le téléchargement de metamask est nécessaire "
+msgstr "For information, the download of metamask is necessary"
+
 #: .\templates\dashboard\dashboard.html:18
-msgid "Total montant"
-msgstr "Total amount"
+msgid "Total de mon portefeuille"
+msgstr "Total of my wallet"
 
 #: .\templates\dashboard\dashboard.html:31
 msgid "Top 3 de mes actifs"
 msgstr "Top 3 of my assets"
 
-#: .\templates\dashboard\dashboard.html:86
+#: .\templates\dashboard\dashboard.html:74
+msgid "Fermer"
+msgstr "Close"
+
+#: .\templates\dashboard\dashboard.html:77
+msgid "Sauvegarder"
+msgstr "Save"
+
+#: .\templates\dashboard\dashboard.html:87
+msgid "Aucunes données reçu ..."
+msgstr "No data received ..."
+
+#: .\templates\dashboard\dashboard.html:89
 msgid "Les services liés aux actifs de crypto-monnaie sont fournis par "
 msgstr "Services related to crypto-currency assets are provided by "
 
-#: .\templates\dashboard\informModule.html:26
+#: .\templates\dashboard\informModule.html:37
 msgid "Description"
 msgstr "Details"
 
-#: .\templates\dashboard\informModule.html:33
+#: .\templates\dashboard\informModule.html:44
 msgid "Limite infini de retrait"
 msgstr "Infinite shrinkage limit"
 
-#: .\templates\dashboard\informModule.html:34
+#: .\templates\dashboard\informModule.html:46
 msgid ""
 "Déposer et retirer en toute sécurité avec WalletPY en n'ayant aucune "
 "contrainte de limite."
 msgstr "Deposit and withdraw safely with WalletPY with no limit constraints."
 
-#: .\templates\dashboard\informModule.html:115
+#: .\templates\dashboard\informModule.html:124
 #: .\templates\registration\login.html:11
 msgid "Connectez-vous"
 msgstr "Sign in"
 
-#: .\templates\dashboard\informModule.html:115
+#: .\templates\dashboard\informModule.html:125
 #, fuzzy
 #| msgid "pour accèder à vos favoris"
 msgid "pour accéder à vos favoris"
 msgstr "to access your favourites"
-
-#: .\templates\dashboard\informModule.html:122
-msgid "Mon historique des transactions"
-msgstr "My transaction history"
-
-#: .\templates\dashboard\informModule.html:140
-msgid "Envoie vers userX"
-msgstr "Send to userX"
-
-#: .\templates\dashboard\informModule.html:162
-msgid "Reçu de User Y"
-msgstr "Received from User Y"
 
 #: .\templates\dashboard\transaction.html:4
 msgid "Créer une transaction"
@@ -148,31 +168,39 @@ msgstr "Create a transaction"
 msgid "De"
 msgstr "From"
 
-#: .\templates\dashboard\transaction.html:19
+#: .\templates\dashboard\transaction.html:10
+msgid " Portefeuille Metamask ..."
+msgstr "Metamask wallet ..."
+
+#: .\templates\dashboard\transaction.html:20
+msgid "Montant"
+msgstr "Amount"
+
+#: .\templates\dashboard\transaction.html:25
 msgid "Á"
 msgstr "To"
 
-#: .\templates\dashboard\transaction.html:28
-msgid "Envoyer"
-msgstr "Send"
+#: .\templates\dashboard\transaction.html:34
+msgid "Envoyer ETH"
+msgstr "Send ETH"
 
-#: .\templates\dashboard\transaction.html:35
+#: .\templates\dashboard\transaction.html:43
+msgid "Connexion via Metamask"
+msgstr "Connection via Metamask"
+
+#: .\templates\dashboard\transaction.html:49
 msgid "Fondation"
 msgstr "Foundation"
 
-#: .\templates\dashboard\transaction.html:37
+#: .\templates\dashboard\transaction.html:51
 msgid "WalletPY est une société privée dont les fondateurs sont :"
 msgstr "WalletPY is a private company whose founders are :"
 
-#: .\templates\error_404.html:7
-msgid "Cette page n’existe pas"
-msgstr "This page doesn't exist"
+#: .\templates\error_404.html:9
+msgid "Vous êtes seul ici"
+msgstr "You are alone here"
 
-#: .\templates\error_404.html:8
-msgid "La page que vous recherchez est introuvable."
-msgstr "The page you are looking for cannot be found."
-
-#: .\templates\error_404.html:12
+#: .\templates\error_404.html:18
 msgid "Accueil"
 msgstr "Home"
 
@@ -188,13 +216,70 @@ msgstr "Investing means thinking about your future!"
 msgid "Accèder au tableau de bord"
 msgstr "Go to the dashboard"
 
-#: .\templates\homepage.html:50 .\templates\registration\login.html:53
+#: .\templates\homepage.html:51 .\templates\registration\login.html:53
 msgid "Se connecter"
 msgstr "Login"
 
-#: .\templates\homepage.html:57
+#: .\templates\homepage.html:58
 msgid "Créer un compte"
 msgstr "Create an account"
+
+#: .\templates\homepage.html:113
+msgid "Compatible seulement avec Metamask"
+msgstr "Compatible only with Metamask"
+
+#: .\templates\homepage.html:115
+msgid ""
+"Pour la connexion sur WalletPY, il faut impérativement posséder un "
+"portefeuille Metamask afin de pouvoir profiter de l'entièreté des "
+"fonctionnalités disponibles."
+msgstr ""
+"To connect to WalletPY, you must have a Metamask wallet in order to take "
+"advantage of all the available features."
+
+#: .\templates\homepage.html:116
+msgid ""
+"En effet, lors de la création de votre portefeuille sur Metamask, il faudra "
+"créer un wallet sous le réseau principal d'Ethereum. Pour le rendu, notre "
+"application prendra en charge uniquement les données comportants de "
+"l'Ethereum."
+msgstr ""
+"Indeed, when creating your wallet on Metamask, you would have to create a "
+"wallet under the Ethereum main network. For rendering purposes, our "
+"application will only handle data carrying Ethereum."
+
+#: .\templates\homepage.html:117
+msgid ""
+"WalletPY vous proposera de lier votre portefeuille Metamask afin de "
+"consulter l'historique des anciennes transactions réalisées et bien sûr, "
+"pouvoir en faire entre portefeuille. De plus, vous pourrez exporter vos "
+"données en format .csv pour consulter plus facilement les informations de "
+"votre portefeuille."
+msgstr ""
+"WalletPY will propose to link you with your Metamask wallet in order to "
+"consult the history of past transactions and of course, to be able to make "
+"them between wallets. Moreover, you will be able to export your data in .csv "
+"format to consult your wallet information more easily."
+
+#: .\templates\homepage.html:118
+msgid "Téléchargement de l'extension Metamask"
+msgstr "Download the Metamask extension"
+
+#: .\templates\homepage.html:126
+msgid "Fondée en"
+msgstr "Founded in"
+
+#: .\templates\homepage.html:131
+msgid "Version actuel"
+msgstr "Current version"
+
+#: .\templates\homepage.html:136
+msgid "Nb utilisateurs"
+msgstr "No. of users"
+
+#: .\templates\homepage.html:141
+msgid "Utilisateurs depuis 2022"
+msgstr "Users since 2022"
 
 #: .\templates\portefeuille\detailTransaction.html:5
 msgid "Ma feuille de compte"
@@ -208,11 +293,6 @@ msgstr "Money received monthly"
 msgid "Argent retiré mensuel"
 msgstr "Money withdrawn monthly"
 
-#: .\templates\portefeuille\detailTransaction.html:47
-#: .\templates\portefeuille\wallet.html:56
-msgid "Exporter en CSV"
-msgstr "Export to CSV"
-
 #: .\templates\portefeuille\wallet.html:4
 msgid "Mon portefeuille"
 msgstr "My wallet"
@@ -221,13 +301,17 @@ msgstr "My wallet"
 msgid "Total balance"
 msgstr ""
 
-#: .\templates\portefeuille\wallet.html:14
+#: .\templates\portefeuille\wallet.html:15
 msgid "P&L Aujourd'hui"
 msgstr "P&L Today"
 
-#: .\templates\portefeuille\wallet.html:16
+#: .\templates\portefeuille\wallet.html:19
 msgid "P&L Mensuel"
 msgstr "P&L Monthly"
+
+#: .\templates\portefeuille\wallet.html:56
+msgid "Exporter en CSV"
+msgstr "Export to CSV"
 
 #: .\templates\registration\login.html:36
 msgid "Mot de passe oublié ?"
@@ -252,3 +336,15 @@ msgstr "Already an account ?"
 #: .\templates\registration\register.html:36
 msgid "C'est parti"
 msgstr "Let's go"
+
+#~ msgid "Envoie vers userX"
+#~ msgstr "Send to userX"
+
+#~ msgid "Reçu de User Y"
+#~ msgstr "Received from User Y"
+
+#~ msgid "Cette page n’existe pas"
+#~ msgstr "This page doesn't exist"
+
+#~ msgid "La page que vous recherchez est introuvable."
+#~ msgstr "The page you are looking for cannot be found."

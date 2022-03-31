@@ -1,9 +1,10 @@
 {% load static %}
 {% block content %}
+{% load i18n %}
 
 <div class="w-full mt-6 bg-white rounded">
   <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-4">Mon historique des transactions</div>
+    <div class="font-bold text-xl mb-4">{% translate "Mon historique des transactions" %}</div>
     <div id="isConnectedForTransaction" class="flow-root text-center">
       <ul id="transactionList2" role="list" class="-mb-8">
       </ul>
@@ -19,10 +20,10 @@
       <div class="px-4 py-5 sm:p-6">
         <dl>
           <dt class="text-sm leading-5 font-medium text-orange-500 truncate">
-            Pour l'historique
+            {% translate "Pour l'historique" %}
           </dt>
           <dd class="mt-1 text-3xl leading-9 font-semibold text-yellow-600">
-            Connexion à Metamask ...
+            {% translate "Connexion à Metamask ..." %}
           </dd>
         </dl>
       </div>

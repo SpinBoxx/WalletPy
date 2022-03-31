@@ -17,9 +17,9 @@
 		<div class="max-w-md w-full space-y-8">
 			<div>
 				<img class="mx-auto h-12 w-auto" src="{% static 'allLogo.png' %}" alt="My image"/>
-				<h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+				<h1 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
 					{% translate "Connectez-vous" %}
-				</h2>
+				</h1>
 			</div>
 			<form class="mt-8 space-y-6" action="{% url 'login' %}" method="POST">
 				{% csrf_token %}
@@ -34,7 +34,6 @@
 						{{ form.password|attr:"placeholder:Mot de passe"|add_class:"appearance-none rounded-none relative block w-full px-3 py-2 shadow-lg placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" }}
 					</div>
 				</div>
-
 				<div class="flex items-center justify-between">
 					<div
 						class="flex items-center">
