@@ -53,9 +53,9 @@
 	<script>
 
 		const metamaskConnectButton = document.getElementById('enableEthereumButton');
-const transactionETH = document.querySelector('#sendEth');
-const APIKeyEthScan = "GNFG1NWHVNRTIKARX5MPFEB581CPIDBQZV";
-const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/56a0386767d54d6a8e04f9c7a6c56fda"));
+		const transactionETH = document.querySelector('#sendEth');
+		const APIKeyEthScan = "GNFG1NWHVNRTIKARX5MPFEB581CPIDBQZV";
+		const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/56a0386767d54d6a8e04f9c7a6c56fda"));
 
 
 const isMetaMaskInstalled = () => {
@@ -67,12 +67,12 @@ const accounts = await ethereum.request({method: 'eth_accounts'});
 return accounts && accounts.length > 0;
 }
 const getAccounts = async () => {
-return await ethereum.request({method: 'eth_accounts'});
+	return await ethereum.request({method: 'eth_accounts'});
 }
-if (window ?. ethereum ?. on) {
-window.ethereum.on('accountsChanged', async () => {
-init();
-});
+	if (window ?. ethereum ?. on) {
+		window.ethereum.on('accountsChanged', async () => {
+			init();
+		});
 } else {
 document.getElementById('navbar_icones_wallet').classList.add('hidden')
 document.getElementById('isNotConnectedForAsset').classList.remove("hidden")
@@ -144,41 +144,41 @@ Math.round(localStorage.getItem('amountAccount') * actualPriceETH.ethereum["{{ u
 }
 
 const init = async () => {
-if (await isMetaMaskConnected()) {
-document.getElementById('navbar_icones_wallet').classList.remove('hidden')
-document.getElementById('loader').classList.remove("hidden")
-document.getElementById('isConnectedForAsset').classList.remove("hidden")
-document.getElementById('enableEthereumButton').classList.add('hidden');
-document.getElementById('isConnectedForTransaction').classList.remove('hidden');
-document.getElementById('notConnected').classList.add('hidden')
-let transactionsLI = document.getElementsByClassName('transaction')
-if (transactionsLI.length > 0) {
-for (let transaction of transactionsLI) {
-transaction.remove();
-}
-}
-getAccounts().then(async (res) => {
-localStorage.setItem('address', res);
-document.getElementById('myAddress').innerText = res
-await getBalance(res[0])
-displayHistory(). finally(() => {
-document.getElementById('buttonBounce').classList.remove("hidden")
-document.getElementById('loader').classList.add("hidden")
+	if (await isMetaMaskConnected()) {
+		document.getElementById('navbar_icones_wallet').classList.remove('hidden')
+		document.getElementById('loader').classList.remove("hidden")
+		document.getElementById('isConnectedForAsset').classList.remove("hidden")
+		document.getElementById('enableEthereumButton').classList.add('hidden');
+		document.getElementById('isConnectedForTransaction').classList.remove('hidden');
+		document.getElementById('notConnected').classList.add('hidden')
+		let transactionsLI = document.getElementsByClassName('transaction')
+		if (transactionsLI.length > 0) {
+		for (let transaction of transactionsLI) {
+		transaction.remove();
+		}
+		}
+		getAccounts().then(async (res) => {
+		localStorage.setItem('address', res);
+		document.getElementById('myAddress').innerText = res
+		await getBalance(res[0])
+		displayHistory(). finally(() => {
+		document.getElementById('buttonBounce').classList.remove("hidden")
+		document.getElementById('loader').classList.add("hidden")
 
-})
-});
-} else {
-document.getElementById('navbar_icones_wallet').classList.add('hidden')
-localStorage ?. removeItem('address');
-localStorage ?. removeItem('amountAccount')
-document.getElementById('isNotConnectedForAsset').classList.remove("hidden")
-document.getElementById('notConnected').classList.remove('hidden')
-document.getElementById('isConnectedForTransaction').classList.add('hidden');
-document.getElementById('connectedMetamask').classList.add('hidden');
-document.getElementById('enableEthereumButton').classList.remove('hidden');
-
-}
-} init()
+		})
+		});
+		} else {
+			document.getElementById('navbar_icones_wallet').classList.add('hidden')
+			localStorage ?. removeItem('address');
+			localStorage ?. removeItem('amountAccount')
+			document.getElementById('isNotConnectedForAsset').classList.remove("hidden")
+			document.getElementById('notConnected').classList.remove('hidden')
+			document.getElementById('isConnectedForTransaction').classList.add('hidden');
+			document.getElementById('connectedMetamask').classList.add('hidden');
+			document.getElementById('enableEthereumButton').classList.remove('hidden');
+		}
+	}
+	init()
 // get name of contract https://api.etherscan.io/api?module=contract&action=getsourcecode&address=0xE66b3AA360bB78468c00Bebe163630269DB3324F&apikey=GNFG1NWHVNRTIKARX5MPFEB581CPIDBQZV
 // get all transaction for an adresse https://api.etherscan.io/api?module=account&action=txlist&address=0x959C8D7331883cB49ba9719760621449b41712C7&startblock=0&endblock=99999999&offset=10&sort=asc&apikey=GNFG1NWHVNRTIKARX5MPFEB581CPIDBQZV
 metamaskConnectButton.addEventListener('click', () => {

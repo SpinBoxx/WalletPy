@@ -75,7 +75,6 @@
 		</div>
 	</div>
 
-<<<<<<< HEAD
 <div class="block h-full">
     <h1 class="text-3xl font-bold py-5 pl-10">{% translate "Mon compte" %}</h1>
     <div class="max-w-2xl my-12 mx-auto">
@@ -159,23 +158,5 @@
         }
     }
 </script>
-=======
-	<script>
-		var password = document.getElementById("id_new_password");
-var selectPrefFiat = document.getElementById("pref_fiat");
-var value = selectPrefFiat.options[selectPrefFiat.selectedIndex].text.slice(0, 3);
-localStorage.setItem('preferred_currency', value)
-
-var confirm_password = document.getElementById("id_confirm_password");
-var validatePassword;
-function validate() {
-if (password.value != confirm_password.value) {
-confirm_password.setCustomValidity("Mot de passe pas identique");
-} else {
-confirm_password.setCustomValidity("");
-}
-}
-	</script>
->>>>>>> fcdd12bba0dc5e8da47735d0f86fc7b6444f0aee
 
 {% endblock %}
