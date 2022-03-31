@@ -11,4 +11,4 @@ WORKDIR /code
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt  --ignore-installed
 COPY . /code/
-CMD bash -c "python WalletPy/manage.py migrate coin && python WalletPy/manage.py migrate && python WalletPy/manage.py createadmin && python WalletPy/manage.py runserver 0.0.0.0:8080"
+CMD bash -c "python WalletPy/manage.py migrate coin && python WalletPy/manage.py migrate && python WalletPy/manage.py createadmin && python WalletPy/manage.py runserver 0.0.0.0:8080 --insecure"

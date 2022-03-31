@@ -14,7 +14,7 @@ services:
       - "3306:3306"
   web:
     build: .
-    command: bash -c "python WalletPy/manage.py migrate coin && python WalletPy/manage.py migrate && python WalletPy/manage.py runserver 0.0.0.0:8080"
+    command: bash -c "python WalletPy/manage.py migrate coin && python WalletPy/manage.py migrate && python WalletPy/manage.py runserver 0.0.0.0:8080 --insecure"
     environment:
       - MYSQL_ROOT_PASSWORD=mariadb
       - MYSQL_DATABASE=mariadb
