@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %} {% load static %} {% load i18n %}
 
 <div
-  class="bg-cover leading-normal tracking-normal text-neutral-400 bg-cover bg-center"
+  class="bg-cover relative leading-normal tracking-normal text-neutral-400 bg-cover bg-center"
   style="background-image: url('/static/graphFinal.jpg')"
 >
   <div class="min-h-screen">
@@ -21,19 +21,19 @@
         <h1
           class="my-4 text-3xl md:text-6xl text-white opacity-75 font-bold leading-tight text-center md:text-left"
         >
-          <span
+          <span data-aos="fade-right"
             class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600"
           >
           {% blocktranslate %}Prêt à faire travailler votre argent ?{% endblocktranslate %}
           </span>
         </h1>
-        <p
+        <p data-aos="fade-right"
           class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left"
         >
         {% blocktranslate %}Investir c'est pensé à son futur !{% endblocktranslate %}
         </p>
         {% if user.is_authenticated %}
-        <a
+        <a data-aos="fade-right"
           href="{% url 'dashboard' %}"
           type="button"
           class="shadow-xl uppercase bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
@@ -44,6 +44,7 @@
         <div class="flex items-center justify-between space-x-12 pt-4">
           <a
             href="{% url 'login' %}"
+            data-aos="fade-right"
             type="button"
             class="shadow-xl uppercase bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
           >
@@ -61,6 +62,105 @@
       </div>
     </div>
     <!--Footer-->
+	  <footer class="bottom-3 absolute mx-auto text-center" style="left: 50%">
+		  <span id="moreInfo" class="mt-3 b-0 cursor-pointer inline-block border-black animate-bounce shadow-lg rounded-full p-3 shadow-lg bg-yellow-300 text-white">
+		      <svg class="w-8 h-8 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+		          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"/>
+		      </svg>
+		  </span>
+	  </footer>
   </div>
 </div>
+<div id="toScroll" class="h-screen">
+	<div class="relative mt-20">
+		<div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+			<div class="relative sm:py-16 lg:py-0">
+				<div aria-hidden="true" class="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen">
+					<div class="absolute inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72"></div>
+					<svg class="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12" width="404" height="392" fill="none" viewBox="0 0 404 392">
+						<defs>
+							<pattern id="02f20b47-fd69-4224-a62a-4c9de5c763f7" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+								<rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+							</pattern>
+						</defs>
+						<rect width="404" height="392" fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)" />
+					</svg>
+				</div>
+				<div class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:py-20">
+					<!-- Testimonial card-->
+					<div data-aos="fade-right" data-aos-duration="800"  class="relative pt-64 pb-10 rounded-2xl shadow-xl overflow-hidden">
+						<img class="absolute inset-0 h-full w-full object-cover" src="https://cdn.dribbble.com/users/2574702/screenshots/6702374/metamask.gif" alt="">
+						<div class="absolute inset-0 bg-rose-500 mix-blend-multiply"></div>
+						<div class="absolute inset-0 bg-gradient-to-t from-rose-600 via-rose-600 opacity-90"></div>
+						<div class="relative px-8">
+							<div class="h-32">
+							</div>
+							<blockquote class="mt-8">
+								<div class="relative text-lg font-medium text-white md:flex-grow">
+								</div>
+								<footer class="pt-8">
+									<p class="text-base font-semibold text-rose-200">Metamask</p>
+								</footer>
+							</blockquote>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div data-aos="fade-left" data-aos-duration="800" class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
+				<!-- Content area -->
+				<div class="pt-12 sm:pt-16 lg:pt-20">
+					<h2 class="text-3xl text-gray-900 font-extrabold tracking-tight sm:text-4xl">Compatible seulement avec Metamask</h2>
+					<div class="mt-6 text-gray-500 space-y-6">
+						<p class="text-lg">Pour la connexion sur WalletPY, il faut impérativement posséder un portefeuille Metamask afin de pouvoir profiter de l'entièretés des fonctionnalités disponibles.</p>
+						<p class="text-base leading-7">En effet, lors de la création de votre portefeuille sur Metamask, il faudrait créer un wallet sous le réseau principal d'Ethereum. Pour le rendu, notre application prendra en charge uniquement les données comportants de l'Ethereum.</p>
+						<p class="text-base leading-7">WalletPY proposera de vous liée avec votre portefeuille Metamask afin de consulter l'historique des anciennes transactions réalisée et bien sûr, pouvoir en faire entre portefeuille. De plus, vous pourrez exporter vos données en format .csv pour consulter plus facilement les informations de votre portefeuille.</p>
+						<a target="_blank" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=fr" class="text-blue-500 underline">Téléchargement de l'extension Metamask</a>
+					</div>
+				</div>
+				
+				<!-- Stats section -->
+				<div class="mt-10">
+					<dl class="grid grid-cols-2 gap-x-4 gap-y-8">
+						<div class="border-t-2 border-gray-100 pt-6">
+							<dt class="text-base font-medium text-gray-500">Fondée en</dt>
+							<dd class="text-3xl font-extrabold tracking-tight text-gray-900">2016</dd>
+						</div>
+						
+						<div class="border-t-2 border-gray-100 pt-6">
+							<dt class="text-base font-medium text-gray-500">Version acutel</dt>
+							<dd class="text-3xl font-extrabold tracking-tight text-gray-900">10.11.3</dd>
+						</div>
+						
+						<div class="border-t-2 border-gray-100 pt-6">
+							<dt class="text-base font-medium text-gray-500">Nb utilisateurs</dt>
+							<dd class="text-3xl font-extrabold tracking-tight text-gray-900">+ 10M</dd>
+						</div>
+						
+						<div class="border-t-2 border-gray-100 pt-6">
+							<dt class="text-base font-medium text-gray-500">Utilisateurs depuis 2022</dt>
+							<dd class="text-3xl font-extrabold tracking-tight text-gray-900">+ 43%</dd>
+						</div>
+					</dl>
+					<div class="mt-10">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<style>
+	html{
+		scroll-behavior: smooth;
+	}
+</style>
+<script>
+	const toScroll = document.getElementById('toScroll');
+	document.getElementById('moreInfo').addEventListener('click', ()=> {
+		toScroll.scrollIntoView(true)
+	});
+</script>
+
 {% endblock content %}

@@ -130,14 +130,19 @@
 
 		{% include "historique.html" %}
 
-	</div>
-	<style lang="css">
-		#cover {
-			height: 100%;
-			overflow: hidden;
-			max-height: 0;
-			transition: max-height 1.5s ease-out;
-		}
+	#h-slider {
+		animation-name: slide;
+		animation-duration: 30s;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
+	
+	#h-slider:hover {
+		-webkit-animation-play-state: paused;
+		-moz-animation-play-state: paused;
+		-o-animation-play-state: paused;
+		animation-play-state: paused;
+	}
 
 		#cover.active {
 			transition: max-height 1.5s ease-in;

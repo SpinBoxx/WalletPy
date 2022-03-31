@@ -134,7 +134,7 @@ function download(uri, filename) {
 }
 
 document.getElementById('exportWalletCsv').addEventListener("click",function(){
-  metamaskConnect()
+  metamaskConnectt()
 })
 
 test();
