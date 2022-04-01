@@ -68,14 +68,14 @@ const test = async () => {
       document.getElementById('pnl_today').classList.add('text-green-700')
     } else {
       document.getElementById('pnl_today').innerHTML = data.market_data.price_change_percentage_24h + " %"
-      document.getElementById('pnl_today').classList.add('text-green-700')
+      document.getElementById('pnl_today').classList.add('text-red-700')
     }
     if(data.market_data.price_change_percentage_30d > 0){
       document.getElementById('pnl_month').innerHTML = data.market_data.price_change_percentage_30d + " %"
       document.getElementById('pnl_month').classList.add('text-green-700')
     } else {
       document.getElementById('pnl_month').innerHTML = data.market_data.price_change_percentage_30d + " %"
-      document.getElementById('pnl_month').classList.add('text-green-700')
+      document.getElementById('pnl_month').classList.add('text-red-700')
     }
   })
   const preferedFiat = localStorage.getItem('preferred_currency');
