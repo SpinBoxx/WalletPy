@@ -85,13 +85,18 @@
 		var confirm_password = document.getElementById("confirm_new_password");
 		// Fonction qui encadre le password en vert si les mots de passe correspondent ou en rouge s'ils ne correspondent pas
 		const isSamePassword = function(e) {
+			if(password.value.length >= 1){
 				if(password.value == confirm_password.value){
 						confirm_password.classList.add('border','border-green-400');
 						confirm_password.classList.remove('border-red-400')
 				} else {
-					confirm_password.classList.add('border','border-red-400');
-					confirm_password.classList.remove('border-green-400')
-				}
+				 confirm_password.classList.add('border','border-red-400');
+				 confirm_password.classList.remove('border-green-400')
+			 }
+		 } else {
+			 confirm_password.classList.remove('border-red-400')
+		 }
+
     }
 		password.addEventListener('input', isSamePassword);
 		confirm_password.addEventListener('input', isSamePassword);

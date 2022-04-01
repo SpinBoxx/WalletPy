@@ -12,11 +12,14 @@ def index(request):
 def exportWalletCsv(request):
     post_data = json.loads(request.body.decode("utf-8"))
 
+    # Creation du header du csv
     header = ['Compte', 'Montant', 'Devise']
+    # On y ajoute les lignes
     data = [
         [post_data.get("address"), post_data.get("amount"), 'ETH'],
     ]
     current_user = request.user
+    # On enregistre son fichier dans un dossier specifique du user en question qui sera ecraser par un nouvel appel
     src = '/static/export_wallet/'
     filename = 'export_wallet_' + str(current_user.id) + '.csv'
     path =  src + filename

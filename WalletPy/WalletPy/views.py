@@ -15,27 +15,6 @@ def homepage(request):
 
 @login_required
 def dashboard(request):
-    info = [
-        {
-            "name": 'Bitcoin',
-            "concurrency": "BTC/EUR",
-            "amount":2000,
-            "imgUrl": "https://s2.coinmarketcap.com/static/img/coins/200x200/1.png"
-
-        },
-        {
-            "name": "Ethereum",
-            "concurrency": "ETH/EUR",
-            "amount": 1500,
-            "imgUrl": "https://cryptonaute.fr/wp-content/uploads/2020/06/ethereum-logo.png"
-        },
-        {
-             "name": "Doge",
-             "concurrency": "DOGE/EUR",
-             "amount": 700,
-             "imgUrl": "https://s2.coinmarketcap.com/static/img/coins/200x200/74.png"
-        }
-    ]
     coin_data = get_available_coins_dashboard_data(request.user)
     datetime_today = date.today()      # get current date
     date_today = str(datetime_today)    # convert datetime class to string
@@ -85,14 +64,13 @@ def dashboard(request):
         'price':btc_price_range,
         'search_form':search_form,
         'wrong_input' : wrong_input,
-        'information': info
     }
     return render(request, 'dashboard/basedashbord.html', context)
-  
+
 def error_404(request, exception):
     return render(request,'error_404.html')
 
-@login_required 
+@login_required
 def favorite_add(request, id):
     current_user = request.user
     if current_user.favorite_coins.filter(id=id).exists():
