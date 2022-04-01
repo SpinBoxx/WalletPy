@@ -120,13 +120,18 @@
 			stringToHTML(`<li class="transaction"><div class="relative pb-8"> <div class="relative flex space-x-3"> <div> <span class="h-8 w-8 rounded-full bg-red-400 flex items-center justify-center ring-8 ring-white"> <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"fill="currentColor"> <path d="M285.6 444.1C279.8 458.3 264.8 466.3 249.8 463.4C234.8 460.4 223.1 447.3 223.1 432V256H47.1C32.71 256 19.55 245.2 16.6 230.2C13.65 215.2 21.73 200.2 35.88 194.4L387.9 50.38C399.8 45.5 413.5 48.26 422.6 57.37C431.7 66.49 434.5 80.19 429.6 92.12L285.6 444.1z"/> </svg> </span> </div> <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4"><div class="overflow-hidden text-left w-1/3 lg:w-1/2"><p class=" text-sm text-gray-500">Envoie vers ${dataForTransaction.nameTo}</p> </div> <div class="text-right text-sm whitespace-nowrap text-gray-500"> <time>${dataForTransaction.date}</time> <p class="text-sm text-red-500">- ${(Math.round(dataForTransaction.value * 100) / 100).toFixed(2)} {{ user.preferred_currency.symbol }}</p> </div> </div> </div> </div> </li>`)
 		}
 	}
-	
+	/*
+	* Récupération de la balance d'un wallet
+	* */
 	const getBalance = async (account) => {
 		localStorage.setItem('amountAccount', web3.utils.fromWei(await web3.eth.getBalance(account), 'ether'))
 		const requestETH = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies={{ user.preferred_currency.short_name }}')
 		actualPriceETH = await requestETH.json()
 		document.getElementById('totalAmount').innerHTML = `${Math.round(localStorage.getItem('amountAccount') * actualPriceETH.ethereum["{{ user.preferred_currency.short_name }}"] * 100) / 100} {{user.preferred_currency.symbol}}`}
 	
+	/*
+	* Initialisation de l'app lorsque quelqu'un se connecte ou lie son compte metamask
+	* */
 	const init = async () => {
 		if (await isMetaMaskConnected()) {
 			document.getElementById('navbar_icones_wallet').classList.remove('hidden')
