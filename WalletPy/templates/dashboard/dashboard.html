@@ -1,3 +1,4 @@
+
 {% load static %}
 {% load i18n %}
 {% block content %}
@@ -44,22 +45,7 @@
 	<div class="py-4 px-8">
 		<p class="font-bold antialiased text-xl pb-3">{% translate "Top 3 de mes actifs" %}</p>
 		<div id="isConnectedForAsset" class="flex hidden flex-col gap-4 items-left justify-center bg-white">
-			<div class="flex bg-white rounded-md shadow-lg py-4">
-				<div class="flex align-center">
-					<img class="w-10 h-10 ml-1 mt-1" src="https://cryptonaute.fr/wp-content/uploads/2020/06/ethereum-logo.png" alt="btc icon"/>
-				</div>
-				<div class="flex justify-around w-full">
-					<div class="flex flex-col">
-						<span class="font-bold" >Ethereum</span>
-						<span class="text-gray-500">ETH</span>
-					</div>
-					<div class="flex flex-col">
-						<span id="total_balance" class="total_balance font-bold"></span>
-						<span id="total_balance_currency" class="text-gray-500"></span>
-					</div>
-				</div>
-			</div>
-
+			{% include "cards/card_crypto_asset.html" with cryptoName="Ethereum" cryptoSymbol="ETH"%}
 		</div>
 		<div id="isNotConnectedForAsset" class="flex hidden flex-col gap-4 items-left justify-center bg-white">
 			<p class="text-red-500 font-bold pt-5 text-center text-lg">{% translate "Aucunes données reçu ..." %}</p>
@@ -70,7 +56,6 @@
 	</div>
 
 <script type="text/javascript">
-
 	const loadBalances = async () => {
 		var total_balance = document.getElementsByClassName('total_balance')
 		for(var i = 0; i < total_balance.length; i++){
@@ -80,12 +65,11 @@
 		const preferedFiat = localStorage.getItem('preferred_currency');
 		const getEthPriceInUserCurrency = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies='+ preferedFiat)
 		const actualPriceETH = await getEthPriceInUserCurrency.json()
-		console.log(actualPriceETH)
 		document.getElementById('total_balance_currency').innerHTML =  (Math.round(localStorage.getItem('amountAccount') * actualPriceETH.ethereum[("" + preferedFiat + "").toLowerCase()] * 100) / 100) + " ".concat(' ',(preferedFiat == "USD") ? "$" : "€")
 	}
 	loadBalances();
+
+	document.getElementById('isConnectedForAsset').classList.remove("hidden")
 </script>
 <script src="/static/js/chart.js"></script>
-
-
 {% endblock content %}

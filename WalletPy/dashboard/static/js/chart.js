@@ -52,7 +52,6 @@ const changeGraph = async (el, time) => {
     date = [];
     price = [];
     const data = await response.json();
-    console.log(data)
     for(let d in data.prices){
         date[d] = new Date(data.prices[d]["0"]).toISOString().slice(0, 19).replace('T', ' ');
         price[d] = data.prices[d]["1"];
@@ -147,4 +146,3 @@ const chart = () => {
 }
 
 chart();
-

@@ -5,8 +5,6 @@ const toggleModal = (modalID) =>{
     document.getElementById(modalID + "-backdrop").classList.toggle("flex");
 }
 
-
-
 var dates = document.getElementsByClassName('date-item')
 var prices = document.getElementsByClassName('price-item')
 
@@ -59,7 +57,6 @@ const changeGraph = async (el, time) => {
     date = [];
     price = [];
     const data = await response.json();
-    console.log(data)
     for(let d in data.prices){
         date[d] = new Date(data.prices[d]["0"]).toISOString().slice(0, 19).replace('T', ' ');
         price[d] = data.prices[d]["1"];
@@ -79,7 +76,7 @@ for (let j = 0; j < prices.length; j++) {  //iterate over the html collection (h
     price[j] = prices[j].innerHTML //get the value(prices) of each of the html collection (hidden input)
 }
 
-// Chart js code
+// Chart js code for display some chart
 const chart = () => {
     var context = document.getElementById('btcChart').getContext('2d');
     myChart = new Chart(context, {

@@ -331,7 +331,7 @@ msgstr "Start enjoying WalletPY"
 
 #: .\templates\registration\register.html:30
 msgid "Déjà un compte ?"
-msgstr "Already an account ?"
+msgstr "Already have an account ?"
 
 #: .\templates\registration\register.html:36
 msgid "C'est parti"
