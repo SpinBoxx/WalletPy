@@ -119,11 +119,7 @@
 				localStorage.setItem('address', res);
 				document.getElementById('myAddress').innerText = res
 				await getBalance(res[0])
-				// displayHistory().finally(() => {
-				// 	document.getElementById('buttonBounce').classList.remove("hidden")
-				// 	document.getElementById('loader').classList.add("hidden")
-				//
-				// })
+				await loadBalances();
 			});
 		} else {
 			document.getElementById('navbar_icones_wallet').classList.add('hidden')
@@ -131,6 +127,7 @@
 			localStorage?.removeItem('amountAccount')
 			document.getElementById('isNotConnectedForAsset').classList.remove("hidden")
 			document.getElementById('notConnected').classList.remove('hidden')
+			document.getElementById('isConnectedForAsset').classList.add("hidden");
 			document.getElementById('isConnectedForTransaction').classList.add('hidden');
 			document.getElementById('connectedMetamask').classList.add('hidden');
 			document.getElementById('enableEthereumButton').classList.remove('hidden');

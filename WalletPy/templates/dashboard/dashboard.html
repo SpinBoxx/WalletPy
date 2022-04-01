@@ -67,8 +67,7 @@
 		const actualPriceETH = await getEthPriceInUserCurrency.json()
 		document.getElementById('total_balance_currency').innerHTML =  (Math.round(localStorage.getItem('amountAccount') * actualPriceETH.ethereum[("" + preferedFiat + "").toLowerCase()] * 100) / 100) + " ".concat(' ',(preferedFiat == "USD") ? "$" : "€")
 	}
-	loadBalances();
-
+	loadBalances()
 	document.getElementById('isConnectedForAsset').classList.remove("hidden")
 </script>
 <script src="/static/js/chart.js"></script>
